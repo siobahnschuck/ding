@@ -1,4 +1,4 @@
-# ding
+# Ding!
 
 ### Date 3/19/2021
 
@@ -7,6 +7,7 @@
 #### Queenie Williams
 
 [gitHub](https://github.com/queeniewilliams)
+| [linkedIn](https://www.linkedin.com/in/queeni%C3%A9-williams/)
 
 #### Siobahn Schuck
 
@@ -15,7 +16,8 @@
 
 #### Andrew Liu
 
-[gitHub](https://github.com/andrewliu1988)
+[gitHub](https://github.com/andrewliu1988) |
+[linkedIn](https://www.linkedin.com/in/andrewliu1988/)
 
 ---
 
@@ -23,14 +25,14 @@
 
 XXX LOGO HERE XXX
 
-Ding! is a fullstack application where users can customize thier fridge and generate recipe ideas based on what ingredient that have on hand! Solving the ever looming question: "What should I have for dinner!?".
+Ding! is a fullstack application where users can customize their fridge and generate recipe ideas based on what ingredient that have on hand! Solving the ever looming question: "What should I have for dinner!?".
 
 Features:
 
 - Interactive dashboard where you can preset any dietary restrictions or save your favorite recipes for quick access.
 - "Feeling WILD" random cuisine
-- Post your own recipies and share them with the Ding! Community
-- Ability to "like" recipies and see what foods are trending
+- Post your own recipes and share them with the Ding! Community
+- Ability to "like" recipes and see what foods are trending
 
 ---
 
@@ -64,7 +66,7 @@ Otherwise visit and sign up for [Ding!]()
 
 ### **_Future Updates_**
 
-- [ ] Restraunts in your area instead of cooking
+- [ ] Find restaurants in your area
 - [ ] Text me a grocery list
 - [ ] Favorite Recipes
 
