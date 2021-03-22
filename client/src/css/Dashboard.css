@@ -1,0 +1,26 @@
+.dashboard {
+  display: grid;
+  justify-items: center;
+  height: 100vh;
+  background-image: url('https://i.ibb.co/wc0kB5M/image.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* filter: blur(20px); */
+}
+#dashboard {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.block {
+  background-color: rgba(248, 248, 246, 0.226);
+  width: 30vw;
+  height: 25vh;
+  margin: 10px;
+}
+.block-1 {
+  background-color: rgba(248, 248, 246, 0.226);
+  width: 30vw;
+  height: 38vh;
+  margin: 10px;
+}
