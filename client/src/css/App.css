@@ -1,0 +1,27 @@
+.home {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  background-color: black;
+}
+.left {
+  position: relative;
+}
+.right {
+  display: grid;
+  grid-column: 2;
+  height: 100vh;
+  background-color: rgb(255, 208, 0);
+}
+header {
+  display: flex;
+  justify-self: right;
+}
+.modal-dialog.modal {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.151);
+  position: absolute;
+  width: 80vw;
+  height: 80vh;
+  top: 10%;
+  left: 10%;
+}
