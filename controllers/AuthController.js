@@ -1,5 +1,5 @@
 const { User } = require('../models')
-const middleware = require('../middleware')
+const { HashPassword, ComparePassword, CreateToken } = require('../middleware')
 
 const Login = async (req, res) => {
   try {
@@ -9,13 +9,13 @@ const Login = async (req, res) => {
     })
     if (
       user &&
-      (await middleware.ComparePassword(user.passwordDigest, req.body.password))
+      (await ComparePassword(user.passwordDigest, req.body.password))
     ) {
       let payload = {
         id: user.id,
         username: user.username
       }
-      let token = middleware.CreateToken(payload)
+      let token = CreateToken(payload)
       return res.send({ user: payload, token })
     }
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
@@ -25,9 +25,11 @@ const Login = async (req, res) => {
 }
 
 const Register = async (req, res) => {
+  // console.log(req.body)
   try {
     const { firstName, lastName, username, email, password } = req.body
-    let passwordDigest = await middleware.HashPassword(password)
+    let passwordDigest = await HashPassword(password)
+    console.log('PASSWORD DIGEST', passwordDigest)
     const user = await User.create({
       firstName,
       lastName,
@@ -35,6 +37,7 @@ const Register = async (req, res) => {
       email,
       passwordDigest
     })
+    // res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
     res.send(user)
   } catch (error) {
     throw error
