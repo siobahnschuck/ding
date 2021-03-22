@@ -15,7 +15,7 @@ module.exports = {
       hasNuts: faker.random.boolean(),
       duration: Math.floor(Math.random() * 180),
       calories: Math.floor(Math.random() * 800),
-      like: faker.random.number(),
+      likes: faker.random.number(),
       createdAt: new Date(),
       updatedAt: new Date()
     }))

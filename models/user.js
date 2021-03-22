@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.hasMany(models.Recipe, { foreignKey: 'userId' })
-      User.hasMany(models.FoodItem, {
+      User.belongsToMany(models.FoodItem, {
         through: models.FridgeItem,
         as: 'user_Food',
         foreignKey: 'userId'
