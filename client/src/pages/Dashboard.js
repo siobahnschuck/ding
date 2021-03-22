@@ -5,13 +5,19 @@ import Setting from '../components/Setting'
 import CreateRecipe from '../components/CreateRecipe'
 import MyRecipes from '../components/MyRecipes'
 import Rank from '../components/Rank'
+import Restaurants from '../components/Restaurants'
 
 const iState = {
   query: '',
   ingredients: [],
   fridge: [],
   recipes: [],
-  newRecipe: '',
+  newRecipe: {
+    title: '',
+    image: '',
+    ingredients: '',
+    instructions: ''
+  },
   myRecipes: [],
   cuisine: '',
   isVegan: false,
@@ -31,6 +37,13 @@ const reducer = (state, action) => {
       return { ...state, recipes: action.payload }
     case 'add_fridge':
       return { ...state, fridge: action.payload }
+    case 'create_recipe':
+      return {
+        ...state,
+        newRecipe: action.payload
+      }
+    case 'my_recipes':
+      return {...state,myRecipes:action.payload}
     default:
       return state
   }
@@ -61,7 +74,9 @@ const Dashboard = () => {
           </div>
         </section>
         <section>
-          <div className="block-1">Give me Restaurants</div>
+          <div className="block-1">
+            <Restaurants />
+          </div>
           <div className="block-1">hey</div>
         </section>
       </div>
