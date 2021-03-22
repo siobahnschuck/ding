@@ -1,0 +1,9 @@
+.modal-dialog.setting {
+  text-align: left;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  width: 90vw;
+  height: 90vh;
+  top: 5%;
+  left: 5%;
+}
