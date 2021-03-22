@@ -9,13 +9,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      FoodItem.belongsToMany(models.User, {
+        through: models.FridgeItem,
+        as: 'food',
+        foreignKey: 'foodItemId'
+      })
+      FoodItem.belongsToMany(models.Recipe, {
+        through: models.Ingredient,
+        as: 'ingredient',
+        foreignKey: 'foodItemId'
+      })
     }
   }
   FoodItem.init(
     {
-      name: DataTypes.STRING,
-      image: DataTypes.STRING,
-      category: DataTypes.STRING
+      name: { type: DataTypes.STRING, allowNull: false },
+      image: { type: DataTypes.STRING, allowNull: false },
+      category: { type: DataTypes.STRING, allowNull: false }
     },
     {
       sequelize,
