@@ -2,8 +2,8 @@ import React from 'react'
 
 const IngredientList = (props) => {
   const AddToFridge = (item) => {
-    props.dispatch({ type: 'add_fridge' })
-    props.state.fridge.push()
+    props.dispatch({ type: 'add_fridge', payload: item.target.value })
+    // props.state.fridge.push()
   }
   return (
     <div className="ingredientList">

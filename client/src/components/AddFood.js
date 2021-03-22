@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import IngredientList from '../components/IngredientList'
+import Fridge from '../components/Fridge'
 import { NavLink } from 'react-router-dom'
 import { BASE_URL, API_KEY } from '../globals'
 import axios from 'axios'
@@ -20,6 +21,25 @@ const AddFood = ({ state, dispatch, history }) => {
       )
       console.log(res)
       dispatch({ type: 'get_ingredients', payload: res.data.results })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const getRecipe = async (ingredients) => {
+    try {
+      const res = await axios.get(
+        // `https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=5`
+        `https://api.spoonacular.com/recipes/findByIngredients`,
+        {
+          params: {
+            ingredients,
+            number: 5,
+            apiKey: process.env.REACT_APP_RECIPE_API_KEY
+          }
+        }
+      )
+      console.log(res)
+      dispatch({ type: 'get_recipes', payload: res.data.results })
     } catch (err) {
       console.log(err)
     }
@@ -48,7 +68,9 @@ const AddFood = ({ state, dispatch, history }) => {
       <Modal show={show} onHide={handleClose} dialogClassName="addFood">
         {/* <Modal.Header closeButton></Modal.Header> */}
         <Modal.Body className="body">
-          <div>fridge</div>
+          <div>
+            <Fridge />
+          </div>
           <div id="addFood">
             AddFood
             <br></br>
@@ -61,17 +83,9 @@ const AddFood = ({ state, dispatch, history }) => {
             <button onClick={() => getIngredients()}>search</button>
             {ingredientList}
             <br></br>
-            <button>Generate Recipes</button>
+            <button onClick={() => getRecipe()}>Generate Recipes</button>
           </div>
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <NavLink to="/dashboard">
-            <Button variant="primary" onClick={handleClose}></Button>
-          </NavLink>
-        </Modal.Footer> */}
       </Modal>
     </div>
   )
