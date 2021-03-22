@@ -11,6 +11,11 @@ const Home = () => {
           <SignIn />
           <SignUp />
         </header>
+        <img
+          className="plate"
+          src="https://i.ibb.co/cwt3tBj/Food-Plate-Diet-PNG.png"
+          width="600px"
+        />
       </section>
       <section className="left"></section>
     </div>

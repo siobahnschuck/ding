@@ -1,6 +1,6 @@
 .home {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 4fr 2fr;
   background-color: black;
 }
 .left {
@@ -11,6 +11,9 @@
   grid-column: 2;
   height: 100vh;
   background-color: rgb(255, 208, 0);
+}
+.plate {
+  margin-left: -19em;
 }
 header {
   display: flex;
