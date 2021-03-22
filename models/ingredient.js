@@ -13,8 +13,16 @@ module.exports = (sequelize, DataTypes) => {
   }
   Ingredient.init(
     {
-      recipeId: DataTypes.INTEGER,
-      foodItemId: DataTypes.INTEGER
+      recipeId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: { model: 'recipes', key: 'id' }
+      },
+      foodItemId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: { model: 'foodItems', key: 'id' }
+      }
     },
     {
       sequelize,

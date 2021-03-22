@@ -9,11 +9,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Recipe.belongsTo(models.User, { foreignKey: 'userId' })
+      Recipe.hasMany(models.FoodItem, {
+        through: models.Ingredient,
+        as: 'recipe_ingredient',
+        foreignKey: 'recipeId'
+      })
     }
   }
   Recipe.init(
     {
-      userId: DataTypes.INTEGER,
+      userId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: { model: 'users', key: 'id' }
+      },
       name: DataTypes.STRING,
       cuisineType: DataTypes.STRING,
       instructions: DataTypes.STRING,

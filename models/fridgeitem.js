@@ -13,8 +13,16 @@ module.exports = (sequelize, DataTypes) => {
   }
   FridgeItem.init(
     {
-      userId: DataTypes.INTEGER,
-      foodItemId: DataTypes.INTEGER
+      userId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: { model: 'users', key: 'id' }
+      },
+      foodItemId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: { model: 'foodItems', key: 'id' }
+      }
     },
     {
       sequelize,
