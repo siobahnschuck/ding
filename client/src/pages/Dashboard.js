@@ -60,8 +60,10 @@ const Dashboard = () => {
     instructions: ''
   })
   const [myRecipes, setMyRecipes] = useState([])
+
   const [state, dispatch] = useReducer(reducer, iState)
   console.log(state.ingredients)
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setMyRecipes({ ...newRecipe, [name]: value })
@@ -86,7 +88,7 @@ const Dashboard = () => {
             <Rank />
           </div>
           <div className="block">
-            <MyRecipes dispatch={dispatch} state={state} />
+            <MyRecipes myRecipes={myRecipes} setMyRecipes={setMyRecipes} />
           </div>
         </section>
         <section>

@@ -5,6 +5,12 @@
 }
 .left {
   position: relative;
+  display: grid;
+  align-items: center;
+}
+h1 {
+  color: white;
+  font-size: 3em;
 }
 .right {
   display: grid;

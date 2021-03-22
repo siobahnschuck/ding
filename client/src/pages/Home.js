@@ -6,6 +6,11 @@ import SignUp from '../components/SignUp'
 const Home = () => {
   return (
     <div className="home">
+      <section className="left">
+        <h1>
+          Are you hungry? <br></br>To cook or not to cook?
+        </h1>
+      </section>
       <section className="right">
         <header>
           <SignIn />
@@ -17,7 +22,6 @@ const Home = () => {
           width="600px"
         />
       </section>
-      <section className="left"></section>
     </div>
   )
 }
