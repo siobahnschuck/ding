@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react'
+import React, { useReducer, useState, useEffect } from 'react'
 import '../css/Dashboard.css'
 import AddFood from '../components/AddFood'
 import Setting from '../components/Setting'
@@ -8,6 +8,7 @@ import Rank from '../components/Rank'
 import Restaurants from '../components/Restaurants'
 import { BASE_URL } from '../globals'
 import axios from 'axios'
+import { async } from 'regenerator-runtime'
 
 const iState = {
   query: '',
@@ -71,8 +72,14 @@ const Dashboard = () => {
     const { name, value } = e.target
     setNewRecipe({ ...newRecipe, [name]: value })
   }
+
+  useEffect(() => {
+    // submitRecipe()
+    getMyRecipes()
+  }, [])
+
   const submitRecipe = async (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     console.log(newRecipe)
     try {
       const res = await axios.post(`http://localhost:3001/recipe/`, newRecipe)
@@ -80,6 +87,16 @@ const Dashboard = () => {
       setMyRecipes([...myRecipes])
     } catch (error) {
       console.log(error)
+    }
+  }
+  const getMyRecipes = async (e) => {
+    // e.preventDefault()
+    try {
+      const res = await axios.get(`http://localhost:3001/recipe/`)
+      console.log(res.data)
+      setMyRecipes(res.data)
+    } catch (err) {
+      throw err
     }
   }
   return (
@@ -93,7 +110,11 @@ const Dashboard = () => {
             <Rank />
           </div>
           <div className="block">
-            <MyRecipes myRecipes={myRecipes} setMyRecipes={setMyRecipes} />
+            <MyRecipes
+              myRecipes={myRecipes}
+              setMyRecipes={setMyRecipes}
+              getMyRecipes={getMyRecipes}
+            />
           </div>
         </section>
         <section>

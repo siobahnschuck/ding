@@ -42,7 +42,7 @@ const MyRecipes = (props) => {
               <Card>
                 <Image src={recipe.image} />
                 <Card.Content>
-                  <Card.Header>{recipe.title}</Card.Header>
+                  <Card.Header>{recipe.name}</Card.Header>
                   <Card.Description>
                     {recipe.ingredients}
                     <br></br>
