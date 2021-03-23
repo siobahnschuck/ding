@@ -5,7 +5,10 @@ const Fridge = (props) => {
   return (
     <div>
       {props.fridge.map((fridgeItem) => (
-        <p>{fridgeItem}</p>
+        <div>
+          <p>{fridgeItem.name}</p>
+          <img src={fridgeItem.image} />
+        </div>
       ))}
     </div>
   )
