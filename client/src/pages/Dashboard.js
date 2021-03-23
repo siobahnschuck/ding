@@ -39,7 +39,9 @@ const reducer = (state, action) => {
     case 'get_recipes':
       return { ...state, recipes: action.payload }
     case 'add_fridge':
-      return { ...state, fridge: action.payload }
+      console.log('add_fridge is firing', action.payload)
+      console.log('here is th states', state)
+      return { ...state, fridge: [...state.fridge, action.payload] }
     case 'create_recipe':
       return {
         ...state,
@@ -63,6 +65,7 @@ const Dashboard = () => {
 
   const [state, dispatch] = useReducer(reducer, iState)
   console.log(state.ingredients)
+  console.log(iState)
 
   const handleChange = (e) => {
     const { name, value } = e.target

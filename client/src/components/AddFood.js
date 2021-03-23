@@ -8,6 +8,7 @@ import axios from 'axios'
 import '../css/AddFood.css'
 
 const AddFood = ({ state, dispatch, history }) => {
+  console.log('state on add fodd', state)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -19,7 +20,7 @@ const AddFood = ({ state, dispatch, history }) => {
       const res = await axios.get(
         `${BASE_URL}?query=${state.query}&apiKey=${API_KEY}&number=5`
       )
-      console.log(res)
+      console.log('getingredientsrespond', res)
       dispatch({ type: 'get_ingredients', payload: res.data.results })
     } catch (err) {
       console.log(err)
@@ -69,7 +70,7 @@ const AddFood = ({ state, dispatch, history }) => {
         {/* <Modal.Header closeButton></Modal.Header> */}
         <Modal.Body className="body">
           <div>
-            <Fridge />
+            <Fridge fridge={state.fridge} />
           </div>
           <div id="addFood">
             AddFood
