@@ -25,21 +25,25 @@ const CreateRecipe = (
           <form onSubmit={props.submitRecipe}>
             <h2>Title:</h2>
             <input
+              name="title"
               value={props.newRecipe.title}
               onChange={props.handleChange}
             />
             <h2>Image:</h2>
             <input
+              name="image"
               value={props.newRecipe.image}
               onChange={props.handleChange}
             />
             <h2>Ingredients:</h2>
             <input
+              name="ingredients"
               value={props.newRecipe.ingredients}
               onChange={props.handleChange}
             />
             <h2>Instructions:</h2>
             <input
+              name="instructions"
               value={props.newRecipe.instructions}
               onChange={props.handleChange}
             />

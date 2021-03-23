@@ -69,7 +69,7 @@ const Dashboard = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setMyRecipes({ ...newRecipe, [name]: value })
+    setNewRecipe({ ...newRecipe, [name]: value })
   }
   const submitRecipe = async (e) => {
     e.preventDefault()
