@@ -30,7 +30,13 @@ const GetRecipeByIngredient = async (req, res) => {
   try {
     const query = req.params.query
     const recipes = await Recipe.findAll({
-      include: [{ model: FoodItem, as: 'recipe_ingredient' }],
+      include: [
+        {
+          model: FoodItem,
+          as: 'recipe_ingredient',
+          through: { attributes: [] }
+        }
+      ],
       where: {
         name: query
       }
