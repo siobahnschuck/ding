@@ -1,5 +1,5 @@
 const { FoodItem, Sequelize } = require('../models')
-const Op = Sequelize.Op
+const { Op } = require('sequelize')
 
 const GetFoodItem = async (req, res) => {
   try {
@@ -21,7 +21,7 @@ const GetFoodById = async (req, res) => {
 
 const GetFoodByName = async (req, res) => {
   try {
-    const query = req.params
+    const query = req.params.search
     const food = await FoodItem.findAll({
       where: {
         name: {
