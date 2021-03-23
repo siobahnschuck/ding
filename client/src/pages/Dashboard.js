@@ -73,9 +73,11 @@ const Dashboard = () => {
   }
   const submitRecipe = async (e) => {
     e.preventDefault()
+    console.log(newRecipe)
     try {
-      const res = await axios.post(`${BASE_URL}`, newRecipe)
-      setMyRecipes([...myRecipes, res.data])
+      const res = await axios.post(`http://localhost:3001/recipe/`, newRecipe)
+      console.log(res)
+      setMyRecipes([...myRecipes])
     } catch (error) {
       console.log(error)
     }

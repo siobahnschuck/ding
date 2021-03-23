@@ -6,6 +6,7 @@ import { BASE_URL } from '../globals'
 import '../css/Setting.css'
 
 const MyRecipes = (props) => {
+  console.log(props)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
