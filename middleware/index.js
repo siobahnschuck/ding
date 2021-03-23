@@ -16,7 +16,12 @@ const HashPassword = async (password) => {
 }
 
 const ComparePassword = async (providedPassword, storedPassword) => {
-  return await bcrypt.compare(providedPassword, storedPassword)
+  console.log('inside compare password')
+  try {
+    return await bcrypt.compare(providedPassword, storedPassword)
+  } catch (error) {
+    throw error
+  }
 }
 
 const StripHeaders = (req, res, next) => {
