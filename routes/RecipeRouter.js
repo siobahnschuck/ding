@@ -3,6 +3,8 @@ const controller = require('../controllers/RecipeController')
 const middleware = require('../middleware')
 
 router.get('/', controller.GetRecipe)
+router.get('/popular', controller.GetRecipeByLike)
+router.put('/like/:recipe_id', controller.LikeRecipe)
 router.post(
   '/',
   // middleware.StripHeaders,
