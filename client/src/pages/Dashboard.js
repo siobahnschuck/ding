@@ -13,7 +13,7 @@ import { async } from 'regenerator-runtime'
 const iState = {
   query: '',
   ingredients: [],
-  fridge: [],
+  fridge: [{ name: '', image: '' }],
   recipes: [],
   // newRecipe: {
   //   title: '',
@@ -65,8 +65,8 @@ const Dashboard = () => {
   const [myRecipes, setMyRecipes] = useState([])
 
   const [state, dispatch] = useReducer(reducer, iState)
-  console.log(state.ingredients)
-  console.log(iState)
+  console.log('here is the state ingredients', state.ingredients)
+  // console.log(iState)
 
   const handleChange = (e) => {
     const { name, value } = e.target
