@@ -1,6 +1,5 @@
 const { FoodItem, Recipe, Sequelize } = require('../models')
 const { Op } = require('sequelize')
-const { receiveMessageOnPort } = require('node:worker_threads')
 
 const GetFoodItem = async (req, res) => {
   try {
