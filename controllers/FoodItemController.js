@@ -23,11 +23,14 @@ const GetFoodItemByRecipe = async (req, res) => {
   try {
     const query = req.params.query
     const foods = await FoodItem.findAll({
-      include: [{ model: Recipe, as: 'ingredient' }],
+      include: [
+        { model: Recipe, as: 'ingredient', through: { attributes: [] } }
+      ],
       where: {
         name: query
       }
     })
+    res.send(foods)
   } catch (error) {
     throw error
   }
