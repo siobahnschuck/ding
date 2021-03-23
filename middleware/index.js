@@ -1,27 +1,16 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-// const SALT_ROUNDS = 12
+const SALT_ROUNDS = 12
 const SECRET_KEY = 'supersecret'
 
 const HashPassword = async (password) => {
-  console.log('inside hashedPassword')
-  try {
-    const hashedPassword = await bcrypt.hash(password, 12)
-    console.log('PASSWORD DIGEST', hashedPassword)
-    return hashedPassword
-  } catch (error) {
-    throw error
-  }
+  const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
+  return hashedPassword
 }
 
 const ComparePassword = async (providedPassword, storedPassword) => {
-  console.log('inside compare password')
-  try {
-    return await bcrypt.compare(providedPassword, storedPassword)
-  } catch (error) {
-    throw error
-  }
+  return await bcrypt.compare(providedPassword, storedPassword)
 }
 
 const StripHeaders = (req, res, next) => {
