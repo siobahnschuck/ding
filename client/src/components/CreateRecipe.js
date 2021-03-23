@@ -2,7 +2,12 @@ import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import '../css/Setting.css'
 
-const CreateRecipe = ({ state, dispatch, history }) => {
+const CreateRecipe = (
+  // state,
+  // dispatch,
+  // history,
+  props
+) => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -17,34 +22,30 @@ const CreateRecipe = ({ state, dispatch, history }) => {
       <Modal show={show} onHide={handleClose} dialogClassName="addFood">
         {/* <Modal.Header closeButton></Modal.Header> */}
         <Modal.Body>
-          <form>
+          <form onSubmit={props.submitRecipe}>
             <h2>Title:</h2>
             <input
-              value={state.newRecipe.title}
-              onChange={(e) =>
-                dispatch({ type: 'create_recipe', payload: e.target.value })
-              }
+              name="title"
+              value={props.newRecipe.title}
+              onChange={props.handleChange}
             />
             <h2>Image:</h2>
             <input
-              value={state.newRecipe.image}
-              onChange={(e) =>
-                dispatch({ type: 'create_recipe', payload: e.target.value })
-              }
+              name="image"
+              value={props.newRecipe.image}
+              onChange={props.handleChange}
             />
             <h2>Ingredients:</h2>
             <input
-              value={state.newRecipe.ingredients}
-              onChange={(e) =>
-                dispatch({ type: 'create_recipe', payload: e.target.value })
-              }
+              name="ingredients"
+              value={props.newRecipe.ingredients}
+              onChange={props.handleChange}
             />
             <h2>Instructions:</h2>
             <input
-              value={state.newRecipe.instructions}
-              onChange={(e) =>
-                dispatch({ type: 'create_recipe', payload: e.target.value })
-              }
+              name="instructions"
+              value={props.newRecipe.instructions}
+              onChange={props.handleChange}
             />
             <br></br>
             <br></br>
