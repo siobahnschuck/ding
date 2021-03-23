@@ -18,7 +18,7 @@ const AddFood = ({ state, dispatch, history }) => {
   const getIngredients = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3001/food/1`
+        `http://localhost:3001/food/`
         // `${BASE_URL}?query=${state.query}&apiKey=${API_KEY}&number=5`
       )
       console.log('getingredientsrespond', res)

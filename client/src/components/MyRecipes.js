@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
-import { Card, Grid, Icon, Image } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
-import '../css/Setting.css'
+import '../css/Recipe.css'
 
 const MyRecipes = (props) => {
   console.log(props)
@@ -34,11 +34,11 @@ const MyRecipes = (props) => {
       <Button id="dash-button" onClick={handleShow}>
         MY RECIPES
       </Button>
-      <Modal show={show} onHide={handleClose} dialogClassName="addFood">
+      <Modal show={show} onHide={handleClose} dialogClassName="myRecipes">
         {/* <Modal.Header closeButton></Modal.Header> */}
         <Modal.Body>
           {props.myRecipes.map((recipe) => (
-            <Grid.Column key={recipe.id}>
+            <div key={recipe.id} className="cards">
               <Card>
                 <Image src={recipe.image} />
                 <Card.Content>
@@ -56,7 +56,6 @@ const MyRecipes = (props) => {
                     labelPosition="left"
                     onClick={() => deleteItem(recipe.id)}
                   >
-                    <Icon name="trash" />
                     Delete
                   </Button>
                   <Button
@@ -65,12 +64,11 @@ const MyRecipes = (props) => {
                     labelPosition="right"
                     // onClick={() => editItem(recipe.id)}
                   >
-                    <Icon name="edit" />
                     Edit
                   </Button>
                 </Card.Content>
               </Card>
-            </Grid.Column>
+            </div>
           ))}
         </Modal.Body>
       </Modal>
