@@ -98,11 +98,11 @@ const CreateRecipe = (props) => {
               value={props.isVegan}
               onClick={props.handleVeganChange}
             />
-            <p>DiaryFree:</p>
+            <p>DairyFree:</p>
             <input
               type="checkbox"
-              value={props.isDiaryFree}
-              onClick={props.handleDiaryChange}
+              value={props.isDairyFree}
+              onClick={props.handleDairyChange}
             />
             <p>No Nuts:</p>
             <input

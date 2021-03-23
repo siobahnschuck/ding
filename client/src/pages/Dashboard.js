@@ -18,7 +18,7 @@ const iState = {
   cuisine: '',
   isVegan: false,
   isDiaryFree: false,
-  nutAllergies: false
+  hasNuts: false
 }
 
 const reducer = (state, action) => {
@@ -59,7 +59,7 @@ const Dashboard = () => {
   })
   const [ingredients, setIngredients] = useState([])
   const [isVegan, setVegan] = useState(false)
-  const [isDiaryFree, setDiary] = useState(false)
+  const [isDairyFree, setDairy] = useState(false)
   const [hasNuts, setNuts] = useState(false)
 
   const [myRecipes, setMyRecipes] = useState([])
@@ -79,11 +79,11 @@ const Dashboard = () => {
       setVegan(true)
     }
   }
-  const handleDiaryChange = () => {
-    if (isDiaryFree === true) {
-      setDiary(false)
+  const handleDairyChange = () => {
+    if (isDairyFree === true) {
+      setDairy(false)
     } else {
-      setDiary(true)
+      setDairy(true)
     }
   }
   const handleNutsChange = () => {
@@ -107,7 +107,7 @@ const Dashboard = () => {
         ...newRecipe,
         ingredients,
         isVegan,
-        isDiaryFree,
+        isDairyFree,
         hasNuts
       })
       console.log('submist recipe is firing')
@@ -170,7 +170,7 @@ const Dashboard = () => {
               handleChange={handleChange}
               removeIngredient={removeIngredient}
               handleVeganChange={handleVeganChange}
-              handleDiaryChange={handleDiaryChange}
+              handleDairyChange={handleDairyChange}
               handleNutsChange={handleNutsChange}
             />
           </div>
