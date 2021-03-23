@@ -14,6 +14,8 @@ const Setting = () => {
   // UseOutsideClick(ref, () => {
   //   alert('You clicked outside')
   // })
+  const handleRestrictionClick = () => {}
+
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>
@@ -26,66 +28,43 @@ const Setting = () => {
         // ref={ref}
       >
         <Modal.Body>
-          <h1>Preferrence</h1>
-          <p> cuisine:</p>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Italian
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            American
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Chinese
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            French
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Mediterranean
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Mexican
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Thai
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Vietnamese
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Indian
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Soul Food
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Carribean
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Spanish
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Moroccan
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Brazilian
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            African
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Cuban
-          </button>
-          <p>special request:</p>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Vegan
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            Dairy Free
-          </button>
-          <button type="submit" onClick={() => toggleSelect()}>
-            No Nuts
-          </button>
+          <h1>Preference</h1>
+          <div className="cuisine-drop">
+            <form>
+              <p> Cuisine:</p>
+              <select name="cuisine">
+                <option value="none" selected>
+                  None
+                </option>
+                <option value="Italian">Italian</option>
+                <option value="American">American</option>
+                <option value="Chinese">Chinese</option>
+                <option value="French">French</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Thai">Thai</option>
+                <option value="Vietnamese">Vietnamese</option>
+                <option value="Indian">Indian</option>
+                <option value="Soul Food">Soul Food</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Moroccan">Moroccan</option>
+                <option value="Brazilian">Brazilian</option>
+                <option value="African">African</option>
+                <option value="Cuban">Cuban</option>
+                <option value="Vegan">Vegan</option>
+              </select>
+            </form>
+          </div>
+          <div>
+            <p>Dietary Restrictions:</p>
+            <form>
+              <select name="dietaryRestrictions" multiple="multiple">
+                <option value="isVegan">Vegan</option>
+                <option value="isDairyFree">Dairy Free</option>
+                <option value="hasNuts">No Nuts</option>
+              </select>
+            </form>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <button onClick={() => handleClose()}>Save</button>
