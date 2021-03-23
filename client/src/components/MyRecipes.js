@@ -6,6 +6,7 @@ import { BASE_URL } from '../globals'
 import '../css/Setting.css'
 
 const MyRecipes = (props) => {
+  console.log(props)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -41,7 +42,7 @@ const MyRecipes = (props) => {
               <Card>
                 <Image src={recipe.image} />
                 <Card.Content>
-                  <Card.Header>{recipe.title}</Card.Header>
+                  <Card.Header>{recipe.name}</Card.Header>
                   <Card.Description>
                     {recipe.ingredients}
                     <br></br>

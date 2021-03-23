@@ -5,8 +5,8 @@ const middleware = require('../middleware')
 router.get('/', controller.GetRecipe)
 router.post(
   '/',
-  middleware.StripHeaders,
-  middleware.VerifyToken,
+  // middleware.StripHeaders,
+  // middleware.VerifyToken,
   controller.CreateRecipe
 )
 router.put(

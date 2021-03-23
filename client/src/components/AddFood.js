@@ -18,7 +18,8 @@ const AddFood = ({ state, dispatch, history }) => {
   const getIngredients = async () => {
     try {
       const res = await axios.get(
-        `${BASE_URL}?query=${state.query}&apiKey=${API_KEY}&number=5`
+        `http://localhost:3001/food/1`
+        // `${BASE_URL}?query=${state.query}&apiKey=${API_KEY}&number=5`
       )
       console.log('getingredientsrespond', res)
       dispatch({ type: 'get_ingredients', payload: res.data.results })
@@ -46,21 +47,21 @@ const AddFood = ({ state, dispatch, history }) => {
     }
   }
 
-  const ingredientList = state.ingredients.length
-    ? state.ingredients.map((ingredient, index) => {
-        return (
-          <IngredientList
-            key={'recipe' + index}
-            name={ingredient.name}
-            img={ingredient.image}
-            history={history}
-            dispatch={dispatch}
-            state={state}
-          />
-        )
-      })
-    : null
-  console.log(ingredientList)
+  // const ingredientList = state.ingredients.length
+  //   ? state.ingredients.map((ingredient, index) => {
+  //       return (
+  //         <IngredientList
+  //           key={'recipe' + index}
+  //           name={ingredient.name}
+  //           img={ingredient.image}
+  //           history={history}
+  //           dispatch={dispatch}
+  //           state={state}
+  //         />
+  //       )
+  //     })
+  //   : null
+  // console.log(ingredientList)
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>
@@ -82,7 +83,7 @@ const AddFood = ({ state, dispatch, history }) => {
               }
             ></input>
             <button onClick={() => getIngredients()}>search</button>
-            {ingredientList}
+            {/* {ingredientList} */}
             <br></br>
             <button onClick={() => getRecipe()}>Generate Recipes</button>
           </div>

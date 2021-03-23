@@ -14,6 +14,7 @@ const CreateRecipe = (
   // const createRecipe=()={
   //   dispatch({type:'my_recipes',payload:state.newRecipe})
   // }
+
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>
@@ -49,7 +50,7 @@ const CreateRecipe = (
             />
             <br></br>
             <br></br>
-            <input type="button" value="Create"></input>
+            <button type="submit">Create</button>
           </form>
         </Modal.Body>
       </Modal>
