@@ -13,7 +13,7 @@ const MyRecipes = (props) => {
 
   const deleteItem = async (recipeId) => {
     try {
-      const res = await axios.delete(`http://localhost:3001/recipe/${recipeId}`)
+      const res = await axios.delete(`${BASE_URL}/recipe/${recipeId}`)
       let filteredRecipes = [...props.myRecipes].filter(
         (recipe) => recipe.id !== parseInt(res.data.payload)
       )
@@ -23,13 +23,13 @@ const MyRecipes = (props) => {
     }
   }
 
-  // const editItem = async (recipeId) => {
-  //   try {
-  //     const res = await axios.put(`${BASE_URL}/myRecipes/${recipeId}`)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+  const editItem = async (recipeId) => {
+    try {
+      const res = await axios.put(`${BASE_URL}/recipe/${recipeId}`)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div>
@@ -64,7 +64,7 @@ const MyRecipes = (props) => {
                     color="blue"
                     icon
                     labelPosition="right"
-                    // onClick={() => editItem(recipe.id)}
+                    onClick={() => editItem(recipe.id)}
                   >
                     Edit
                   </Button>
