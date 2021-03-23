@@ -1,9 +1,55 @@
-const { Recipe } = require('../models')
+const { Recipe, Ingredient, FoodItem } = require('../models')
+const { Op } = require('sequelize')
+const { orderBy } = require('lodash')
 
 const GetRecipe = async (req, res) => {
   try {
     const recipes = await Recipe.findAll()
     res.send(recipes)
+  } catch (error) {
+    throw error
+  }
+}
+
+const GetRecipeByLike = async (req, res) => {
+  try {
+    const recipes = await Recipe.findAll({
+      where: {
+        likes: { [Op.gt]: 50 }
+      },
+      order: [['likes', 'DESC']],
+      limit: 10
+    })
+    res.send(recipes)
+  } catch (error) {
+    throw error
+  }
+}
+
+const GetRecipeByIngredient = async (req, res) => {
+  try {
+    const query = req.params.query
+    const recipes = await Recipe.findAll({
+      include: [{ model: FoodItem, as: 'recipe_ingredient' }],
+      where: {
+        name: query
+      }
+    })
+    res.send(recipes)
+  } catch (error) {
+    throw error
+  }
+}
+
+const LikeRecipe = async (req, res) => {
+  try {
+    const recipe = await Recipe.increment(
+      {
+        likes: 1
+      },
+      { where: { id: req.params.recipe_id } }
+    )
+    res.send(recipe)
   } catch (error) {
     throw error
   }
@@ -45,6 +91,9 @@ const DeleteRecipe = async (req, res) => {
 
 module.exports = {
   GetRecipe,
+  GetRecipeByLike,
+  GetRecipeByIngredient,
+  LikeRecipe,
   CreateRecipe,
   UpdateRecipe,
   DeleteRecipe
