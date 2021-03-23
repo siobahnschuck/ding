@@ -10,9 +10,10 @@ const MyRecipes = (props) => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+
   const deleteItem = async (recipeId) => {
     try {
-      const res = await axios.delete(`${BASE_URL}/myRecipes/${recipeId}`)
+      const res = await axios.delete(`http://localhost:3001/recipe/${recipeId}`)
       let filteredRecipes = [...props.myRecipes].filter(
         (recipe) => recipe.id !== parseInt(res.data.payload)
       )
@@ -20,14 +21,15 @@ const MyRecipes = (props) => {
     } catch (error) {
       console.log(error)
     }
-    // const editItem = async (recipeId) => {
-    //   try {
-    //     const res = await axios.put(`${BASE_URL}/myRecipes/${recipeId}`)
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // }
   }
+
+  // const editItem = async (recipeId) => {
+  //   try {
+  //     const res = await axios.put(`${BASE_URL}/myRecipes/${recipeId}`)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   return (
     <div>
