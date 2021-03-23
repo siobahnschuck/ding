@@ -4,6 +4,7 @@ import { Card, Image } from 'semantic-ui-react'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 import '../css/Recipe.css'
+import UpdateRecipe from './UpdateRecipe'
 
 const MyRecipes = (props) => {
   console.log(props)
@@ -52,22 +53,23 @@ const MyRecipes = (props) => {
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <Button
+                  <button
                     color="red"
                     icon
                     labelPosition="left"
                     onClick={() => deleteItem(recipe.id)}
                   >
                     Delete
-                  </Button>
-                  <Button
+                  </button>
+                  <UpdateRecipe editItem={editItem} />
+                  {/* <button
                     color="blue"
                     icon
                     labelPosition="right"
-                    onClick={() => editItem(recipe.id)}
+                    onClick={handleShow}
                   >
                     Edit
-                  </Button>
+                  </button> */}
                 </Card.Content>
               </Card>
             </div>
