@@ -1,4 +1,5 @@
-const { FoodItem } = require('../models')
+const { FoodItem, Sequelize } = require('../models')
+const Op = Sequelize.Op
 
 const GetFoodItem = async (req, res) => {
   try {
@@ -18,7 +19,24 @@ const GetFoodById = async (req, res) => {
   }
 }
 
+const GetFoodByName = async (req, res) => {
+  try {
+    const query = req.params
+    const food = await FoodItem.findAll({
+      where: {
+        name: {
+          [Op.like]: `%${query}%`
+        }
+      }
+    })
+    res.send(food)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   GetFoodItem,
-  GetFoodById
+  GetFoodById,
+  GetFoodByName
 }
