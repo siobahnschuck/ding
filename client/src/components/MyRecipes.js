@@ -6,7 +6,7 @@ import { BASE_URL } from '../globals'
 import '../css/Recipe.css'
 
 const MyRecipes = (props) => {
-  console.log(props)
+  // console.log(props)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -38,12 +38,14 @@ const MyRecipes = (props) => {
         {/* <Modal.Header closeButton></Modal.Header> */}
         <Modal.Body>
           {props.myRecipes.map((recipe) => (
-            <div key={recipe.id} className="cards">
-              <Card>
+            <div key={recipe.id}>
+              <Card className="cards">
                 <Image src={recipe.image} />
                 <Card.Content>
                   <Card.Header>{recipe.name}</Card.Header>
                   <Card.Description>
+                    {recipe.duration}
+                    {recipe.calories}
                     {recipe.ingredients}
                     <br></br>
                     {recipe.instructions}

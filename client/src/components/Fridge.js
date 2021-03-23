@@ -7,7 +7,8 @@ const Fridge = (props) => {
       {props.fridge.map((fridgeItem) => (
         <div>
           <p>{fridgeItem.name}</p>
-          <img src={fridgeItem.image} />
+          {/* <img src={fridgeItem.image} /> */}
+          {/* <button onClick={() => props.removeIngredient()}>-</button> */}
         </div>
       ))}
     </div>
