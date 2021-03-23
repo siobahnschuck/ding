@@ -8,13 +8,13 @@ import axios from 'axios'
 import '../css/AddFood.css'
 
 const AddFood = ({ state, dispatch, history }) => {
-  // console.log('state on add fodd', state)
+  console.log('state on add fodd', state.query)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  useEffect(() => {
-    getIngredients()
-  }, [])
+  // useEffect(() => {
+  //   getIngredients()
+  // }, [])
   const getIngredients = async () => {
     try {
       const res = await axios.get(
@@ -68,11 +68,14 @@ const AddFood = ({ state, dispatch, history }) => {
       <Button id="dash-button" onClick={handleShow}>
         GENERATE RECIPE
       </Button>
-      <Modal show={show} onHide={handleClose} dialogClassName="addFood">
+      <Modal show={show} dialogClassName="addFood">
         {/* <Modal.Header closeButton></Modal.Header> */}
         <Modal.Body className="body">
           <div>
-            <Fridge fridge={state.fridge} />
+            <Fridge
+              fridge={state.fridge}
+              removeIngredient={state.removeIngredient}
+            />
           </div>
           <div id="addFood">
             AddFood

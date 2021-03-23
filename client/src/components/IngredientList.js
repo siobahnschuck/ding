@@ -7,13 +7,12 @@ const IngredientList = (props) => {
       type: 'add_fridge',
       payload: props.ingredient
     })
-    // props.state.fridge.push()
   }
   return (
     <div className="ingredientList">
-      <img alt="item" src={props.ingredient.image} />
+      {/* <img alt="item" src={props.ingredient.image} /> */}
       <span>
-        <p>{props.ingredient.name}</p>
+        <p>{props.ingredient ? props.ingredient.name : null}</p>
         <button onClick={() => AddToFridge(props.ingredient)}>+</button>
       </span>
     </div>
