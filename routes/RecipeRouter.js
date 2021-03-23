@@ -11,15 +11,15 @@ router.post(
 )
 router.put(
   '/:recipe_id',
-  middleware.StripHeaders,
-  middleware.VerifyToken,
+  // middleware.StripHeaders,
+  // middleware.VerifyToken,
   controller.UpdateRecipe
 )
 
 router.delete(
   '/:recipe_id',
-  middleware.StripHeaders,
-  middleware.VerifyToken,
+  // middleware.StripHeaders,
+  // middleware.VerifyToken,
   controller.DeleteRecipe
 )
 
