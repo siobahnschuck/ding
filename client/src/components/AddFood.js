@@ -8,7 +8,7 @@ import axios from 'axios'
 import '../css/AddFood.css'
 
 const AddFood = ({ state, dispatch, history }) => {
-  console.log('state on add fodd', state)
+  // console.log('state on add fodd', state)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -21,7 +21,7 @@ const AddFood = ({ state, dispatch, history }) => {
         `http://localhost:3001/food/find/${state.query}`
         // `${BASE_URL}?query=${state.query}&apiKey=${API_KEY}&number=5`
       )
-      console.log('getingredientsrespond', res)
+      // console.log('getingredientsrespond', res)
       dispatch({ type: 'get_ingredients', payload: res.data })
     } catch (err) {
       console.log(err)
@@ -40,7 +40,7 @@ const AddFood = ({ state, dispatch, history }) => {
           }
         }
       )
-      console.log(res)
+      // console.log(res)
       dispatch({ type: 'get_recipes', payload: res.data.results })
     } catch (err) {
       console.log(err)
@@ -62,7 +62,7 @@ const AddFood = ({ state, dispatch, history }) => {
         )
       })
     : null
-  console.log(ingredientList)
+  // console.log(ingredientList)
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>

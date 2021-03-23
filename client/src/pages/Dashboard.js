@@ -15,13 +15,6 @@ const iState = {
   ingredients: [],
   fridge: [{ name: '', image: '' }],
   recipes: [],
-  // newRecipe: {
-  //   title: '',
-  //   image: '',
-  //   ingredients: '',
-  //   instructions: ''
-  // },
-  // myRecipes: [],
   cuisine: '',
   isVegan: false,
   isDiaryFree: false,
@@ -40,8 +33,8 @@ const reducer = (state, action) => {
     case 'get_recipes':
       return { ...state, recipes: action.payload }
     case 'add_fridge':
-      console.log('add_fridge is firing', action.payload)
-      console.log('here is th states', state)
+      // console.log('add_fridge is firing', action.payload)
+      // console.log('here is th states', state)
       return { ...state, fridge: [...state.fridge, action.payload] }
     case 'create_recipe':
       return {
@@ -65,7 +58,7 @@ const Dashboard = () => {
   const [myRecipes, setMyRecipes] = useState([])
 
   const [state, dispatch] = useReducer(reducer, iState)
-  console.log('here is the state ingredients', state.ingredients)
+  // console.log('here is the state ingredients', state.ingredients)
   // console.log(iState)
 
   const handleChange = (e) => {
@@ -80,10 +73,10 @@ const Dashboard = () => {
 
   const submitRecipe = async (e) => {
     // e.preventDefault()
-    console.log(newRecipe)
+    // console.log(newRecipe)
     try {
       const res = await axios.post(`http://localhost:3001/recipe/`, newRecipe)
-      console.log(res)
+      // console.log(res)
       setMyRecipes([...myRecipes])
     } catch (error) {
       console.log(error)
@@ -93,7 +86,7 @@ const Dashboard = () => {
     // e.preventDefault()
     try {
       const res = await axios.get(`http://localhost:3001/recipe/`)
-      console.log(res.data)
+      // console.log(res.data)
       setMyRecipes(res.data)
     } catch (err) {
       throw err
