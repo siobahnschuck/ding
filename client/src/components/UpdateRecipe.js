@@ -16,7 +16,9 @@ const Edit = (props) => {
     instructions: recipe.instructions, 
     duration: recipe.duration, 
     calories: recipe.calories,
-    isVegan: recipe.isVegan
+    isVegan: recipe.isVegan,
+    isDairyFree: recipe.isDairyFree,
+    hasNuts: recipe.hasNuts
     })
 
 
@@ -41,6 +43,29 @@ const Edit = (props) => {
   }
 
 
+   const handleVeganChange = () => {
+    if (update.isVegan === true) {
+      setUpdate({...update, isVegan: false})
+    } else {
+      setUpdate({...update, isVegan: true})
+    }
+  }
+  const handleDairyChange = () => {
+    if (update.isDairyFree === true) {
+      setUpdate({...update, isDairyFree: false})
+    } else {
+      setUpdate({...update, isDairyFree: true})
+    }
+  }
+  const handleNutsChange = () => {
+    if (update.hasNuts === true) {
+      setUpdate({...update, hasNuts: false})
+    } else {
+      setUpdate({...update, hasNuts:true})
+    }
+  }
+
+
     const handleSubmit = async (event) => {
     // event.preventDefault();
     try {
@@ -56,18 +81,17 @@ const Edit = (props) => {
       <Button variant="primary" onClick={handleShow}>
         Edit
       </Button>
-      <Modal show={show} dialogClassName="myRecipes">
-        <Modal.Header closeButton>
+      <Modal show={show}  onHide={handleClose} dialogClassName="myRecipes">
+        <Modal.Header closeButton></Modal.Header>
           <Modal.Title>Update Title</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
             <p>Image:</p>
             <input
               name="image"
-      
-              // value={props.newRecipe.image}
-              // onChange={props.handleChange}
+              placeholder = {recipe.image}
+              value={update.image}
+              onChange={handleChange}
             />
             <p>Title:</p>
             <input
@@ -104,24 +128,31 @@ const Edit = (props) => {
               value={update.calories}
               onChange={handleChange}
             />
+            
             <p>Vegan:</p>
-            <input
+            <div className={update.isVegan ? 'check' : ''}>
+            <input 
               type="checkbox"
-              value={props.isVegan}
-              onClick={props.handleVeganChange}
+              value={update.isVegan}
+              onClick={handleVeganChange}
             />
+            </div>
             <p>DairyFree:</p>
+           <div className={update.isDairyFree ? 'check' : ''}>
             <input
               type="checkbox"
-              value={props.isDairyFree}
-              onClick={props.handleDairyChange}
+              value={update.isDairyFree}
+              onClick={handleDairyChange}
             />
+            </div>
             <p>No Nuts:</p>
+            <div className={update.hasNuts ? 'check' : ''}>
             <input
               type="checkbox"
-              value={props.hasNuts}
-              onClick={props.handleNutsChange}
+              value={update.hasNuts}
+              onClick={handleNutsChange}
             />
+            </div>
             <br/>
             <button type = 'submit'>Submit</button>
           </form>

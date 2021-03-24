@@ -24,15 +24,6 @@ const MyRecipes = (props) => {
     }
   }
 
-  // const editItem = async (recipeId) => {
-  //   try {
-
-  //     const res = await axios.put(`${BASE_URL}/recipe/${recipeId}`)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>

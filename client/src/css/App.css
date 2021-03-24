@@ -35,3 +35,8 @@ header {
   top: 10%;
   left: 10%;
 }
+
+.check{
+  background-color: green;
+  border: none;
+}
