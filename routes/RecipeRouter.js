@@ -5,6 +5,8 @@ const middleware = require('../middleware')
 router.get('/', controller.GetRecipe)
 router.get('/popular', controller.GetRecipeByLike)
 router.get('/ingredient/:query', controller.GetRecipeByIngredient)
+router.get('/myRecipes/:userId', controller.GetUserRecipesIngredients)
+router.get('/cuisine/:type', controller.GetRecipeByCuisineType)
 router.put('/like/:recipe_id', controller.LikeRecipe)
 router.post(
   '/',

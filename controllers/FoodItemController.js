@@ -21,13 +21,29 @@ const GetFoodById = async (req, res) => {
 
 const GetFoodItemByRecipe = async (req, res) => {
   try {
-    const query = req.params.query
+    //map thru the payload and findALL for each query
+    console.log('params here', req.params)
+    console.log('query here', req.query)
+    let names = req.query.name
+    delete req.query.name
     const foods = await FoodItem.findAll({
       include: [
-        { model: Recipe, as: 'ingredient', through: { attributes: [] } }
+        {
+          model: Recipe,
+          as: 'ingredient',
+          through: { attributes: [] },
+          where: {
+            ...req.query
+          }
+        }
       ],
       where: {
-        name: query
+        name:
+          typeof names === 'string'
+            ? names
+            : {
+                [Op.in]: names
+              }
       }
     })
     res.send(foods)

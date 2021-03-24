@@ -1,10 +1,24 @@
-const { Recipe, Ingredient, FoodItem } = require('../models')
+const { Recipe, Ingredient, FoodItem, User } = require('../models')
 const { Op } = require('sequelize')
-const { orderBy } = require('lodash')
 
 const GetRecipe = async (req, res) => {
   try {
     const recipes = await Recipe.findAll()
+    res.send(recipes)
+  } catch (error) {
+    throw error
+  }
+}
+
+const GetUserRecipesIngredients = async (req, res) => {
+  let id = req.params
+  try {
+    const recipes = await Recipe.findAll({
+      include: [{ model: FoodItem, as: 'recipe_ingredient' }],
+      where: {
+        user_id: req.params
+      }
+    })
     res.send(recipes)
   } catch (error) {
     throw error
@@ -47,6 +61,20 @@ const GetRecipeByIngredient = async (req, res) => {
   }
 }
 
+const GetRecipeByCuisineType = async (req, res) => {
+  let type = req.params.type
+  try {
+    const recipes = await Recipe.findAll({
+      where: {
+        cuisineType: type
+      }
+    })
+    res.send(recipes)
+  } catch (error) {
+    throw erroe
+  }
+}
+
 const LikeRecipe = async (req, res) => {
   try {
     const recipe = await Recipe.increment(
@@ -70,32 +98,15 @@ const CreateRecipe = async (req, res) => {
   }
 }
 
-// const UpdateRecipe = async (req, res) => {
-//   console.log(req.params.recipe_id)
-//   console.log(req.body, "REQ.BODY")
-//   try {
-//     let recipeId = parseInt(req.params.recipe_id)
-//     let updatedRecipe = await Recipe.update(req.body, {
-//       where: {
-//         id: recipeId
-//       },
-//       returning: true
-//     })
-//     res.send(updatedRecipe)
-//   } catch (error) {
-//     throw error
-//   }
-// }
-
 const UpdateRecipe = async (req, res) => {
   console.log(req.params.recipe_id)
-  console.log(req.body, "REQ.BODY")
+  console.log(req.body, 'REQ.BODY')
   try {
     const recipe = await Recipe.update(
       { ...req.body },
       { where: { id: req.params.recipe_id }, returning: true }
     )
-    console.log(recipe, "RECIPE")
+    console.log(recipe, 'RECIPE')
     res.send(recipe)
   } catch (error) {
     throw error
@@ -119,8 +130,10 @@ module.exports = {
   GetRecipe,
   GetRecipeByLike,
   GetRecipeByIngredient,
+  GetRecipeByCuisineType,
   LikeRecipe,
   CreateRecipe,
   UpdateRecipe,
-  DeleteRecipe
+  DeleteRecipe,
+  GetUserRecipesIngredients
 }
