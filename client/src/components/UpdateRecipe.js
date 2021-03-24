@@ -52,9 +52,9 @@ const Edit = (props) => {
   }
   const handleDairyChange = () => {
     if (update.isDairyFree === true) {
-      setUpdate({...update,isDairyFree: false})
+      setUpdate({...update, isDairyFree: false})
     } else {
-      setUpdate({...update,isDairyFree: true})
+      setUpdate({...update, isDairyFree: true})
     }
   }
   const handleNutsChange = () => {
@@ -81,10 +81,9 @@ const Edit = (props) => {
       <Button variant="primary" onClick={handleShow}>
         Edit
       </Button>
-      <Modal show={show} dialogClassName="myRecipes">
-        <Modal.Header closeButton>
+      <Modal show={show}  onHide={handleClose} dialogClassName="myRecipes">
+        <Modal.Header closeButton></Modal.Header>
           <Modal.Title>Update Title</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
             <p>Image:</p>
