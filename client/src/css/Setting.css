@@ -2,6 +2,7 @@
   text-align: left;
   background-color: rgb(255, 255, 255);
   position: absolute;
+  overflow: scroll;
   width: 90vw;
   height: 90vh;
   top: 5%;
