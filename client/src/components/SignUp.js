@@ -29,7 +29,8 @@ const SignUp = () => {
         lastName: '',
         username:'',
         email: '',
-        passwordDigest:''})
+        passwordDigest:''
+        })
     } catch (error) {
       console.log(error)
     }
@@ -90,7 +91,7 @@ const SignUp = () => {
             <p>password:</p>
             <input  
               type="text"
-              name="password"
+              name="passwordDigest"
               placeholder="Password"
               value={registerForm.passwordDigest}
               onChange={handleChange}
@@ -105,13 +106,12 @@ const SignUp = () => {
           <NavLink to="/dashboard">
             <Button
               disabled={
-            !registerForm.email || !registerForm.password || !registerForm.name
+            !registerForm.email || !registerForm.passwordDigest || !registerForm.firstName
               }
             size="large"
             color="teal"
             animated="fade"
-            type='submit'
-             variant="primary" onClick={handleClose}
+             variant="primary" onClick={handleSubmit}
              >
               Sign Up
             </Button>
