@@ -24,11 +24,13 @@ const SignUp = () => {
     try {
       const res = await axios.post(`${BASE_URL}/auth/register`, registerForm)
       // props.toggleRegister(false)
-      handleRegisterForm({firstName: '',
+      handleRegisterForm({
+        firstName: '',
         lastName: '',
         username:'',
         email: '',
-        passwordDigest:''})
+        passwordDigest:''
+        })
     } catch (error) {
       console.log(error)
     }
@@ -49,15 +51,52 @@ const SignUp = () => {
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
-            <p>name:</p>
-            <input></input>
+          <form onSubmit={handleSubmit}>
+            <p> First Name:</p>
+            <input  
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={registerForm.firstName}
+              onChange={handleChange}
+              required
+              />
+            <p> Last Name:</p>
+            <input  
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={registerForm.lastName}
+              onChange={handleChange}
+              required
+              />
             <p>username:</p>
-            <input></input>
+            <input  
+              type="text"
+              name="username"
+              placeholder="username"
+              value={registerForm.username}
+              onChange={handleChange}
+              required
+              />
             <p>email:</p>
-            <input></input>
+            <input  
+              type="text"
+              name="email"
+              placeholder="Email@example.com"
+              value={registerForm.email}
+              onChange={handleChange}
+              required
+              />
             <p>password:</p>
-            <input></input>
+            <input  
+              type="text"
+              name="passwordDigest"
+              placeholder="Password"
+              value={registerForm.passwordDigest}
+              onChange={handleChange}
+              required
+              />
           </form>
         </Modal.Body>
         <Modal.Footer>
@@ -65,7 +104,15 @@ const SignUp = () => {
             Close
           </Button>
           <NavLink to="/dashboard">
-            <Button variant="primary" onClick={handleClose}>
+            <Button
+              disabled={
+            !registerForm.email || !registerForm.passwordDigest || !registerForm.firstName
+              }
+            size="large"
+            color="teal"
+            animated="fade"
+             variant="primary" onClick={handleSubmit}
+             >
               Sign Up
             </Button>
           </NavLink>

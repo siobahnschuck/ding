@@ -66,7 +66,8 @@ const reducer = (state, action) => {
   }
 }
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+  console.log(props)
   const [newRecipe, setNewRecipe] = useState({
     image: '',
     name: '',
@@ -152,6 +153,8 @@ const Dashboard = () => {
       throw err
     }
   }
+
+  
   return (
     <div className="dashboard">
       <div id="dashboard">
