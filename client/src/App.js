@@ -8,6 +8,8 @@ import './css/App.css'
 import React, { useState } from 'react'
 
 const App = () => {
+  console.log(localStorage)
+ 
   const [authenticated, setAuthenticated] = useState(false)
 
     const logOut = () => {
@@ -15,11 +17,14 @@ const App = () => {
     localStorage.clear()
   }
 
+  console.log(authenticated)
+
   return (
     <div>
+     <button className='logOutBtn' onClick={logOut}>Logout</button>
       <Switch>
         <Route exact path="/" render={(props) => <Home {...props} authenticated={authenticated} setAuthenticated={setAuthenticated}/>} logOut={logOut} />
-        <Route path="/dashboard" render={(props) => <Dashboard {...props} />} />
+        <Route path="/dashboard" render={(props) => <Dashboard {...props} />} authenticated={authenticated} logOut={logOut}/>
         <Route path="/about" render={(props) => <About {...props} />} />
         <Route
           path="/myrecipepage"

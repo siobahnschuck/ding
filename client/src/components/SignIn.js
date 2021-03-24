@@ -69,7 +69,7 @@ const SignIn = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <NavLink to="/dashboard">
+          
             <button 
             type ='submit'
             variant="primary"  
@@ -79,9 +79,11 @@ const SignIn = (props) => {
               animated="fade"
               onClick={handleSubmit}
               >
+            <NavLink to="/dashboard">
               Sign In
+            </NavLink>
             </button>
-          </NavLink>
+          
         </Modal.Footer>
       </Modal>
     </div>
