@@ -3,18 +3,18 @@ import { Modal, Button } from 'react-bootstrap'
 import UseOutsideClick from './UseOutsideClick'
 
 import '../css/Setting.css'
+import { ModalActions } from 'semantic-ui-react'
 
-const Setting = (props) => {
-  const [selected, setSelected] = useState(false)
+const Setting = ({ state, dispatch, history }) => {
+  // const [selected, setSelected] = useState(false)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  const toggleSelect = () => setSelected(!selected)
+  // const toggleSelect = () => setSelected(!selected)
   // const ref = useRef()
   // UseOutsideClick(ref, () => {
   //   alert('You clicked outside')
   // })
-  const handleRestrictionClick = () => {}
 
   return (
     <div>
@@ -30,9 +30,24 @@ const Setting = (props) => {
         <Modal.Body>
           <h1>Preference</h1>
           <div className="cuisine-drop">
-            <form>
+            <form
+              onSubmit={(e) =>
+                dispatch({
+                  type: 'submit_setting',
+                  payload: e.target.value
+                })
+              }
+            >
               <p> Cuisine:</p>
-              <select name="cuisine">
+              <select
+                name="cuisine"
+                onChange={(e) =>
+                  dispatch({
+                    type: 'select_cuisine',
+                    payload: e.target.value
+                  })
+                }
+              >
                 <option value="none" selected>
                   None
                 </option>
@@ -51,14 +66,22 @@ const Setting = (props) => {
                 <option value="Brazilian">Brazilian</option>
                 <option value="African">African</option>
                 <option value="Cuban">Cuban</option>
-                <option value="Vegan">Vegan</option>
               </select>
             </form>
           </div>
           <div>
             <p>Dietary Restrictions:</p>
             <form>
-              <select name="dietaryRestrictions" multiple="multiple">
+              <select
+                name="dietaryRestrictions"
+                multiple="multiple"
+                onChange={(e) =>
+                  dispatch({
+                    type: 'select_specialty',
+                    payload: e.target.value
+                  })
+                }
+              >
                 <option value="isVegan">Vegan</option>
                 <option value="isDairyFree">Dairy Free</option>
                 <option value="hasNuts">No Nuts</option>
@@ -67,7 +90,9 @@ const Setting = (props) => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <button onClick={() => handleClose()}>Save</button>
+          <button type="submit" onClick={() => handleClose()}>
+            Save
+          </button>
         </Modal.Footer>
       </Modal>
     </div>

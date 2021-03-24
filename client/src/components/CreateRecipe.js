@@ -112,28 +112,30 @@ const CreateRecipe = (props) => {
             />
             <br></br>
             <br></br>
-            <button type="submit">Create</button>
+            <div id="addFood">
+              Ingredients:
+              <br></br>
+              <input
+                value={props.state.query}
+                onChange={(e) =>
+                  props.dispatch({ type: 'search', payload: e.target.value })
+                }
+              ></input>
+              <button onClick={() => getMyIngredients()}>search</button>
+              {ingredientList}
+              <br></br>
+              {/* <button onClick={() => getRecipe()}>Generate Recipes</button> */}
+            </div>
+            <div>
+              <Fridge
+                fridge={props.state.fridge}
+                removeIngredient={props.removeIngredient}
+              />
+            </div>
+            <button type="submit" onClick={handleClose}>
+              Create
+            </button>
           </form>
-          <div id="addFood">
-            Ingredients:
-            <br></br>
-            <input
-              value={props.state.query}
-              onChange={(e) =>
-                props.dispatch({ type: 'search', payload: e.target.value })
-              }
-            ></input>
-            <button onClick={() => getMyIngredients()}>search</button>
-            {ingredientList}
-            <br></br>
-            {/* <button onClick={() => getRecipe()}>Generate Recipes</button> */}
-          </div>
-          <div>
-            <Fridge
-              fridge={props.state.fridge}
-              removeIngredient={props.removeIngredient}
-            />
-          </div>
         </Modal.Body>
       </Modal>
     </div>
