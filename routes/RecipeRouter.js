@@ -6,6 +6,7 @@ router.get('/', controller.GetRecipe)
 router.get('/popular', controller.GetRecipeByLike)
 router.get('/ingredient/:query', controller.GetRecipeByIngredient)
 router.get('/myRecipes/:user_id', controller.GetUserRecipesIngredients)
+router.get('/search', controller.GetAndCreateRecipes)
 router.get('/cuisine/:type', controller.GetRecipeByCuisineType)
 router.put('/like/:recipe_id', controller.LikeRecipe)
 router.post(
