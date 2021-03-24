@@ -27,11 +27,12 @@ const Rank = (props) => {
     getPopular()
   }, [])
 
-  const likeRecipe = async (id)=> {
+  const likeRecipe = async (id, like)=> {
     console.log(id)
     try {
-      const like = await axios.put(`${BASE_URL}/recipe/like/${id}`)
-      // setLike({...popular, like: popular.likes +1 })
+      const res = await axios.put(`${BASE_URL}/recipe/like/${id}`, like)
+      setLike({...popular, like: popular.likes +1 })
+      return res.data
     } catch (error) {
       throw error
     }
