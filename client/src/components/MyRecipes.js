@@ -26,6 +26,7 @@ const MyRecipes = (props) => {
 
   // const editItem = async (recipeId) => {
   //   try {
+
   //     const res = await axios.put(`${BASE_URL}/recipe/${recipeId}`)
   //   } catch (error) {
   //     console.log(error)
@@ -39,7 +40,7 @@ const MyRecipes = (props) => {
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="myRecipes">
         {/* <Modal.Header closeButton></Modal.Header> */}
-        <Modal.Body>
+        <Modal.Body className="my-recipes">
           {props.myRecipes.map((recipe) => (
             <div key={recipe.id}>
               <Card className="cards">

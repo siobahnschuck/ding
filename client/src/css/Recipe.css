@@ -1,14 +1,17 @@
 .modal-dialog.myRecipes {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
   text-align: center;
   background-color: rgb(255, 255, 255);
   position: absolute;
+  overflow: scroll;
   width: 90vw;
   height: 90vh;
   top: 5%;
   left: 5%;
+}
+.my-recipes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
 .cards {
