@@ -54,6 +54,12 @@ const AddFood = ({ state, dispatch, history }) => {
         )
       })
     : null
+
+  // const recipeList = state.recipes.length ? state.recipes.map((recipe, index) => {
+  //   return (
+
+  //   )
+  // })
   // console.log(ingredientList)
   return (
     <div>
