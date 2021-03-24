@@ -27,22 +27,13 @@ const AddFood = ({ state, dispatch, history }) => {
       console.log(err)
     }
   }
-  const getRecipe = async (ingredients) => {
+  const getRecipe = async () => {
     try {
       const res = await axios.get(
-        `${BASE_URL}/food/recipe/${state.fridge.name}`
-        // `https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=5`
-        // `https://api.spoonacular.com/recipes/findByIngredients`,
-        // {
-        //   params: {
-        //     ingredients,
-        //     number: 5,
-        //     apiKey: process.env.REACT_APP_RECIPE_API_KEY
-        //   }
-        // }
+        `${BASE_URL}/food/recipe/${state.fridge[1].name}`
       )
       console.log(res)
-      // dispatch({ type: 'get_recipes', payload: res.data.results })
+      dispatch({ type: 'get_recipes', payload: res.data.results })
     } catch (err) {
       console.log(err)
     }
