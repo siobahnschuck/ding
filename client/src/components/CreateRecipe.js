@@ -6,7 +6,7 @@ import '../css/Setting.css'
 import { NavLink } from 'react-router-dom'
 import MyRecipePage from '../pages/MyRecipePage'
 import Fridge from '../components/Fridge'
-import Switch from 'react-switch'
+// import Switch from 'react-switch'
 import { Divider } from 'semantic-ui-react'
 
 const CreateRecipe = (props) => {
