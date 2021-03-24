@@ -68,7 +68,7 @@ const MyRecipes = (props) => {
                   >
                     Delete
                   </button>
-                  <UpdateRecipe recipe={recipe} />
+                  <UpdateRecipe recipe={recipe} getMyRecipes={props.getMyRecipes} myRecipes={props.myRecipes}/>
                   {/* <button
                     color="blue"
                     icon

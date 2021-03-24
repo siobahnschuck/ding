@@ -2,11 +2,43 @@ import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import '../css/App.css'
+import axios from 'axios'
+import {BASE_URL} from '../globals'
 
 const SignUp = () => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+
+ const [registerForm, handleRegisterForm] = useState({
+        firstName: '',
+        lastName: '',
+        username:'',
+        email: '',
+        passwordDigest:''
+  })
+
+
+    const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await axios.post(`${BASE_URL}/auth/register`, registerForm)
+      // props.toggleRegister(false)
+      handleRegisterForm({firstName: '',
+        lastName: '',
+        username:'',
+        email: '',
+        passwordDigest:''})
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+ const handleChange = (e) => {
+    const { name, value } = e.target
+    handleRegisterForm({ ...registerForm, [name]: value })
+  }
+
   return (
     <div>
       <Button variant="primary" onClick={handleShow}>

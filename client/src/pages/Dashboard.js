@@ -95,7 +95,6 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    // submitRecipe()
     getMyRecipes()
   }, [])
 
