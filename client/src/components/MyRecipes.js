@@ -4,6 +4,7 @@ import { Card, Image } from 'semantic-ui-react'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 import '../css/Recipe.css'
+import UpdateRecipe from './UpdateRecipe'
 
 const MyRecipes = (props) => {
   // console.log(props)
@@ -13,7 +14,7 @@ const MyRecipes = (props) => {
 
   const deleteItem = async (recipeId) => {
     try {
-      const res = await axios.delete(`http://localhost:3001/recipe/${recipeId}`)
+      const res = await axios.delete(`${BASE_URL}/recipe/${recipeId}`)
       let filteredRecipes = [...props.myRecipes].filter(
         (recipe) => recipe.id !== parseInt(res.data.payload)
       )
@@ -25,7 +26,8 @@ const MyRecipes = (props) => {
 
   // const editItem = async (recipeId) => {
   //   try {
-  //     const res = await axios.put(`${BASE_URL}/myRecipes/${recipeId}`)
+
+  //     const res = await axios.put(`${BASE_URL}/recipe/${recipeId}`)
   //   } catch (error) {
   //     console.log(error)
   //   }
@@ -54,22 +56,23 @@ const MyRecipes = (props) => {
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <Button
+                  <button
                     color="red"
                     icon
                     labelPosition="left"
                     onClick={() => deleteItem(recipe.id)}
                   >
                     Delete
-                  </Button>
-                  <Button
+                  </button>
+                  <UpdateRecipe recipe={recipe}/>
+                  {/* <button
                     color="blue"
                     icon
                     labelPosition="right"
-                    // onClick={() => editItem(recipe.id)}
+                    onClick={handleShow}
                   >
                     Edit
-                  </Button>
+                  </button> */}
                 </Card.Content>
               </Card>
             </div>
