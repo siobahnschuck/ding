@@ -32,8 +32,8 @@ const AddFood = ({ state, dispatch, history }) => {
       const res = await axios.get(
         `${BASE_URL}/food/recipe/${state.fridge[1].name}`
       )
-      console.log(res)
-      dispatch({ type: 'get_recipes', payload: res.data.results })
+      console.log(res.data[0].ingredient)
+      dispatch({ type: 'get_recipes', payload: res.data[0].ingredient })
     } catch (err) {
       console.log(err)
     }
