@@ -24,6 +24,16 @@ const MyRecipes = (props) => {
     }
   }
 
+
+  // const editItem = async (recipeId) => {
+  //   try {
+
+  //     const res = await axios.put(`${BASE_URL}/recipe/${recipeId}`)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+  console.log(props.myRecipes)
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>
@@ -44,6 +54,9 @@ const MyRecipes = (props) => {
                     {recipe.ingredients}
                     <br></br>
                     {recipe.instructions}
+                    <p>Vegan:{recipe.isVegan.toString()}</p>
+                    <p>DairyFree:{recipe.isDairyFree.toString()}</p>
+                    <p>Has Nuts: {recipe.hasNuts.toString()}</p>
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
@@ -55,7 +68,7 @@ const MyRecipes = (props) => {
                   >
                     Delete
                   </button>
-                  <UpdateRecipe recipe={recipe}/>
+                  <UpdateRecipe recipe={recipe} />
                   {/* <button
                     color="blue"
                     icon
