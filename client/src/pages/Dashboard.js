@@ -15,10 +15,10 @@ const iState = {
   ingredients: [],
   fridge: [{ name: '', image: '' }],
   recipes: [],
-  cuisine: '',
-  isVegan: false,
-  isDiaryFree: false,
-  hasNuts: false
+  restaurants:[],
+  cuisineType: '',
+  specialRequest: '',
+  zipcode:''
 }
 
 const reducer = (state, action) => {
@@ -43,6 +43,24 @@ const reducer = (state, action) => {
       }
     case 'my_recipes':
       return { ...state, myRecipes: action.payload }
+    case 'select_cuisine':
+      return { ...state, cuisineType: action.payload }
+    case 'select_specialty':
+      return { ...state, specialRequest: action.payload }
+    case 'submit_setting':
+      return {
+        ...state,
+        cuisineType: action.payload,
+        specialRequest: action.payload
+      }
+    case'get_restaurants':
+    return{
+...state, restaurants:action.payload
+    }
+    case'search_zipcode':
+    return{
+...state, zipcode:action.payload
+    }
     default:
       return state
   }
@@ -100,7 +118,7 @@ const Dashboard = () => {
   }, [])
 
   const submitRecipe = async (e) => {
-    // e.preventDefault()
+    e.preventDefault()
     // console.log(newRecipe)
     try {
       const res = await axios.post(`http://localhost:3001/recipe/`, {
@@ -177,7 +195,8 @@ const Dashboard = () => {
         </section>
         <section>
           <div className="block-1">
-            <Restaurants />
+            <Restaurants     dispatch={dispatch}
+              state={state}/>
           </div>
           <div className="block-1">hey</div>
         </section>
