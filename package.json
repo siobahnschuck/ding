@@ -25,6 +25,7 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-is": "^16.13.1",
+    "react-map-gl": "^6.1.10",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-switch": "^6.0.0",

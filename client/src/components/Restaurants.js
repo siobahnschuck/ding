@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
+import Map from './Map'
 import axios from 'axios'
 import '../css/Setting.css'
 
@@ -27,7 +28,7 @@ const Restaurants = ({ state, dispatch }) => {
       <Modal show={show} onHide={handleClose} dialogClassName="addFood">
         {/* <Modal.Header closeButton></Modal.Header> */}
         <Modal.Body>
-          <h1>zipcode</h1>
+          <h2>Enter your zipcode</h2>
           <input
             value={state.zipcode}
             onChange={(e) =>
@@ -40,6 +41,7 @@ const Restaurants = ({ state, dispatch }) => {
               <p>{restaurant.restaurant_name}</p>
             </div>
           ))}
+          {/* <Map restaurants={state.restaurants} /> */}
         </Modal.Body>
       </Modal>
     </div>
