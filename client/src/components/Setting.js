@@ -4,7 +4,7 @@ import UseOutsideClick from './UseOutsideClick'
 
 import '../css/Setting.css'
 
-const Setting = () => {
+const Setting = (props) => {
   const [selected, setSelected] = useState(false)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
