@@ -1,6 +1,5 @@
 // import React, { useState, Fragment } from 'react'
-// import ReactMap, { Marker, Popup } from 'react-map-gl'
-// import axios from 'axios'
+// import ReactMap, { Marker } from 'react-map-gl'
 // import '../css/mapbox.css'
 
 // const Map = (props) => {
