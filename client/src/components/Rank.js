@@ -6,8 +6,6 @@ import '../css/popular.css'
 import {BASE_URL} from '../globals'
 
 const Rank = (props) => {
-  console.log(props)
-  
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -19,13 +17,13 @@ const Rank = (props) => {
       const res = await axios.get(`${BASE_URL}/recipe/popular`)
       setPopular(res.data)
     } catch (error) {
-      console.log(error)
+      throw (error)
     }
   }
 
   useEffect(() => {
     getPopular()
-  }, [])
+  }, [like])
 
   const likeRecipe = async (id, like)=> {
     console.log(id)
