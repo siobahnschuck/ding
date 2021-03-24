@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import '../css/App.css'
@@ -9,6 +9,7 @@ const Edit = (props) => {
   console.log(props)
   const recipe = props.recipe
   const recipeId = recipe.id
+  
 
   const [update, setUpdate] = useState({
     name: recipe.name,
@@ -16,7 +17,6 @@ const Edit = (props) => {
     instructions: recipe.instructions,
     duration: recipe.duration,
     calories: recipe.calories,
-
     isVegan: recipe.isVegan,
     isDairyFree: recipe.isDairyFree,
     hasNuts: recipe.hasNuts
@@ -25,8 +25,6 @@ const Edit = (props) => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-
-  console.log(update)
 
   const editItem = async (recipeId, update) => {
     try {
