@@ -41,8 +41,8 @@ const AddFood = ({ state, dispatch, history }) => {
         //   }
         // }
       )
-      // console.log(res)
-      dispatch({ type: 'get_recipes', payload: res.data.results })
+      console.log(res)
+      // dispatch({ type: 'get_recipes', payload: res.data.results })
     } catch (err) {
       console.log(err)
     }

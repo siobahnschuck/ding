@@ -38,7 +38,7 @@ const MyRecipes = (props) => {
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="myRecipes">
         {/* <Modal.Header closeButton></Modal.Header> */}
-        <Modal.Body>
+        <Modal.Body className="my-recipes">
           {props.myRecipes.map((recipe) => (
             <div key={recipe.id}>
               <Card className="cards">
