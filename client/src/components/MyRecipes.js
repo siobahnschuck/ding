@@ -7,7 +7,7 @@ import '../css/Recipe.css'
 import UpdateRecipe from './UpdateRecipe'
 
 const MyRecipes = (props) => {
-  console.log(props)
+  // console.log(props)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -24,13 +24,13 @@ const MyRecipes = (props) => {
     }
   }
 
-  const editItem = async (recipeId) => {
-    try {
-      const res = await axios.put(`${BASE_URL}/recipe/${recipeId}`)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // const editItem = async (recipeId) => {
+  //   try {
+  //     const res = await axios.put(`${BASE_URL}/recipe/${recipeId}`)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   return (
     <div>
@@ -41,12 +41,14 @@ const MyRecipes = (props) => {
         {/* <Modal.Header closeButton></Modal.Header> */}
         <Modal.Body>
           {props.myRecipes.map((recipe) => (
-            <div key={recipe.id} className="cards">
-              <Card>
+            <div key={recipe.id}>
+              <Card className="cards">
                 <Image src={recipe.image} />
                 <Card.Content>
                   <Card.Header>{recipe.name}</Card.Header>
                   <Card.Description>
+                    {recipe.duration}
+                    {recipe.calories}
                     {recipe.ingredients}
                     <br></br>
                     {recipe.instructions}
@@ -61,7 +63,7 @@ const MyRecipes = (props) => {
                   >
                     Delete
                   </button>
-                  <UpdateRecipe editItem={editItem} />
+                  <UpdateRecipe recipe={recipe}/>
                   {/* <button
                     color="blue"
                     icon

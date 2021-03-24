@@ -8,20 +8,20 @@ import axios from 'axios'
 import '../css/AddFood.css'
 
 const AddFood = ({ state, dispatch, history }) => {
-  console.log('state on add fodd', state)
+  console.log('state on add fodd', state.query)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  useEffect(() => {
-    getIngredients()
-  }, [])
+  // useEffect(() => {
+  //   getIngredients()
+  // }, [])
   const getIngredients = async () => {
     try {
       const res = await axios.get(
         `http://localhost:3001/food/find/${state.query}`
         // `${BASE_URL}?query=${state.query}&apiKey=${API_KEY}&number=5`
       )
-      console.log('getingredientsrespond', res)
+      // console.log('getingredientsrespond', res)
       dispatch({ type: 'get_ingredients', payload: res.data })
     } catch (err) {
       console.log(err)
@@ -40,7 +40,7 @@ const AddFood = ({ state, dispatch, history }) => {
           }
         }
       )
-      console.log(res)
+      // console.log(res)
       dispatch({ type: 'get_recipes', payload: res.data.results })
     } catch (err) {
       console.log(err)
@@ -62,17 +62,20 @@ const AddFood = ({ state, dispatch, history }) => {
         )
       })
     : null
-  console.log(ingredientList)
+  // console.log(ingredientList)
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>
         GENERATE RECIPE
       </Button>
-      <Modal show={show} onHide={handleClose} dialogClassName="addFood">
+      <Modal show={show} dialogClassName="addFood">
         {/* <Modal.Header closeButton></Modal.Header> */}
         <Modal.Body className="body">
           <div>
-            <Fridge fridge={state.fridge} />
+            <Fridge
+              fridge={state.fridge}
+              removeIngredient={state.removeIngredient}
+            />
           </div>
           <div id="addFood">
             AddFood

@@ -70,12 +70,32 @@ const CreateRecipe = async (req, res) => {
   }
 }
 
+// const UpdateRecipe = async (req, res) => {
+//   console.log(req.params.recipe_id)
+//   console.log(req.body, "REQ.BODY")
+//   try {
+//     let recipeId = parseInt(req.params.recipe_id)
+//     let updatedRecipe = await Recipe.update(req.body, {
+//       where: {
+//         id: recipeId
+//       },
+//       returning: true
+//     })
+//     res.send(updatedRecipe)
+//   } catch (error) {
+//     throw error
+//   }
+// }
+
 const UpdateRecipe = async (req, res) => {
+  console.log(req.params.recipe_id)
+  console.log(req.body, "REQ.BODY")
   try {
     const recipe = await Recipe.update(
       { ...req.body },
       { where: { id: req.params.recipe_id }, returning: true }
     )
+    console.log(recipe, "RECIPE")
     res.send(recipe)
   } catch (error) {
     throw error
