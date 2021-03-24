@@ -7,7 +7,7 @@ import '../css/Recipe.css'
 import UpdateRecipe from './UpdateRecipe'
 
 const MyRecipes = (props) => {
-  // console.log(props)
+  console.log(props)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -33,7 +33,7 @@ const MyRecipes = (props) => {
   //     console.log(error)
   //   }
   // }
-  console.log(props.myRecipes)
+
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>

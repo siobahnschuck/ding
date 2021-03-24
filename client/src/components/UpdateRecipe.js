@@ -16,7 +16,6 @@ const Edit = (props) => {
     instructions: recipe.instructions,
     duration: recipe.duration,
     calories: recipe.calories,
-
     isVegan: recipe.isVegan,
     isDairyFree: recipe.isDairyFree,
     hasNuts: recipe.hasNuts
@@ -65,7 +64,7 @@ const Edit = (props) => {
 
 
     const handleSubmit = async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     try {
       editItem(recipeId, update)
     } catch (error) {

@@ -3,18 +3,21 @@ import React, { useEffect, useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import '../css/Setting.css'
 import '../css/popular.css'
+import {BASE_URL} from '../globals'
 
-const Rank = () => {
+const Rank = (props) => {
+  console.log(props)
+  
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const [popular, setPopular] = useState([])
+  const [like, setLike] = useState(0)
 
   const getPopular = async () => {
     try {
-      const res = await axios.get(`http://localhost:3001/recipe/popular`)
+      const res = await axios.get(`${BASE_URL}/recipe/popular`)
       setPopular(res.data)
-      console.log(res.data)
     } catch (error) {
       console.log(error)
     }
@@ -23,6 +26,18 @@ const Rank = () => {
   useEffect(() => {
     getPopular()
   }, [])
+
+  const likeRecipe = async (id)=> {
+    console.log(id)
+    try {
+      const like = await axios.put(`${BASE_URL}/recipe/like/${id}`)
+      // setLike({...popular, like: popular.likes +1 })
+    } catch (error) {
+      throw error
+    }
+  }
+
+
 
   return (
     <div>
@@ -41,6 +56,7 @@ const Rank = () => {
                 <p>{item.cuisineType}</p>
                 <p>{item.instructions}</p>
                 <h2>Likes: {item.likes}</h2>
+                <button onClick={()=> likeRecipe(item.id)}>LIKE</button>
               </div>
             ))}
           </div>
