@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import IngredientList from '../components/IngredientList'
 import Fridge from '../components/Fridge'
+import RecipeList from '../components/RecipeList'
 import { NavLink } from 'react-router-dom'
-import { BASE_URL, API_KEY } from '../globals'
+import { BASE_URL, API_KEY, BASE_URL2 } from '../globals'
 import axios from 'axios'
 import '../css/AddFood.css'
 
@@ -30,10 +31,13 @@ const AddFood = ({ state, dispatch, history }) => {
   const getRecipe = async () => {
     try {
       const res = await axios.get(
-        `${BASE_URL}/food/recipe/${state.fridge[1].name}`
+        // `${BASE_URL}/food/recipe/${state.fridge[1].name}`
+        `${BASE_URL2}includeIngredients=${state.fridge[1].name}&apiKey=${API_KEY}&number=10`
       )
-      console.log(res.data[0].ingredient)
-      dispatch({ type: 'get_recipes', payload: res.data[0].ingredient })
+      console.log(res)
+      // console.log(res.data[0].ingredient)
+      // dispatch({ type: 'get_recipes', payload: res.data[0].ingredient })
+      dispatch({ type: 'get_recipes', payload: res.data.results })
     } catch (err) {
       console.log(err)
     }
@@ -55,6 +59,21 @@ const AddFood = ({ state, dispatch, history }) => {
       })
     : null
   // console.log(ingredientList)
+  const recipeList = state.recipes.length
+    ? state.recipes.map((recipe, index) => {
+        return (
+          <RecipeList
+            key={'recipe' + index}
+            // name={ingredient.name}
+            // img={ingredient.image}
+            recipe={recipe}
+            history={history}
+            dispatch={dispatch}
+            state={state}
+          />
+        )
+      })
+    : null
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>
@@ -83,6 +102,7 @@ const AddFood = ({ state, dispatch, history }) => {
             <br></br>
             <button onClick={() => getRecipe()}>Generate Recipes</button>
           </div>
+          <div>{recipeList}</div>
         </Modal.Body>
       </Modal>
     </div>
