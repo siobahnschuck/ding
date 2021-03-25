@@ -60,6 +60,7 @@ const App = () => {
                   authenticated={authenticated}
                   logOut={logOut}
                   currentUser={currentUser}
+                  checkSession={checkSession}
                 />
               )}
             />

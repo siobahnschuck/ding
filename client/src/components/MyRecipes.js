@@ -58,7 +58,10 @@ const MyRecipes = (props) => {
                         <p>Vegan:toString({recipe.vegan})</p>
                         <p>Dairy Free:{recipe.dairyFree}</p>
                         <p>Vegetarian:{recipe.vegetarian}</p>
-                        {/* <p>ingredients: {recipe.recipe_ingredient}</p> */}
+                        {recipe.recipe_ingredient.map((ingredient) => 
+                        ( <p>Ingredients: {ingredient.name}</p>
+                        )
+                        )} 
                       </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
