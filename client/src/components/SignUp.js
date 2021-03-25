@@ -22,7 +22,6 @@ const SignUp = (props) => {
     e.preventDefault()
     try {
       const res = await axios.post(`${BASE_URL}/auth/register`, registerForm)
-      // props.toggleRegister(false)
       handleRegisterForm({
         firstName: '',
         lastName: '',
@@ -30,6 +29,7 @@ const SignUp = (props) => {
         email: '',
         passwordDigest: ''
       })
+      props.toggleSignUp(false)
     } catch (error) {
       console.log(error)
     }
@@ -95,24 +95,23 @@ const SignUp = (props) => {
               onChange={handleChange}
               required
             />
+            <Button
+              type="submit"
+              disabled={
+                !registerForm.email ||
+                !registerForm.passwordDigest ||
+                !registerForm.firstName
+              }
+              size="large"
+              color="teal"
+              animated="fade"
+              id="signBtn"
+            >
+              Sign Up
+            </Button>
           </form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button
-            disabled={
-              !registerForm.email ||
-              !registerForm.passwordDigest ||
-              !registerForm.firstName
-            }
-            size="large"
-            color="teal"
-            animated="fade"
-            id="signBtn"
-            onClick={handleSubmit}
-          >
-            Sign Up
-          </Button>
-        </Modal.Footer>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     </div>
   )

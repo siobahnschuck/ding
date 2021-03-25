@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const SECRET_KEY = require('../globals')
+const { SECRET_KEY } = require('../globals')
 
 const SALT_ROUNDS = 12
 

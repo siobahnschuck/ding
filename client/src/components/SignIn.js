@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import '../css/App.css'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
@@ -15,17 +15,17 @@ const SignIn = (props) => {
     username: '',
     password: ''
   })
-
+  const history = useHistory()
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       const res = await axios.post(`${BASE_URL}/auth/login`, loginForm)
       localStorage.setItem('token', res.data.token)
       props.setAuthenticated(true)
-      props.toggleSignin(false)
+      props.toggleSignIn(false)
       props.setCurrentUser(res.data.user)
       handleLoginForm({ username: '', password: '' })
-      console.log(res)
+      return history.push('/dashboard')
     } catch (error) {
       console.log(error)
     }
@@ -67,30 +67,19 @@ const SignIn = (props) => {
               onChange={handleChange}
               required
             />
+            <Button
+              type="submit"
+              id="signBtn"
+              disabled={!loginForm.username || !loginForm.password}
+              size="large"
+              color="teal"
+              animated="fade"
+              onClick={handleSubmit}
+            >
+              Sign In
+            </Button>
           </form>
         </Modal.Body>
-        <Modal.Footer>
-          <button
-            type="submit"
-            id="signBtn"
-            disabled={!loginForm.username || !loginForm.password}
-            size="large"
-            color="teal"
-            animated="fade"
-            onClick={handleSubmit}
-          >
-            {/* <NavLink
-              to="/dashboard"
-              style={{
-                textDecoration: 'none',
-                color: 'white',
-                fontWeight: 'bold'
-              }}
-            > */}
-            Sign In
-            {/* </NavLink> */}
-          </button>
-        </Modal.Footer>
       </Modal>
     </div>
   )
