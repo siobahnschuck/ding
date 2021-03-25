@@ -1,0 +1,17 @@
+.modal-dialog.addFood {
+  text-align: center;
+  background-color: white;
+  position: absolute;
+  overflow: scroll;
+  width: 90vw;
+  height: 90vh;
+  top: 5%;
+  left: 5%;
+}
+.body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.addFood {
+  grid-column: 2;
+}

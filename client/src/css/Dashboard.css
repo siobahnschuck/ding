@@ -1,0 +1,59 @@
+.dashboard {
+  display: grid;
+  grid-template-rows: 1fr 20fr;
+  justify-items: center;
+  height: 100vh;
+  background-image: url('https://i.ibb.co/wc0kB5M/image.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* filter: blur(20px); */
+}
+#dashboard {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.block {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-color: rgba(248, 248, 246, 0.226);
+  width: 30vw;
+  height: 25vh;
+  margin: 10px;
+}
+.block-1 {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-color: rgba(248, 248, 246, 0.226);
+  width: 30vw;
+  height: 38vh;
+  margin: 10px;
+}
+.side-drawer.open {
+  transform: translateX(0);
+}
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(12, 12, 12, 0.253);
+  z-index: 100;
+  top: 0;
+  right: 0;
+}
+#dash-button {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.logOutBtn {
+  justify-self: right;
+  margin-right: 1em;
+  width: 6em;
+  height: 3em;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.473);
+}

@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Recipe.belongsTo(models.User, { foreignKey: 'userId' })
-      Recipe.hasMany(models.FoodItem, {
+      Recipe.belongsToMany(models.FoodItem, {
         through: models.Ingredient,
         as: 'recipe_ingredient',
         foreignKey: 'recipeId'
@@ -24,14 +24,14 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'CASCADE',
         references: { model: 'users', key: 'id' }
       },
-      name: DataTypes.STRING,
-      cuisineType: DataTypes.STRING,
+      title: DataTypes.STRING,
+      cuisines: DataTypes.STRING,
       instructions: DataTypes.STRING,
       image: DataTypes.STRING,
-      isVegan: DataTypes.BOOLEAN,
-      isDairyFree: DataTypes.BOOLEAN,
-      hasNuts: DataTypes.BOOLEAN,
-      duration: DataTypes.INTEGER,
+      vegan: DataTypes.BOOLEAN,
+      dairyFree: DataTypes.BOOLEAN,
+      vegetarian: DataTypes.BOOLEAN,
+      readyInMinutes: DataTypes.INTEGER,
       calories: DataTypes.INTEGER,
       likes: DataTypes.INTEGER
     },

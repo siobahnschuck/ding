@@ -13,10 +13,10 @@ module.exports = {
         onDelete: 'CASCADE',
         references: { model: 'users', key: 'id' }
       },
-      name: {
+      title: {
         type: Sequelize.STRING
       },
-      cuisineType: {
+      cuisines: {
         type: Sequelize.STRING
       },
       instructions: {
@@ -25,16 +25,16 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
-      isVegan: {
+      vegan: {
         type: Sequelize.BOOLEAN
       },
-      isDairyFree: {
+      dairyFree: {
         type: Sequelize.BOOLEAN
       },
-      hasNuts: {
+      vegetarian: {
         type: Sequelize.BOOLEAN
       },
-      duration: {
+      readyInMinutes: {
         type: Sequelize.INTEGER
       },
       calories: {

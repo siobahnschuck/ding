@@ -1,0 +1,15 @@
+.popular-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  scroll-behavior: smooth;
+}
+
+.popular-item {
+  border: 1px solid black;
+  color: black;
+}
+
+.recipe-title {
+  color: black;
+}
