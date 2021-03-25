@@ -4,8 +4,7 @@ const Fridge = (props) => {
   console.log(props)
 
   const removeIngredient = (id) => {
-    let filtered = props.fridge.filter((ing) => ing.id !== id)
-    return props.dispatch({ type: 'remove_fridge', payload: filtered })
+    return props.dispatch({ type: 'remove_fridge', payload: id })
   }
 
   return (
@@ -14,7 +13,7 @@ const Fridge = (props) => {
         <div>
           <p>{fridgeItem.name}</p>
           <img src={fridgeItem.image} />
-          <button onClick={() => removeIngredient()}>-</button>
+          <button onClick={() => removeIngredient(fridgeItem.id)}>-</button>
         </div>
       ))}
     </div>

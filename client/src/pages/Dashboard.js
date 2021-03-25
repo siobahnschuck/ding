@@ -42,7 +42,8 @@ const reducer = (state, action) => {
     case 'add_fridge':
       return { ...state, fridge: [...state.fridge, action.payload] }
     case 'remove_fridge':
-      return { fridge: action.payload }
+      let filtered = state.fridge.filter((ing) => ing.id !== action.payload)
+      return { ...state, fridge: filtered }
     case 'add_pantry':
       return { ...state, pantry: [...state.pantry, action.payload] }
     case 'create_recipe':
@@ -84,7 +85,6 @@ const reducer = (state, action) => {
 }
 
 const Dashboard = (props) => {
-  console.log(props.currentUser.id)
   const [recipeTitle, setRecipeTitle] = useState('')
   const [recipeId, setRecipeId] = useState('')
   // const [ingredients, setIngredients] = useState([])
@@ -95,6 +95,7 @@ const Dashboard = (props) => {
   const [allRecipe, setAllRecipe] = useState([])
   const [state, dispatch] = useReducer(reducer, iState)
 
+  console.log('dashboard state', state)
   const handleChange = (e) => {
     setRecipeTitle(e.target.value)
   }
