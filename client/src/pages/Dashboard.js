@@ -17,10 +17,14 @@ const iState = {
   fridge: [{ name: '', image: '' }],
   recipes: [],
   restaurants: [],
+  cuisines: '',
+  vegan: false,
+  dairyFree: false,
+  vegetarian: false,
   recipeIngredients: [],
   pantry: [{ name: '', image: '' }],
-  cuisineType: '',
-  specialRequest: '',
+ 
+
   zipcode: ''
 }
 
@@ -36,8 +40,6 @@ const reducer = (state, action) => {
     case 'get_recipes':
       return { ...state, recipes: action.payload }
     case 'add_fridge':
-      // console.log('add_fridge is firing', action.payload)
-      // console.log('here is th states', state)
       return { ...state, fridge: [...state.fridge, action.payload] }
     case 'add_pantry':
       return { ...state, pantry: [...state.pantry, action.payload] }
@@ -49,14 +51,20 @@ const reducer = (state, action) => {
     case 'my_recipes':
       return { ...state, myRecipes: action.payload }
     case 'select_cuisine':
-      return { ...state, cuisineType: action.payload }
-    case 'select_specialty':
-      return { ...state, specialRequest: action.payload }
+      return { ...state, cuisines: action.payload }
+    case 'select_vegan':
+      return { ...state, vegan: action.payload }
+    case 'select_dairyFree':
+      return { ...state, dairyFree: action.payload }
+    case 'select_vegetarian':
+      return { ...state, vegetarian: action.payload }
     case 'submit_setting':
       return {
         ...state,
-        cuisineType: action.payload,
-        specialRequest: action.payload
+        cuisines: action.payload,
+        vegan: action.payload,
+        dairyFree: action.payload,
+        vegetarian: action.payload
       }
     case 'get_restaurants':
       return {
@@ -81,12 +89,8 @@ const Dashboard = (props) => {
   const [isVegan, setVegan] = useState(false)
   const [isDairyFree, setDairy] = useState(false)
   const [hasNuts, setNuts] = useState(false)
-
   const [myRecipes, setMyRecipes] = useState([])
-
   const [state, dispatch] = useReducer(reducer, iState)
-  // console.log('here is the state ingredients', state.ingredients)
-  // console.log(iState)
 
   const handleChange = (e) => {
     setRecipeTitle(e.target.value)
@@ -119,26 +123,14 @@ const Dashboard = (props) => {
 
   const submitRecipe = async (e) => {
     e.preventDefault()
-    // console.log(newRecipe)
     const userId = props.currentUser.id
 
     try {
-      // const res = await axios.put(`${BASE_URL}/recipe/${recipeId}`, update)
       const res = await axios.post(`${BASE_URL}/recipe/`, {
         title: recipeTitle,
-        // ...newRecipe,
-        // ingredients,
-        // isVegan,
-        // isDairyFree,
-        // hasNuts,
         userId
       })
-      console.log('submist recipe is firing')
-      // we have access to the id once the recipe is created console.log(res.data.id)
       setRecipeId(res.data.id)
-      console.log(res.data.id)
-      //push id to the a new page to update recipe
-
       setMyRecipes([...myRecipes])
     } catch (error) {
       console.log(error)
