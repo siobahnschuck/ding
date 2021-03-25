@@ -79,16 +79,16 @@ const SignIn = (props) => {
             animated="fade"
             onClick={handleSubmit}
           >
-            <NavLink
+            {/* <NavLink
               to="/dashboard"
               style={{
                 textDecoration: 'none',
                 color: 'white',
                 fontWeight: 'bold'
               }}
-            >
-              Sign In
-            </NavLink>
+            > */}
+            Sign In
+            {/* </NavLink> */}
           </button>
         </Modal.Footer>
       </Modal>

@@ -110,16 +110,7 @@ const SignUp = (props) => {
             id="signBtn"
             onClick={handleSubmit}
           >
-            <NavLink
-              to="/dashboard"
-              style={{
-                textDecoration: 'none',
-                color: 'white',
-                fontWeight: 'bold'
-              }}
-            >
-              Sign Up
-            </NavLink>
+            Sign Up
           </Button>
         </Modal.Footer>
       </Modal>
