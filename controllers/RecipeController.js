@@ -114,6 +114,7 @@ const LikeRecipe = async (req, res) => {
 }
 
 const CreateRecipe = async (req, res) => {
+  console.log(req.body)
   try {
     const addRecipe = await Recipe.create({ ...req.body })
     res.send(addRecipe)

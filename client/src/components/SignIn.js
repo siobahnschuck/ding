@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import '../css/App.css'
 import axios from 'axios'
-import {BASE_URL} from '../globals'
+import { BASE_URL } from '../globals'
 
 const SignIn = (props) => {
   console.log(props)
@@ -11,10 +11,10 @@ const SignIn = (props) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-    const [loginForm, handleLoginForm] = useState({
+  const [loginForm, handleLoginForm] = useState({
     username: '',
     password: ''
-    })
+  })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,7 +23,9 @@ const SignIn = (props) => {
       localStorage.setItem('token', res.data.token)
       props.setAuthenticated(true)
       setShow(false)
+      props.setCurrentUser(res.data.user)
       handleLoginForm({ username: '', password: '' })
+      console.log(res)
     } catch (error) {
       console.log(error)
     }
@@ -33,7 +35,6 @@ const SignIn = (props) => {
     const { name, value } = e.target
     handleLoginForm({ ...loginForm, [name]: value })
   }
-
 
   return (
     <div>
@@ -54,36 +55,34 @@ const SignIn = (props) => {
               value={loginForm.username}
               onChange={handleChange}
               required
-              />
+            />
             <p>password:</p>
-            <input  
+            <input
               type="password"
               name="password"
               placeholder="PASSWORD"
               value={loginForm.password}
               onChange={handleChange}
-              required/>
+              required
+            />
           </form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          
-            <button 
-            type ='submit'
-            variant="primary"  
-              disabled={!loginForm.username || !loginForm.password}
-              size="large"
-              color="teal"
-              animated="fade"
-              onClick={handleSubmit}
-              >
-            <NavLink to="/dashboard">
-              Sign In
-            </NavLink>
-            </button>
-          
+
+          <button
+            type="submit"
+            variant="primary"
+            disabled={!loginForm.username || !loginForm.password}
+            size="large"
+            color="teal"
+            animated="fade"
+            onClick={handleSubmit}
+          >
+            <NavLink to="/dashboard">Sign In</NavLink>
+          </button>
         </Modal.Footer>
       </Modal>
     </div>

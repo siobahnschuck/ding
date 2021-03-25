@@ -8,17 +8,17 @@ import Rank from '../components/Rank'
 import Restaurants from '../components/Restaurants'
 import { BASE_URL } from '../globals'
 import axios from 'axios'
-import MyRecipePage from './MyRecipePage'
+import { NavLink } from 'react-router-dom'
 
 const iState = {
   query: '',
   ingredients: [],
   fridge: [{ name: '', image: '' }],
   recipes: [],
-  restaurants:[],
+  restaurants: [],
   cuisineType: '',
   specialRequest: '',
-  zipcode:''
+  zipcode: ''
 }
 
 const reducer = (state, action) => {
@@ -53,22 +53,25 @@ const reducer = (state, action) => {
         cuisineType: action.payload,
         specialRequest: action.payload
       }
-    case'get_restaurants':
-    return{
-...state, restaurants:action.payload
-    }
-    case'search_zipcode':
-    return{
-...state, zipcode:action.payload
-    }
+    case 'get_restaurants':
+      return {
+        ...state,
+        restaurants: action.payload
+      }
+    case 'search_zipcode':
+      return {
+        ...state,
+        zipcode: action.payload
+      }
     default:
       return state
   }
 }
 
 const Dashboard = (props) => {
-  console.log(props)
+  console.log(props.currentUser.id)
   const [newRecipe, setNewRecipe] = useState({
+    userId: parseInt(props.currentUser.id),
     image: '',
     name: '',
     cuisineType: '',
@@ -120,13 +123,16 @@ const Dashboard = (props) => {
   const submitRecipe = async (e) => {
     e.preventDefault()
     // console.log(newRecipe)
+    const userId = props.currentUser.id
+
     try {
-      const res = await axios.post(`http://localhost:3001/recipe/`, {
+      const res = await axios.post(`${BASE_URL}/recipe/`, {
         ...newRecipe,
         ingredients,
         isVegan,
         isDairyFree,
-        hasNuts
+        hasNuts,
+        userId
       })
       console.log('submist recipe is firing')
       setMyRecipes([...myRecipes])
@@ -146,7 +152,7 @@ const Dashboard = (props) => {
   const getMyRecipes = async (e) => {
     // e.preventDefault()
     try {
-      const res = await axios.get(`http://localhost:3001/recipe/`)
+      const res = await axios.get(`${BASE_URL}/recipe/`)
       // console.log(res.data)
       setMyRecipes(res.data)
     } catch (err) {
@@ -154,9 +160,11 @@ const Dashboard = (props) => {
     }
   }
 
-  
   return (
     <div className="dashboard">
+      <button className="logOutBtn" onClick={props.logOut}>
+        <NavLink to="/">Logout</NavLink>
+      </button>
       <div id="dashboard">
         <section>
           <div className="block">
@@ -197,8 +205,7 @@ const Dashboard = (props) => {
         </section>
         <section>
           <div className="block-1">
-            <Restaurants     dispatch={dispatch}
-              state={state}/>
+            <Restaurants dispatch={dispatch} state={state} />
           </div>
           <div className="block-1">hey</div>
         </section>

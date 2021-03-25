@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import { Modal, Button } from 'react-bootstrap'
+import ReactMap, { Marker } from 'react-map-gl'
 import Map from './Map'
 import axios from 'axios'
 import '../css/Setting.css'
@@ -8,6 +9,12 @@ const Restaurants = ({ state, dispatch }) => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  const [viewport, setViewport] = useState({
+    width: '80vw',
+    height: '70vh',
+    latitude: 30,
+    longitude: -60
+  })
   const getRestaurants = async () => {
     try {
       const res = await axios.get(
