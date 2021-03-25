@@ -1,4 +1,4 @@
-const { Recipe, Ingredient, FoodItem, User } = require('../models')
+const { Recipe, Ingredient, FoodapiData, User } = require('../models')
 const { Op } = require('sequelize')
 const axios = require('axios')
 const { BASE_URL, API_KEY, BASE_URL_INFO } = require('../globals.js')
@@ -17,7 +17,7 @@ const GetUserRecipesIngredients = async (req, res) => {
     const recipes = await Recipe.findAll({
       include: [
         {
-          model: FoodItem,
+          model: FoodapiData,
           as: 'recipe_ingredient',
           through: { attributes: [] }
         }
@@ -46,11 +46,11 @@ const GetAndCreateRecipes = async (req, res) => {
     console.log(response.data.results)
     //map through their data
     let apiData = response.data.results
-    let mapped = apiData.map((item) => {
+    let mapped = apiData.map((apiData) => {
       return {
-        id: item.id,
-        title: item.title,
-        image: item.image
+        id: apiData.id,
+        title: apiData.title,
+        image: apiData.image
       }
     })
     //bulkCreate mapped into recipes
@@ -70,20 +70,22 @@ const GetAndUpdateRecipe = async (req, res) => {
       `${BASE_URL_INFO}/${req.params.id}/information?includeNutrition=false&apiKey=${API_KEY}`
     )
     const apiData = response.data
-    // let mapped = Object.keys(apiData).map((item) => {
-    //   return {
-    // title: `${apiData[key]}`,
-    // cuisines: item.cuisines,
-    // instructions: item.instructions,
-    // image: item.image,
-    // vegan: item.vegan,
-    // dairyFree: item.dairyFree,
-    // vegetarian: item.vegetarian,
-    // readyInMinutes: item.readyInMinutes,
-    // calories: item.calories
-    //   }
-    // })
-    res.send(apiData)
+
+    console.log(apiData.title)
+
+    let data = {
+      title: apiData.title,
+      cuisines: apiData.cuisines,
+      instructions: apiData.instructions,
+      image: apiData.image,
+      vegan: apiData.vegan,
+      dairyFree: apiData.dairyFree,
+      vegetarian: apiData.vegetarian,
+      readyInMinutes: apiData.readyInMinutes,
+      calories: apiData.calories
+    }
+    Recipe.update({ data }, { where: { id: req.params.id, returning: true } })
+    res.send(data)
   } catch (error) {
     throw error
   }
@@ -110,7 +112,7 @@ const GetRecipeByIngredient = async (req, res) => {
     const recipes = await Recipe.findAll({
       include: [
         {
-          model: FoodItem,
+          model: FoodapiData,
           as: 'recipe_ingredient',
           through: { attributes: [] }
         }
