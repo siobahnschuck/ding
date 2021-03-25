@@ -8,4 +8,11 @@ router.post('/login', controller.Login)
 
 router.post('/register', controller.Register)
 
+router.get(
+  '/session',
+  middleware.StripHeaders,
+  middleware.VerifyToken,
+  controller.GetCurrentUser
+)
+
 module.exports = router

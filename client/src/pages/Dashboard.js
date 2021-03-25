@@ -135,6 +135,11 @@ const Dashboard = (props) => {
         userId
       })
       console.log('submist recipe is firing')
+      // we have access to the id once the recipe is created console.log(res.data.id)
+
+      console.log(res.data.id)
+      //push id to the a new page to update recipe
+
       setMyRecipes([...myRecipes])
     } catch (error) {
       console.log(error)
