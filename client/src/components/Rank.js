@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import '../css/Setting.css'
 import '../css/popular.css'
-import {BASE_URL} from '../globals'
+import { BASE_URL } from '../globals'
 
 const Rank = (props) => {
   const [show, setShow] = useState(false)
@@ -17,7 +17,7 @@ const Rank = (props) => {
       const res = await axios.get(`${BASE_URL}/recipe/popular`)
       setPopular(res.data)
     } catch (error) {
-      throw (error)
+      throw error
     }
   }
 
@@ -25,18 +25,15 @@ const Rank = (props) => {
     getPopular()
   }, [like])
 
-  const likeRecipe = async (id, like)=> {
-    console.log(id)
+  const likeRecipe = async (id, like) => {
     try {
       const res = await axios.put(`${BASE_URL}/recipe/like/${id}`, like)
-      setLike({...popular, like: popular.likes +1 })
+      setLike({ ...popular, like: popular.likes + 1 })
       return res.data
     } catch (error) {
       throw error
     }
   }
-
-
 
   return (
     <div>
@@ -55,7 +52,7 @@ const Rank = (props) => {
                 <p>{item.cuisineType}</p>
                 <p>{item.instructions}</p>
                 <h2>Likes: {item.likes}</h2>
-                <button onClick={()=> likeRecipe(item.id)}>LIKE</button>
+                <button onClick={() => likeRecipe(item.id)}>LIKE</button>
               </div>
             ))}
           </div>
