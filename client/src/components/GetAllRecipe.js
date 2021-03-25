@@ -7,27 +7,14 @@ import '../css/Recipe.css'
 import UpdateRecipe from './UpdateRecipe'
 
 const GetAllRecipes = (props) => {
-  console.log(props.allRecipes)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  const deleteItem = async (recipeId) => {
-    try {
-      const res = await axios.delete(`${BASE_URL}/recipe/${recipeId}`)
-      let filteredRecipes = [...props.myRecipes].filter(
-        (recipe) => recipe.id !== parseInt(res.data.payload)
-      )
-      props.setMyRecipes(filteredRecipes)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>
-        All Recipes
+        ALL RECIPES
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="myRecipes">
         <Modal.Header closeButton></Modal.Header>

@@ -152,9 +152,12 @@ const Dashboard = (props) => {
   //   }
   // }
   const getMyRecipes = async (e) => {
-    console.log(props.currentUserId)
+     console.log(props.currentUser.id)
+     const userId = props.currentUser.id
+     console.log(userId)
     try {
-      const res = await axios.get(`${BASE_URL}/recipe/myRecipes/`)
+      const res = await axios.get(`${BASE_URL}/recipe/myRecipes/${userId}`)
+      console.log(res)
       setMyRecipes(res.data)
     } catch (err) {
       throw err
@@ -164,7 +167,6 @@ const Dashboard = (props) => {
   const getAllRecipes = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/recipe/ `)
-      console.log(res)
       setAllRecipe(res.data)
     } catch (error) {
       throw error
