@@ -1,4 +1,4 @@
-;('use strict')
+'use strict'
 const faker = require('faker')
 const { User } = require('../models')
 module.exports = {
@@ -6,16 +6,16 @@ module.exports = {
     const users = await User.findAll({ raw: true })
     let recipes = [...Array(20)].map(() => ({
       userId: users[Math.floor(Math.random() * users.length)].id,
-      title: faker.lorem.word(),
-      cuisines: faker.lorem.word(),
+      name: faker.lorem.word(),
+      cuisineType: faker.lorem.word(),
       instructions: faker.lorem.sentence(),
       image: faker.image.image(),
-      vegan: faker.random.boolean(),
-      dairyFree: faker.random.boolean(),
-      vegetarian: faker.random.boolean(),
-      readyInMinutes: Math.floor(Math.random() * 180),
+      isVegan: faker.random.boolean(),
+      isDairyFree: faker.random.boolean(),
+      hasNuts: faker.random.boolean(),
+      duration: Math.floor(Math.random() * 180),
       calories: Math.floor(Math.random() * 800),
-      likes: faker.random.number(),
+      like: faker.random.number(),
       createdAt: new Date(),
       updatedAt: new Date()
     }))
