@@ -91,6 +91,7 @@ const Dashboard = (props) => {
   const [isDairyFree, setDairy] = useState(false)
   const [hasNuts, setNuts] = useState(false)
   const [myRecipes, setMyRecipes] = useState([])
+  const [allRecipe, setAllRecipe] = useState([])
   const [state, dispatch] = useReducer(reducer, iState)
 
   const handleChange = (e) => {
@@ -120,6 +121,10 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     getMyRecipes()
+  }, [])
+
+  useEffect(() => {
+    getAllRecipes()
   }, [])
 
   const submitRecipe = async (e) => {
@@ -153,6 +158,16 @@ const Dashboard = (props) => {
       setMyRecipes(res.data)
     } catch (err) {
       throw err
+    }
+  }
+
+  const getAllRecipes = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/recipe/ `)
+      console.log(res)
+      setAllRecipe(res.data)
+    } catch (error) {
+      throw error
     }
   }
 
@@ -207,7 +222,7 @@ const Dashboard = (props) => {
             <Restaurants dispatch={dispatch} state={state} />
           </div>
           <div className="block-1">
-            <GetAllRecipes getMyRecipes={getMyRecipes} />
+            <GetAllRecipes getAllRecipes={getAllRecipes} allRecipes={allRecipe} setAllRecipe={setAllRecipe}/>
           </div>
         </section>
       </div>

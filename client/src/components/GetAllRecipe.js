@@ -7,7 +7,7 @@ import '../css/Recipe.css'
 import UpdateRecipe from './UpdateRecipe'
 
 const GetAllRecipes = (props) => {
-  console.log(props)
+  console.log(props.allRecipes)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -32,9 +32,9 @@ const GetAllRecipes = (props) => {
       <Modal show={show} onHide={handleClose} dialogClassName="myRecipes">
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body className="my-recipes">
-          {props.myRecipes ? (
+          {props.allRecipes ? (
             <div>
-              {props.myRecipes.map((recipe) => (
+              {props.allRecipes.map((recipe) => (
                 <div key={recipe.id}>
                   <Card className="cards">
                     <Image src={recipe.image} />
@@ -52,19 +52,7 @@ const GetAllRecipes = (props) => {
                       </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                      <button
-                        color="red"
-                        icon
-                        labelPosition="left"
-                        onClick={() => deleteItem(recipe.id)}
-                      >
-                        Delete
-                      </button>
-                      <UpdateRecipe
-                        recipe={recipe}
-                        getMyRecipes={props.getMyRecipes}
-                        myRecipes={props.myRecipes}
-                      />
+
                     </Card.Content>
                   </Card>
                 </div>
