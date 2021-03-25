@@ -27,10 +27,10 @@ const Home = (props) => {
       </section>
       <section className="right">
         <header>
-          <button variant="primary" onClick={() => toggleOpen('sign in')}>
+          <button className="signBtn" onClick={() => toggleOpen('sign in')}>
             Sign In
           </button>
-          <button variant="primary" onClick={() => toggleOpen('sign up')}>
+          <button className="signBtn" onClick={() => toggleOpen('sign up')}>
             Sign Up
           </button>
           <SignIn

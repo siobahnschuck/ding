@@ -25,6 +25,13 @@ header {
   display: flex;
   justify-self: right;
 }
+.signBtn {
+  width: 6em;
+  height: 3em;
+  border-radius: 10px;
+  margin: 0.5em;
+  background-color: rgba(255, 255, 255, 0.295);
+}
 .modal-dialog.modal {
   display: grid;
   text-align: center;
@@ -48,7 +55,7 @@ header {
 #signBtn {
   width: 25em;
   height: 3em;
-  border: wpx rgb(248, 245, 245) solid;
+  border: rgb(248, 245, 245) solid;
   border-radius: 5px;
   background-color: black;
   margin-top: 1em;
@@ -61,7 +68,7 @@ form {
 input {
   width: 25em;
   height: 3em;
-  border: wpx black solid;
+  border: 2px black solid;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.459);
   margin: 0.5em;
