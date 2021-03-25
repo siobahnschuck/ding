@@ -214,7 +214,7 @@ const Dashboard = (props) => {
             <Restaurants dispatch={dispatch} state={state} />
           </div>
           <div className="block-1">
-            <GetAllRecipes />
+            <GetAllRecipes  getMyRecipes={getMyRecipes}/>
           </div>
         </section>
       </div>
