@@ -8,3 +8,8 @@
   top: 5%;
   left: 5%;
 }
+
+.setting-title {
+  text-align: center;
+  font-size: larger;
+}
