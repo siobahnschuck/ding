@@ -3,11 +3,12 @@ import Dashboard from './pages/Dashboard'
 import About from './pages/About'
 import { Route, Switch } from 'react-router-dom'
 import './css/App.css'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { BASE_URL } from './globals'
+import { token } from 'morgan'
 
 const App = () => {
-  console.log(localStorage)
-
   const [authenticated, setAuthenticated] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
 
@@ -16,8 +17,18 @@ const App = () => {
     localStorage.clear()
   }
 
-  console.log(authenticated)
-  console.log(currentUser.id)
+  const checkSession = async () => {
+    let token = localStorage.getItem('token')
+    if (token) {
+      const res = await axios.get(`${BASE_URL}/auth/session`)
+      setCurrentUser(res.data)
+      setAuthenticated(true)
+    }
+  }
+
+  useEffect(() => {
+    checkSession()
+  }, [])
 
   return (
     <div>
