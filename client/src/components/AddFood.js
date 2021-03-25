@@ -17,7 +17,7 @@ const AddFood = ({ state, dispatch, history }) => {
   const getIngredients = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3001/food/find/${state.query}`
+        `${BASE_URL}/food/find/${state.query}`
       )
       dispatch({ type: 'get_ingredients', payload: res.data })
     } catch (err) {
