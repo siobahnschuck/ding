@@ -42,9 +42,6 @@ const SignUp = (props) => {
 
   return (
     <div>
-      <Button variant="primary" onClick={() => props.toggleSignUp(true)}>
-        Sign Up
-      </Button>
       <Modal
         show={props.signUpOpen}
         // onHide={props.handleClose}

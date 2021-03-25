@@ -9,6 +9,15 @@ const Home = (props) => {
   const [signUpOpen, toggleSignUp] = useState(false)
   // const handleClose = () => setShow(false)
   // const handleShow = () => setShow(true)
+  const toggleOpen = (arg) => {
+    toggleSignIn(false)
+    toggleSignUp(false)
+    if (arg === 'sign in') {
+      toggleSignIn(true)
+    } else if (arg === 'sign up') {
+      toggleSignUp(true)
+    }
+  }
   return (
     <div className="home">
       <section className="left">
@@ -18,6 +27,12 @@ const Home = (props) => {
       </section>
       <section className="right">
         <header>
+          <button className="signBtn" onClick={() => toggleOpen('sign in')}>
+            Sign In
+          </button>
+          <button className="signBtn" onClick={() => toggleOpen('sign up')}>
+            Sign Up
+          </button>
           <SignIn
             signInOpen={signInOpen}
             toggleSignIn={toggleSignIn}
