@@ -74,20 +74,20 @@ const Setting = ({ state, dispatch, history }) => {
           <div>
             <p>Dietary Restrictions:</p>
             <form>
-              <select
-                name="dietaryRestrictions"
-                multiple="multiple"
-                onChange={(e) =>
+              <p>Vegan:</p>
+              <input type="checkbox" value="true" />
+              <p>DairyFree:</p>
+              <input type="checkbox" value="true" />
+              <p>Vegetarian</p>
+              <input type="checkbox" value="true" />
+              <button
+                onSubmit={(e) =>
                   dispatch({
                     type: 'select_specialty',
                     payload: e.target.value
                   })
                 }
-              >
-                <option value="isVegan">Vegan</option>
-                <option value="isDairyFree">Dairy Free</option>
-                <option value="hasNuts">No Nuts</option>
-              </select>
+              ></button>
             </form>
           </div>
         </Modal.Body>

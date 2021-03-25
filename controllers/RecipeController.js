@@ -69,22 +69,7 @@ const GetAndUpdateRecipe = async (req, res) => {
     let response = await axios.get(
       `${BASE_URL_INFO}/${req.params.id}/information?includeNutrition=false&apiKey=${API_KEY}`
     )
-    // console.log(response.data)
     const apiData = response.data
-    // for (const key in apiData) {
-    //   let mapped = {
-    //     title: `${apiData[key]}`,
-    //     cuisines: `${apiData[key]}`,
-    //     instructions: `${apiData[key]}`,
-    //     image: `${apiData[key]}`,
-    //     vegan: `${apiData[key]}`,
-    //     dairyFree: `${apiData[key]}`,
-    //     vegetarian: `${apiData[key]}`,
-    //     readyInMinutes: `${apiData[key]}`,
-    //     calories: `${apiData[key]}`
-    //   }
-    //   res.send(mapped)
-    // }
     // let mapped = Object.keys(apiData).map((item) => {
     //   return {
     // title: `${apiData[key]}`,
