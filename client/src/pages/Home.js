@@ -14,7 +14,12 @@ const Home = (props) => {
       </section>
       <section className="right">
         <header>
-          <SignIn authenticated={props.authenticated} setAuthenticated={props.setAuthenticated}/>
+          <SignIn
+            authenticated={props.authenticated}
+            setAuthenticated={props.setAuthenticated}
+            currentUser={props.currentUser}
+            setCurrentUser={props.setCurrentUser}
+          />
           <SignUp />
           {/* <Button  onClick={props.logOut}>Logout</Button> */}
         </header>
