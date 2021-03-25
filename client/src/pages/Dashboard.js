@@ -9,6 +9,7 @@ import Restaurants from '../components/Restaurants'
 import { BASE_URL } from '../globals'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom'
+import GetAllRecipes from '../components/GetAllRecipe'
 
 const iState = {
   query: '',
@@ -208,7 +209,9 @@ const Dashboard = (props) => {
           <div className="block-1">
             <Restaurants dispatch={dispatch} state={state} />
           </div>
-          <div className="block-1">hey</div>
+          <div className="block-1">
+            <GetAllRecipes />
+          </div>
         </section>
       </div>
     </div>
