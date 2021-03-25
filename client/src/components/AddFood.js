@@ -29,10 +29,15 @@ const AddFood = ({ state, dispatch, history }) => {
   }
   const getRecipe = async () => {
     try {
+      let {
+        state.cuisines,
+        includeIngredients: state.fridge.name,
+        diet: state.vegan
+      } = req.query
       const res = await axios.get(
-        // `${BASE_URL}/food/recipe/${state.fridge[1].name}`
-        `${BASE_URL2}includeIngredients=${state.fridge[1].name}&apiKey=${API_KEY}&number=10`
-      )
+        `${BASE_URL}/recipe/search`, req.query)
+      //   `${BASE_URL2}includeIngredients=${state.fridge[1].name}&apiKey=${API_KEY}&number=10`
+      // )
       console.log(res)
       // console.log(res.data[0].ingredient)
       // dispatch({ type: 'get_recipes', payload: res.data[0].ingredient })
