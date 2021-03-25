@@ -130,6 +130,7 @@ const Dashboard = (props) => {
   const submitRecipe = async (e) => {
     e.preventDefault()
     const userId = props.currentUser.id
+    console.log(props.currentUser.id)
 
     try {
       const res = await axios.post(`${BASE_URL}/recipe/`, {
@@ -152,9 +153,7 @@ const Dashboard = (props) => {
   //   }
   // }
   const getMyRecipes = async (e) => {
-     console.log(props.currentUser.id)
      const userId = props.currentUser.id
-     console.log(userId)
     try {
       const res = await axios.get(`${BASE_URL}/recipe/myRecipes/${userId}`)
       console.log(res)

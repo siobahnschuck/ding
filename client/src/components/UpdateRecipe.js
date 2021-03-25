@@ -6,7 +6,6 @@ import axios from 'axios'
 import { BASE_URL } from '../globals'
 
 const Edit = (props) => {
-  console.log(props)
   const recipe = props.recipe
   const recipeId = recipe.id
 
