@@ -1,4 +1,4 @@
-const { Recipe, Ingredient, FoodapiData, User } = require('../models')
+const { Recipe, Ingredient, FoodItem, User } = require('../models')
 const { Op } = require('sequelize')
 const axios = require('axios')
 const { BASE_URL, API_KEY, BASE_URL_INFO } = require('../globals.js')
@@ -17,7 +17,7 @@ const GetUserRecipesIngredients = async (req, res) => {
     const recipes = await Recipe.findAll({
       include: [
         {
-          model: FoodapiData,
+          model: FoodItem,
           as: 'recipe_ingredient',
           through: { attributes: [] }
         }
