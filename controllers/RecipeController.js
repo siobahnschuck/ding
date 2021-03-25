@@ -32,21 +32,36 @@ const GetUserRecipesIngredients = async (req, res) => {
   }
 }
 
+const GetRecipeById = async (req, res) => {
+  let recipe = await Recipe.findByPk(req.params.id)
+  res.send(recipe)
+}
+
 const GetAndCreateRecipes = async (req, res) => {
-  //send req to api
-  let response = await axios.get(
-    `${BASE_URL}cuisine=${req.query.cuisine}&includeIngredients=${req.query.includeIngredients}&diet=${req.query.diet}&apiKey=${API_KEY}`
-  )
-  console.log(response.data.results)
-  //map through their data
-  let apiData = response.data.results
-  let mapped = apiData.map((item) => {
-    item.id, item.cuisine, item.image, item.title
-  })
-  //bulkCreate mapped into recipes
-  Recipe.bulkCreate(mapped)
-  //send mapped as response
-  res.send(mapped)
+  try {
+    //send req to api
+    let response = await axios.get(
+      `${BASE_URL}cuisine=${req.query.cuisine}&includeIngredients=${req.query.includeIngredients}&diet=${req.query.diet}&apiKey=${API_KEY}`
+    )
+    console.log(response.data.results)
+    //map through their data
+    let apiData = response.data.results
+    let mapped = apiData.map((item) => {
+      return {
+        id: item.id,
+        title: item.title,
+        image: item.image
+      }
+    })
+    //bulkCreate mapped into recipes
+    Recipe.bulkCreate(mapped, {
+      returning: true
+    })
+    //send mapped as response
+    res.send(mapped)
+  } catch (error) {
+    throw error
+  }
 }
 
 const GetRecipeByLike = async (req, res) => {
@@ -90,12 +105,12 @@ const GetRecipeByCuisineType = async (req, res) => {
   try {
     const recipes = await Recipe.findAll({
       where: {
-        cuisineType: type
+        cuisines: type
       }
     })
     res.send(recipes)
   } catch (error) {
-    throw erroe
+    throw error
   }
 }
 
@@ -124,14 +139,11 @@ const CreateRecipe = async (req, res) => {
 }
 
 const UpdateRecipe = async (req, res) => {
-  console.log(req.params.recipe_id)
-  console.log(req.body, 'REQ.BODY')
   try {
     const recipe = await Recipe.update(
       { ...req.body },
       { where: { id: req.params.recipe_id }, returning: true }
     )
-    console.log(recipe, 'RECIPE')
     res.send(recipe)
   } catch (error) {
     throw error
@@ -161,5 +173,6 @@ module.exports = {
   UpdateRecipe,
   DeleteRecipe,
   GetUserRecipesIngredients,
-  GetAndCreateRecipes
+  GetAndCreateRecipes,
+  GetRecipeById
 }

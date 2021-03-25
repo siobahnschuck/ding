@@ -3,6 +3,7 @@ const controller = require('../controllers/RecipeController')
 const middleware = require('../middleware')
 
 router.get('/', controller.GetRecipe)
+router.get('/by/:id', controller.GetRecipeById)
 router.get('/popular', controller.GetRecipeByLike)
 router.get('/ingredient/:query', controller.GetRecipeByIngredient)
 router.get('/myRecipes/:user_id', controller.GetUserRecipesIngredients)

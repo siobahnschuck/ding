@@ -21,9 +21,6 @@ const GetFoodById = async (req, res) => {
 
 const GetFoodItemByRecipe = async (req, res) => {
   try {
-    //map thru the payload and findALL for each query
-    console.log('params here', req.params)
-    console.log('query here', req.query)
     let names = req.query.name
     delete req.query.name
     const foods = await FoodItem.findAll({
