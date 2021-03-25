@@ -4,6 +4,7 @@ import ReactMap, { Marker } from 'react-map-gl'
 import Map from './Map'
 import axios from 'axios'
 import '../css/Setting.css'
+import { APY_RESTAURANT_KEY, BASE_URL3 } from '../globals'
 
 const Restaurants = ({ state, dispatch }) => {
   const [show, setShow] = useState(false)
@@ -18,7 +19,7 @@ const Restaurants = ({ state, dispatch }) => {
   const getRestaurants = async () => {
     try {
       const res = await axios.get(
-        `https://api.documenu.com/v2/restaurants/zip_code/${state.zipcode}?key=7cfd4672d673a583a6fb2f3e0e177e71`
+        `${BASE_URL3}/zip_code/${state.zipcode}?key=${APY_RESTAURANT_KEY}`
       )
       console.log(res.data.data)
       dispatch({ type: 'get_restaurants', payload: res.data.data })
