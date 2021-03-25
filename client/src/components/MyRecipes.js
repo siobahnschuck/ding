@@ -24,7 +24,6 @@ const MyRecipes = (props) => {
     }
   }
 
-
   // const editItem = async (recipeId) => {
   //   try {
 
@@ -42,34 +41,40 @@ const MyRecipes = (props) => {
       <Modal show={show} onHide={handleClose} dialogClassName="myRecipes">
         {/* <Modal.Header closeButton></Modal.Header> */}
         <Modal.Body className="my-recipes">
-          {props.myRecipes.map((recipe) => (
-            <div key={recipe.id}>
-              <Card className="cards">
-                <Image src={recipe.image} />
-                <Card.Content>
-                  <Card.Header>{recipe.name}</Card.Header>
-                  <Card.Description>
-                    {recipe.duration}
-                    {recipe.calories}
-                    {recipe.ingredients}
-                    <br></br>
-                    {recipe.instructions}
-                    <p>Vegan:{recipe.isVegan.toString()}</p>
-                    <p>DairyFree:{recipe.isDairyFree.toString()}</p>
-                    <p>Has Nuts: {recipe.hasNuts.toString()}</p>
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <button
-                    color="red"
-                    icon
-                    labelPosition="left"
-                    onClick={() => deleteItem(recipe.id)}
-                  >
-                    Delete
-                  </button>
-                  <UpdateRecipe recipe={recipe} getMyRecipes={props.getMyRecipes} myRecipes={props.myRecipes}/>
-                  {/* <button
+          {props.myRecipes ? (
+            <div>
+              {props.myRecipes.map((recipe) => (
+                <div key={recipe.id}>
+                  <Card className="cards">
+                    <Image src={recipe.image} />
+                    <Card.Content>
+                      <Card.Header>{recipe.name}</Card.Header>
+                      <Card.Description>
+                        {recipe.duration}
+                        {recipe.calories}
+                        {recipe.ingredients}
+                        <br></br>
+                        {recipe.instructions}
+                        <p>Vegan:{recipe.isVegan}</p>
+                        <p>DairyFree:{recipe.isDairyFree}</p>
+                        <p>Has Nuts: {recipe.hasNuts}</p>
+                      </Card.Description>
+                    </Card.Content>
+                    <Card.Content extra>
+                      <button
+                        color="red"
+                        icon
+                        labelPosition="left"
+                        onClick={() => deleteItem(recipe.id)}
+                      >
+                        Delete
+                      </button>
+                      <UpdateRecipe
+                        recipe={recipe}
+                        getMyRecipes={props.getMyRecipes}
+                        myRecipes={props.myRecipes}
+                      />
+                      {/* <button
                     color="blue"
                     icon
                     labelPosition="right"
@@ -77,10 +82,16 @@ const MyRecipes = (props) => {
                   >
                     Edit
                   </button> */}
-                </Card.Content>
-              </Card>
+                    </Card.Content>
+                  </Card>
+                </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            <div>
+              <h1>Create A Recipe to add them to your collection!</h1>
+            </div>
+          )}
         </Modal.Body>
       </Modal>
     </div>
