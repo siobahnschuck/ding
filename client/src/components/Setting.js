@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import UseOutsideClick from './UseOutsideClick'
 
 import '../css/Setting.css'
-import { ModalActions } from 'semantic-ui-react'
+// import { ModalActions } from 'semantic-ui-react'
 
 const Setting = ({ state, dispatch, history }) => {
   // const [selected, setSelected] = useState(false)
@@ -50,9 +50,6 @@ const Setting = ({ state, dispatch, history }) => {
                   })
                 }
               >
-                <option value="none" selected>
-                  None
-                </option>
                 <option value="Italian">Italian</option>
                 <option value="American">American</option>
                 <option value="Chinese">Chinese</option>
@@ -75,11 +72,11 @@ const Setting = ({ state, dispatch, history }) => {
             <p>Dietary Restrictions:</p>
             <form>
               <p>Vegan:</p>
-              <input type="checkbox" value="true" />
+              <input type="checkbox" value="vegan" />
               <p>DairyFree:</p>
-              <input type="checkbox" value="true" />
+              <input type="checkbox" value="dairyFree" />
               <p>Vegetarian</p>
-              <input type="checkbox" value="true" />
+              <input type="checkbox" value="vegetarian" />
               <button
                 onSubmit={(e) =>
                   dispatch({

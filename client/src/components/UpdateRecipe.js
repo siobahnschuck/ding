@@ -9,18 +9,17 @@ const Edit = (props) => {
   console.log(props)
   const recipe = props.recipe
   const recipeId = recipe.id
-  
 
   const [update, setUpdate] = useState({
-    name: recipe.name,
-    cuisineType: recipe.cuisineType,
+    title: recipe.title,
+    cuisines: recipe.cuisines,
     instructions: recipe.instructions,
-    duration: recipe.duration,
+    readyInMinutes: recipe.readyInMinutes,
     calories: recipe.calories,
-    isVegan: recipe.isVegan,
-    isDairyFree: recipe.isDairyFree,
-    hasNuts: recipe.hasNuts
-    })
+    vegan: recipe.vegan,
+    dairyFree: recipe.dairyFree,
+    vegetarian: recipe.vegetarian
+  })
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -39,30 +38,29 @@ const Edit = (props) => {
     setUpdate({ ...update, [target.name]: target.value })
   }
 
-   const handleVeganChange = () => {
-    if (update.isVegan === true) {
-      setUpdate({...update, isVegan: false})
+  const handleVeganChange = () => {
+    if (update.vegan === true) {
+      setUpdate({ ...update, vegan: false })
     } else {
-      setUpdate({...update, isVegan: true})
+      setUpdate({ ...update, vegan: true })
     }
   }
   const handleDairyChange = () => {
-    if (update.isDairyFree === true) {
-      setUpdate({...update, isDairyFree: false})
+    if (update.dairyFree === true) {
+      setUpdate({ ...update, dairyFree: false })
     } else {
-      setUpdate({...update, isDairyFree: true})
+      setUpdate({ ...update, dairyFree: true })
     }
   }
   const handleNutsChange = () => {
-    if (update.hasNuts === true) {
-      setUpdate({...update, hasNuts: false})
+    if (update.vegetarian === true) {
+      setUpdate({ ...update, vegetarian: false })
     } else {
-      setUpdate({...update, hasNuts:true})
+      setUpdate({ ...update, vegetarian: true })
     }
   }
 
-
-    const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     // event.preventDefault();
     try {
       editItem(recipeId, update)
@@ -76,30 +74,30 @@ const Edit = (props) => {
       <Button variant="primary" onClick={handleShow}>
         Edit
       </Button>
-      <Modal show={show}  onHide={handleClose} dialogClassName="myRecipes">
+      <Modal show={show} onHide={handleClose} dialogClassName="myRecipes">
         <Modal.Header closeButton></Modal.Header>
-          <Modal.Title>Update Title</Modal.Title>
+        <Modal.Title>Update Title</Modal.Title>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
             <p>Image:</p>
             <input
               name="image"
-              placeholder = {recipe.image}
+              placeholder={recipe.image}
               value={update.image}
               onChange={handleChange}
             />
             <p>Title:</p>
             <input
-              name="name"
-              placeholder={recipe.name}
-              value={update.name}
+              name="title"
+              placeholder={recipe.title}
+              value={update.title}
               onChange={handleChange}
             />
-            <p>Cuisine:</p>
+            <p>Cuisines:</p>
             <input
-              name="cuisineType"
-              placeholder={recipe.cuisineType}
-              value={update.cuisineType}
+              name="cuisines"
+              placeholder={recipe.cuisines}
+              value={update.cuisines}
               onChange={handleChange}
             />
             <p>Instructions:</p>
@@ -109,11 +107,11 @@ const Edit = (props) => {
               value={update.instructions}
               onChange={handleChange}
             />
-            <p>Duration:</p>
+            <p>Ready in:</p>
             <input
-              name="duration"
-              placeholder={recipe.duration}
-              value={update.duration}
+              name="readyInMinutes"
+              placeholder={recipe.readyInMinutes}
+              value={update.readyInMinutes}
               onChange={handleChange}
             />
             <p>Calories:</p>
@@ -123,33 +121,33 @@ const Edit = (props) => {
               value={update.calories}
               onChange={handleChange}
             />
-            
-            <p>Vegan:</p>
-            <div className={update.isVegan ? 'check' : ''}>
-            <input 
-              type="checkbox"
-              value={update.isVegan}
-              onClick={handleVeganChange}
-            />
+
+            <p>Vegan</p>
+            <div className={update.vegan ? 'check' : ''}>
+              <input
+                type="checkbox"
+                value={update.vegan}
+                onClick={handleVeganChange}
+              />
             </div>
-            <p>DairyFree:</p>
-           <div className={update.isDairyFree ? 'check' : ''}>
-            <input
-              type="checkbox"
-              value={update.isDairyFree}
-              onClick={handleDairyChange}
-            />
+            <p>DairyFree</p>
+            <div className={update.dairyFree ? 'check' : ''}>
+              <input
+                type="checkbox"
+                value={update.dairyFree}
+                onClick={handleDairyChange}
+              />
             </div>
-            <p>No Nuts:</p>
-            <div className={update.hasNuts ? 'check' : ''}>
-            <input
-              type="checkbox"
-              value={update.hasNuts}
-              onClick={handleNutsChange}
-            />
+            <p>Vegetarian:</p>
+            <div className={update.vegetarian ? 'check' : ''}>
+              <input
+                type="checkbox"
+                value={update.vegetarian}
+                onClick={handleNutsChange}
+              />
             </div>
-            <br/>
-            <button type = 'submit'>Submit</button>
+            <br />
+            <button type="submit">Submit</button>
           </form>
         </Modal.Body>
       </Modal>
