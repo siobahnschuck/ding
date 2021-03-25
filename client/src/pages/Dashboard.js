@@ -122,7 +122,6 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     getMyRecipes()
-
   }, [])
 
   useEffect(() => {
