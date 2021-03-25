@@ -82,21 +82,34 @@ const DetailsRecipeCreate = (props) => {
     }
   }
 
-  // const ingredientList = props.ingredients.length
-  //   ? props.ingredients.map((ingredient, index) => {
-  //       return (
-  //         <IngredientList
-  //           key={'recipe' + index}
-  //           // name={ingredient.name}
-  //           // img={ingredient.image}
-  //           ingredient={ingredient}
-  //           history={props.history}
-  //           dispatch={props.dispatch}
-  //           state={props.state}
-  //         />
-  //       )
-  //     })
-  //   : null
+  const addIngredient = async (ingredient) => {
+    console.log(ingredient)
+    const test = { recipeId: props.recipeId, foodItemId: ingredient }
+    try {
+      const res = await axios.post(`${BASE_URL}/ingredients/`, test)
+      console.log(res, 'THIS IS FIRING')
+    } catch (error) {
+      throw error
+    }
+  }
+
+  const ingredientList = props.ingredients.length
+    ? props.ingredients.map((ingredient, index) => {
+        return (
+          <div onClick={() => addIngredient(ingredient.id)}>
+            <IngredientList
+              key={'recipe' + index}
+              // name={ingredient.name}
+              // img={ingredient.image}
+              ingredient={ingredient}
+              history={props.history}
+              dispatch={props.dispatch}
+              state={props.state}
+            />
+          </div>
+        )
+      })
+    : null
   console.log(props.recipeId)
 
   //create createIngredient function
@@ -160,6 +173,7 @@ const DetailsRecipeCreate = (props) => {
             />
             <br></br>
             <br></br>
+
             <div>
               <Fridge
                 fridge={props.state.fridge}
