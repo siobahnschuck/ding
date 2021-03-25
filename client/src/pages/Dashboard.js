@@ -70,15 +70,8 @@ const reducer = (state, action) => {
 
 const Dashboard = (props) => {
   console.log(props.currentUser.id)
-  const [newRecipe, setNewRecipe] = useState({
-    userId: parseInt(props.currentUser.id),
-    image: '',
-    name: '',
-    cuisineType: '',
-    instructions: '',
-    duration: 0,
-    calories: 0
-  })
+  const [recipeTitle, setRecipeTitle] = useState('')
+  const [recipeId, setRecipeId] = useState('')
   const [ingredients, setIngredients] = useState([])
   const [isVegan, setVegan] = useState(false)
   const [isDairyFree, setDairy] = useState(false)
@@ -91,8 +84,7 @@ const Dashboard = (props) => {
   // console.log(iState)
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setNewRecipe({ ...newRecipe, [name]: value })
+    setRecipeTitle(e.target.value)
   }
   const handleVeganChange = () => {
     if (isVegan === true) {
@@ -126,17 +118,19 @@ const Dashboard = (props) => {
     const userId = props.currentUser.id
 
     try {
+      // const res = await axios.put(`${BASE_URL}/recipe/${recipeId}`, update)
       const res = await axios.post(`${BASE_URL}/recipe/`, {
-        ...newRecipe,
-        ingredients,
-        isVegan,
-        isDairyFree,
-        hasNuts,
+        title: recipeTitle,
+        // ...newRecipe,
+        // ingredients,
+        // isVegan,
+        // isDairyFree,
+        // hasNuts,
         userId
       })
       console.log('submist recipe is firing')
       // we have access to the id once the recipe is created console.log(res.data.id)
-
+      setRecipeId(res.data.id)
       console.log(res.data.id)
       //push id to the a new page to update recipe
 
@@ -199,13 +193,14 @@ const Dashboard = (props) => {
             <CreateRecipe
               dispatch={dispatch}
               state={state}
-              newRecipe={newRecipe}
+              recipeTitle={recipeTitle}
               submitRecipe={submitRecipe}
               handleChange={handleChange}
               removeIngredient={removeIngredient}
               handleVeganChange={handleVeganChange}
               handleDairyChange={handleDairyChange}
               handleNutsChange={handleNutsChange}
+              recipeId={recipeId}
             />
           </div>
         </section>

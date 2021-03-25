@@ -1,7 +1,7 @@
 const { Recipe, Ingredient, FoodItem, User } = require('../models')
 const { Op } = require('sequelize')
 const axios = require('axios')
-const { BASE_URL, API_KEY } = require('../globals.js')
+const { BASE_URL, API_KEY, BASE_URL_INFO } = require('../globals.js')
 
 const GetRecipe = async (req, res) => {
   try {
@@ -59,6 +59,31 @@ const GetAndCreateRecipes = async (req, res) => {
     })
     //send mapped as response
     res.send(mapped)
+  } catch (error) {
+    throw error
+  }
+}
+
+const GetAndUpdateRecipe = async (req, res) => {
+  try {
+    let response = await axios.get(
+      `${BASE_URL_INFO}/${req.params.id}/information?includeNutrition=false&apiKey=${API_KEY}`
+    )
+    const apiData = response.data
+    // let mapped = Object.keys(apiData).map((item) => {
+    //   return {
+    // title: `${apiData[key]}`,
+    // cuisines: item.cuisines,
+    // instructions: item.instructions,
+    // image: item.image,
+    // vegan: item.vegan,
+    // dairyFree: item.dairyFree,
+    // vegetarian: item.vegetarian,
+    // readyInMinutes: item.readyInMinutes,
+    // calories: item.calories
+    //   }
+    // })
+    res.send(apiData)
   } catch (error) {
     throw error
   }
@@ -174,5 +199,6 @@ module.exports = {
   DeleteRecipe,
   GetUserRecipesIngredients,
   GetAndCreateRecipes,
-  GetRecipeById
+  GetRecipeById,
+  GetAndUpdateRecipe
 }
