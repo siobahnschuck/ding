@@ -38,20 +38,30 @@ const GetRecipeById = async (req, res) => {
 }
 
 const GetAndCreateRecipes = async (req, res) => {
-  //send req to api
-  let response = await axios.get(
-    `${BASE_URL}cuisine=${req.query.cuisine}&includeIngredients=${req.query.includeIngredients}&diet=${req.query.diet}&apiKey=${API_KEY}`
-  )
-  console.log(response.data.results)
-  //map through their data
-  let apiData = response.data.results
-  let mapped = apiData.map((item) => {
-    item.id, item.image, item.title
-  })
-  //bulkCreate mapped into recipes
-  Recipe.bulkCreate(mapped)
-  //send mapped as response
-  res.send(apiData)
+  try {
+    //send req to api
+    let response = await axios.get(
+      `${BASE_URL}cuisine=${req.query.cuisine}&includeIngredients=${req.query.includeIngredients}&diet=${req.query.diet}&apiKey=${API_KEY}`
+    )
+    console.log(response.data.results)
+    //map through their data
+    let apiData = response.data.results
+    let mapped = apiData.map((item) => {
+      return {
+        id: item.id,
+        title: item.title,
+        image: item.image
+      }
+    })
+    //bulkCreate mapped into recipes
+    Recipe.bulkCreate(mapped, {
+      returning: true
+    })
+    //send mapped as response
+    res.send(mapped)
+  } catch (error) {
+    throw error
+  }
 }
 
 const GetRecipeByLike = async (req, res) => {
