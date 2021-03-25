@@ -12,6 +12,8 @@ const AddFood = ({ state, dispatch, history }) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
+  console.log(state)
+
   const getIngredients = async () => {
     try {
       const res = await axios.get(
@@ -23,31 +25,28 @@ const AddFood = ({ state, dispatch, history }) => {
     }
   }
   const getRecipe = async () => {
+    let queryString = state.fridge.map((string) => string.name).join(',')
     try {
       const res = await axios.get(
-        `${BASE_URL}/recipe/search?cuisine=${state.cuisines}&includeIngredients=${state.fridge[1].name}`
+        `${BASE_URL}/recipe/search?cuisine=${state.cuisines}&includeIngredients=${queryString}`
       )
-      console.log(state.fridge[1].name)
-      console.log(res.data)
       dispatch({ type: 'get_recipes', payload: res.data })
     } catch (err) {
       console.log(err)
     }
   }
 
-  const ingredientList = state.ingredients.length
-    ? state.ingredients.map((ingredient, index) => {
-        return (
-          <IngredientList
-            key={'recipe' + index}
-            ingredient={ingredient}
-            history={history}
-            dispatch={dispatch}
-            state={state}
-          />
-        )
-      })
-    : null
+  const ingredientList = state.ingredients.map((ingredient, index) => {
+    return (
+      <IngredientList
+        key={'recipe' + index}
+        ingredient={ingredient}
+        history={history}
+        dispatch={dispatch}
+        state={state}
+      />
+    )
+  })
 
   const recipeList = state.recipes.length
     ? state.recipes.map((recipe, index) => {

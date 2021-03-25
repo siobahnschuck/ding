@@ -25,27 +25,53 @@ header {
   display: flex;
   justify-self: right;
 }
+.signBtn {
+  width: 6em;
+  height: 3em;
+  border-radius: 10px;
+  margin: 0.5em;
+  background-color: rgba(255, 255, 255, 0.295);
+}
 .modal-dialog.modal {
   display: grid;
-  align-items: center;
   text-align: center;
-  background-color: rgb(255, 208, 0);
+  background-color: rgba(255, 208, 0, 0.87);
   position: absolute;
   overflow: scroll;
   width: 50vw;
-  height: 50vh;
-  top: 30%;
+  height: 60vh;
+  top: 20%;
   left: 20%;
+}
+
+.header {
+  display: grid;
 }
 #closeBtn {
   justify-self: right;
+  padding: 7px 10px 7px 10px;
+  border-radius: 50px;
+}
+#signBtn {
+  width: 25em;
+  height: 3em;
+  border: rgb(248, 245, 245) solid;
+  border-radius: 5px;
+  background-color: black;
+  margin-top: 1em;
+}
+form {
+  display: grid;
+  justify-items: center;
+  align-self: center;
 }
 input {
   width: 25em;
   height: 3em;
-  border: wpx black solid;
+  border: 2px black solid;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.459);
+  margin: 0.5em;
 }
 .check {
   background-color: green;

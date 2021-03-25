@@ -42,20 +42,19 @@ const SignUp = (props) => {
 
   return (
     <div>
-      <Button variant="primary" onClick={() => props.toggleSignUp(true)}>
-        Sign Up
-      </Button>
       <Modal
         show={props.signUpOpen}
         // onHide={props.handleClose}
         dialogClassName="modal"
       >
-        <Modal.Header>
-          <Modal.Title>Sign Up</Modal.Title>
-        </Modal.Header>
+        <div className="header">
+          <Button id="closeBtn" onClick={() => props.toggleSignUp(false)}>
+            X
+          </Button>
+        </div>
         <Modal.Body>
+          <h2>Sign Up</h2>
           <form onSubmit={handleSubmit}>
-            <p> First Name:</p>
             <input
               type="text"
               name="firstName"
@@ -64,7 +63,6 @@ const SignUp = (props) => {
               onChange={handleChange}
               required
             />
-            <p> Last Name:</p>
             <input
               type="text"
               name="lastName"
@@ -73,7 +71,6 @@ const SignUp = (props) => {
               onChange={handleChange}
               required
             />
-            <p>username:</p>
             <input
               type="text"
               name="username"
@@ -82,7 +79,6 @@ const SignUp = (props) => {
               onChange={handleChange}
               required
             />
-            <p>email:</p>
             <input
               type="text"
               name="email"
@@ -91,7 +87,6 @@ const SignUp = (props) => {
               onChange={handleChange}
               required
             />
-            <p>password:</p>
             <input
               type="text"
               name="passwordDigest"
@@ -103,25 +98,29 @@ const SignUp = (props) => {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => props.toggleSignUp(false)}>
-            Close
-          </Button>
-          <NavLink to="/dashboard">
-            <Button
-              disabled={
-                !registerForm.email ||
-                !registerForm.passwordDigest ||
-                !registerForm.firstName
-              }
-              size="large"
-              color="teal"
-              animated="fade"
-              variant="primary"
-              onClick={handleSubmit}
+          <Button
+            disabled={
+              !registerForm.email ||
+              !registerForm.passwordDigest ||
+              !registerForm.firstName
+            }
+            size="large"
+            color="teal"
+            animated="fade"
+            id="signBtn"
+            onClick={handleSubmit}
+          >
+            <NavLink
+              to="/dashboard"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                fontWeight: 'bold'
+              }}
             >
               Sign Up
-            </Button>
-          </NavLink>
+            </NavLink>
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>

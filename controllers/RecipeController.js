@@ -54,8 +54,8 @@ const GetAndCreateRecipes = async (req, res) => {
       }
     })
     //bulkCreate mapped into recipes
-    Recipe.bulkCreate(mapped, {
-      returning: true
+    await Recipe.bulkCreate(mapped, {
+      ignoreDuplicates: true
     })
     //send mapped as response
     res.send(mapped)
