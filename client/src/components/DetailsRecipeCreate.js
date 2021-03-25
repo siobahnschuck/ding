@@ -4,7 +4,7 @@ import Fridge from '../components/Fridge'
 import IngredientList from '../components/IngredientList'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
-import Pantry from'./Pantry'
+import Pantry from './Pantry'
 
 const DetailsRecipeCreate = (props) => {
   const [show, setShow] = useState(false)
@@ -16,14 +16,14 @@ const DetailsRecipeCreate = (props) => {
     setIngredientKey({ recipeId: props.recipeid })
   }, [])
 
-  const getMyIngredients = async () => {
+  const getPantryIngredients = async () => {
     // e.preventDefault()
     try {
       const res = await axios.get(
         `${BASE_URL}/food/find/${props.state.query}`
         // `${BASE_URL}?query=${state.query}&apiKey=${API_KEY}&number=5`
       )
-      props.dispatch({ type: 'get_ingredients', payload: res.data })
+      props.dispatch({ type: 'get_recipeIngredients', payload: res.data })
       console.log(res)
     } catch (err) {
       console.log(err)
@@ -94,23 +94,24 @@ const DetailsRecipeCreate = (props) => {
     }
   }
 
-  const pantryList = props.ingredients.length
-    ? props.ingredients.map((ingredient, index) => {
-        return (
-          <div onClick={() => addIngredient(ingredient.id)}>
-            <Pantry
-              key={'recipe' + index}
-              // name={ingredient.name}
-              // img={ingredient.image}
-              ingredient={ingredient}
-              history={props.history}
-              dispatch={props.dispatch}
-              state={props.state}
-            />
-          </div>
-        )
-      })
-    : null
+  // const pantryList = props.recipeIngredients.length
+  //   ?
+  const pantryList = props.recipeIngredients.map((ingredient, index) => {
+    return (
+      <div onClick={() => addIngredient(ingredient.id)}>
+        <Pantry
+          key={'recipe' + index}
+          // name={ingredient.name}
+          // img={ingredient.image}
+          ingredient={ingredient}
+          history={props.history}
+          dispatch={props.dispatch}
+          state={props.state}
+        />
+      </div>
+    )
+  })
+  // : null
   console.log(props.recipeId)
 
   //create createIngredient function
@@ -175,12 +176,12 @@ const DetailsRecipeCreate = (props) => {
             <br></br>
             <br></br>
 
-            <div>
+            {/* <div>
               <Fridge
                 fridge={props.state.fridge}
                 removeIngredient={props.removeIngredient}
               />
-            </div>
+            </div> */}
             <button type="submit" onClick={handleClose}>
               Create
             </button>
@@ -194,10 +195,17 @@ const DetailsRecipeCreate = (props) => {
                 props.dispatch({ type: 'search', payload: e.target.value })
               }
             ></input>
-            <button onClick={() => getMyIngredients()}>search</button>
+            <button onClick={() => getPantryIngredients()}>search</button>
             {pantryList}
             <br></br>
             {/* <button onClick={() => addIngredient()}>Add Ingredient</button> */}
+            <div>
+              {props.state.pantry.map((pantryItem) => (
+                <div>
+                  <p>{pantryItem.name}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </Modal.Body>
       </Modal>
