@@ -194,7 +194,11 @@ const DetailsRecipeCreate = (props) => {
               }
             ></input>
             <button onClick={() => getMyIngredients()}>search</button>
-            {ingredientList}
+            {props.ingredients.map((ingredient) => (
+              <div>
+                <p></p>
+              </div>
+            ))}
             <br></br>
             {/* <button onClick={() => addIngredient()}>Add Ingredient</button> */}
           </div>

@@ -21,6 +21,10 @@ const iState = {
   vegan: false,
   dairyFree: false,
   vegetarian: false,
+  recipeIngredients: [],
+  pantry: [{ name: '', image: '' }],
+ 
+
   zipcode: ''
 }
 
@@ -37,6 +41,8 @@ const reducer = (state, action) => {
       return { ...state, recipes: action.payload }
     case 'add_fridge':
       return { ...state, fridge: [...state.fridge, action.payload] }
+    case 'add_pantry':
+      return { ...state, pantry: [...state.pantry, action.payload] }
     case 'create_recipe':
       return {
         ...state,
