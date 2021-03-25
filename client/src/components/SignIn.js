@@ -7,9 +7,9 @@ import { BASE_URL } from '../globals'
 
 const SignIn = (props) => {
   console.log(props)
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  // const [show, setShow] = useState(false)
+  // const handleClose = () => setShow(false)
+  // const handleShow = () => setShow(true)
 
   const [loginForm, handleLoginForm] = useState({
     username: '',
@@ -22,7 +22,7 @@ const SignIn = (props) => {
       const res = await axios.post(`${BASE_URL}/auth/login`, loginForm)
       localStorage.setItem('token', res.data.token)
       props.setAuthenticated(true)
-      setShow(false)
+      props.toggleSignin(false)
       props.setCurrentUser(res.data.user)
       handleLoginForm({ username: '', password: '' })
       console.log(res)
@@ -38,11 +38,15 @@ const SignIn = (props) => {
 
   return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" onClick={() => props.toggleSignIn(true)}>
         Sign In
       </Button>
-      <Modal show={show} onHide={handleClose} dialogClassName="modal">
-        <Modal.Header closeButton>
+      <Modal
+        show={props.signInOpen}
+        // onHide={props.handleClose}
+        dialogClassName="modal"
+      >
+        <Modal.Header>
           <Modal.Title>Sign In</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -68,7 +72,7 @@ const SignIn = (props) => {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={() => props.toggleSignIn(false)}>
             Close
           </Button>
 

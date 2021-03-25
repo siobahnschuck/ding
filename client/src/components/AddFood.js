@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import IngredientList from '../components/IngredientList'
 import Fridge from '../components/Fridge'
 import RecipeList from '../components/RecipeList'
-import { NavLink } from 'react-router-dom'
 import { BASE_URL, API_KEY, BASE_URL2 } from '../globals'
 import axios from 'axios'
 import '../css/AddFood.css'
@@ -86,7 +85,7 @@ const AddFood = ({ state, dispatch, history }) => {
         GENERATE RECIPE
       </Button>
       <Modal show={show} dialogClassName="addFood">
-        {/* <Modal.Header closeButton></Modal.Header> */}
+        <Modal.Header closeButton></Modal.Header>
         <Modal.Body className="body">
           <div>
             <Fridge

@@ -27,6 +27,8 @@ const Setting = ({ state, dispatch, history }) => {
         dialogClassName="setting"
         // ref={ref}
       >
+        {' '}
+        <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <h1>Preference</h1>
           <div className="cuisine-drop">
