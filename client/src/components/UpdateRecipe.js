@@ -84,7 +84,6 @@ const Edit = (props) => {
             <p>Image:</p>
             <input
               name="image"
-
               placeholder = {recipe.image}
               value={update.image}
               onChange={handleChange}

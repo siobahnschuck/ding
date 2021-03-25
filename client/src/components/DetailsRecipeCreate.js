@@ -82,21 +82,21 @@ const DetailsRecipeCreate = (props) => {
     }
   }
 
-  const ingredientList = props.ingredients.length
-    ? props.ingredients.map((ingredient, index) => {
-        return (
-          <IngredientList
-            key={'recipe' + index}
-            // name={ingredient.name}
-            // img={ingredient.image}
-            ingredient={ingredient}
-            history={props.history}
-            dispatch={props.dispatch}
-            state={props.state}
-          />
-        )
-      })
-    : null
+  // const ingredientList = props.ingredients.length
+  //   ? props.ingredients.map((ingredient, index) => {
+  //       return (
+  //         <IngredientList
+  //           key={'recipe' + index}
+  //           // name={ingredient.name}
+  //           // img={ingredient.image}
+  //           ingredient={ingredient}
+  //           history={props.history}
+  //           dispatch={props.dispatch}
+  //           state={props.state}
+  //         />
+  //       )
+  //     })
+  //   : null
   console.log(props.recipeId)
   return (
     <div>
@@ -166,9 +166,13 @@ const DetailsRecipeCreate = (props) => {
                 }
               ></input>
               <button onClick={() => getMyIngredients()}>search</button>
-              {ingredientList}
+              {props.ingredients.map((ingredient) => (
+                <div>
+                  <p>{ingredient.name}</p>
+                  <img src={ingredient.image} />
+                </div>
+              ))}
               <br></br>
-              {/* <button onClick={() => getRecipe()}>Generate Recipes</button> */}
             </div>
             <div>
               <Fridge
