@@ -32,6 +32,11 @@ const GetUserRecipesIngredients = async (req, res) => {
   }
 }
 
+const GetRecipeById = async (req, res) => {
+  let recipe = await Recipe.findByPk(req.params.id)
+  res.send(recipe)
+}
+
 const GetAndCreateRecipes = async (req, res) => {
   //send req to api
   let response = await axios.get(
@@ -41,12 +46,12 @@ const GetAndCreateRecipes = async (req, res) => {
   //map through their data
   let apiData = response.data.results
   let mapped = apiData.map((item) => {
-    item.id, item.cuisine, item.image, item.title
+    item.id, item.image, item.title
   })
   //bulkCreate mapped into recipes
   Recipe.bulkCreate(mapped)
   //send mapped as response
-  res.send(mapped)
+  res.send(apiData)
 }
 
 const GetRecipeByLike = async (req, res) => {
@@ -161,5 +166,6 @@ module.exports = {
   UpdateRecipe,
   DeleteRecipe,
   GetUserRecipesIngredients,
-  GetAndCreateRecipes
+  GetAndCreateRecipes,
+  GetRecipeById
 }
