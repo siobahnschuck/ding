@@ -91,6 +91,7 @@ const Dashboard = (props) => {
   const [isDairyFree, setDairy] = useState(false)
   const [hasNuts, setNuts] = useState(false)
   const [myRecipes, setMyRecipes] = useState([])
+  const [allRecipe, setAllRecipe] = useState([])
   const [state, dispatch] = useReducer(reducer, iState)
 
   const handleChange = (e) => {
@@ -122,6 +123,10 @@ const Dashboard = (props) => {
     getMyRecipes()
   }, [])
 
+  useEffect(() => {
+    getAllRecipes()
+  }, [])
+
   const submitRecipe = async (e) => {
     e.preventDefault()
     const userId = props.currentUser.id
@@ -147,12 +152,24 @@ const Dashboard = (props) => {
   //   }
   // }
   const getMyRecipes = async (e) => {
-    console.log(props.currentUserId)
+     console.log(props.currentUser.id)
+     const userId = props.currentUser.id
+     console.log(userId)
     try {
-      const res = await axios.get(`${BASE_URL}/recipe/myRecipes/`)
+      const res = await axios.get(`${BASE_URL}/recipe/myRecipes/${userId}`)
+      console.log(res)
       setMyRecipes(res.data)
     } catch (err) {
       throw err
+    }
+  }
+
+  const getAllRecipes = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/recipe/ `)
+      setAllRecipe(res.data)
+    } catch (error) {
+      throw error
     }
   }
 
@@ -207,7 +224,7 @@ const Dashboard = (props) => {
             <Restaurants dispatch={dispatch} state={state} />
           </div>
           <div className="block-1">
-            <GetAllRecipes getMyRecipes={getMyRecipes} />
+            <GetAllRecipes getAllRecipes={getAllRecipes} allRecipes={allRecipe} setAllRecipe={setAllRecipe}/>
           </div>
         </section>
       </div>
