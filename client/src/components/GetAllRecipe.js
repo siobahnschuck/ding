@@ -38,9 +38,6 @@ const GetAllRecipes = (props) => {
                         <p>Has Nuts: {recipe.hasNuts}</p>
                       </Card.Description>
                     </Card.Content>
-                    <Card.Content extra>
-
-                    </Card.Content>
                   </Card>
                 </div>
               ))}

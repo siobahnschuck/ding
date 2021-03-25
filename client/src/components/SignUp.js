@@ -6,10 +6,6 @@ import axios from 'axios'
 import { BASE_URL } from '../globals'
 
 const SignUp = (props) => {
-  // const [show, setShow] = useState(false)
-  // const handleClose = () => setShow(false)
-  // const handleShow = () => setShow(true)
-
   const [registerForm, handleRegisterForm] = useState({
     firstName: '',
     lastName: '',
@@ -42,11 +38,7 @@ const SignUp = (props) => {
 
   return (
     <div>
-      <Modal
-        show={props.signUpOpen}
-        // onHide={props.handleClose}
-        dialogClassName="modal"
-      >
+      <Modal show={props.signUpOpen} dialogClassName="modal">
         <div className="header">
           <Button id="closeBtn" onClick={() => props.toggleSignUp(false)}>
             X
@@ -111,7 +103,6 @@ const SignUp = (props) => {
             </Button>
           </form>
         </Modal.Body>
-        <Modal.Footer></Modal.Footer>
       </Modal>
     </div>
   )

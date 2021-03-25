@@ -39,12 +39,9 @@ const GetRecipeById = async (req, res) => {
 
 const GetAndCreateRecipes = async (req, res) => {
   try {
-    //send req to api
     let response = await axios.get(
       `${BASE_URL}cuisine=${req.query.cuisine}&includeIngredients=${req.query.includeIngredients}&diet=${req.query.diet}&apiKey=${API_KEY}`
     )
-    console.log(response.data.results)
-    //map through their data
     let apiData = response.data.results
     let mapped = apiData.map((apiData) => {
       return {
@@ -53,11 +50,9 @@ const GetAndCreateRecipes = async (req, res) => {
         image: apiData.image
       }
     })
-    //bulkCreate mapped into recipes
     await Recipe.bulkCreate(mapped, {
       ignoreDuplicates: true
     })
-    //send mapped as response
     res.send(mapped)
   } catch (error) {
     throw error
@@ -70,9 +65,6 @@ const GetAndUpdateRecipe = async (req, res) => {
       `${BASE_URL_INFO}/${req.params.id}/information?includeNutrition=false&apiKey=${API_KEY}`
     )
     const apiData = response.data
-
-    console.log(apiData.title)
-
     let data = {
       title: apiData.title,
       cuisines: apiData.cuisines,
@@ -84,7 +76,10 @@ const GetAndUpdateRecipe = async (req, res) => {
       readyInMinutes: apiData.readyInMinutes,
       calories: apiData.calories
     }
-    Recipe.update({ data }, { where: { id: req.params.id, returning: true } })
+    await Recipe.update(
+      { data },
+      { where: { id: req.params.id, returning: true } }
+    )
     res.send(data)
   } catch (error) {
     throw error
@@ -156,7 +151,6 @@ const LikeRecipe = async (req, res) => {
 }
 
 const CreateRecipe = async (req, res) => {
-  console.log(req.body)
   try {
     const addRecipe = await Recipe.create({ ...req.body })
     res.send(addRecipe)

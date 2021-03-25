@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
 import '../css/App.css'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
@@ -51,7 +50,7 @@ const Edit = (props) => {
       setUpdate({ ...update, dairyFree: true })
     }
   }
-  const handleNutsChange = () => {
+  const handleVegetarianChange = () => {
     if (update.vegetarian === true) {
       setUpdate({ ...update, vegetarian: false })
     } else {
@@ -142,7 +141,7 @@ const Edit = (props) => {
               <input
                 type="checkbox"
                 value={update.vegetarian}
-                onClick={handleNutsChange}
+                onClick={handleVegetarianChange}
               />
             </div>
             <br />
