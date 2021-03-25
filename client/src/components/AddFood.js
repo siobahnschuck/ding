@@ -8,20 +8,15 @@ import axios from 'axios'
 import '../css/AddFood.css'
 
 const AddFood = ({ state, dispatch, history }) => {
-  console.log('state on add fodd', state.query)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  // useEffect(() => {
-  //   getIngredients()
-  // }, [])
+
   const getIngredients = async () => {
     try {
       const res = await axios.get(
         `http://localhost:3001/food/find/${state.query}`
-        // `${BASE_URL}?query=${state.query}&apiKey=${API_KEY}&number=5`
       )
-      // console.log('getingredientsrespond', res)
       dispatch({ type: 'get_ingredients', payload: res.data })
     } catch (err) {
       console.log(err)
@@ -29,18 +24,12 @@ const AddFood = ({ state, dispatch, history }) => {
   }
   const getRecipe = async () => {
     try {
-      // let {
-      //   // state.cuisines,
-      //   // includeIngredients: state.fridge.name,
-      //   // diet: state.vegan
-      // } = req.query
-      const res = await axios.get(`${BASE_URL}/recipe/search`)
-      //   `${BASE_URL2}includeIngredients=${state.fridge[1].name}&apiKey=${API_KEY}&number=10`
-      // )
-      console.log(res)
-      // console.log(res.data[0].ingredient)
-      // dispatch({ type: 'get_recipes', payload: res.data[0].ingredient })
-      dispatch({ type: 'get_recipes', payload: res.data.results })
+      const res = await axios.get(
+        `${BASE_URL}/recipe/search?cuisine=${state.cuisines}&includeIngredients=${state.fridge[1].name}`
+      )
+      console.log(state.fridge[1].name)
+      console.log(res.data)
+      dispatch({ type: 'get_recipes', payload: res.data })
     } catch (err) {
       console.log(err)
     }
@@ -51,8 +40,6 @@ const AddFood = ({ state, dispatch, history }) => {
         return (
           <IngredientList
             key={'recipe' + index}
-            // name={ingredient.name}
-            // img={ingredient.image}
             ingredient={ingredient}
             history={history}
             dispatch={dispatch}
@@ -62,19 +49,11 @@ const AddFood = ({ state, dispatch, history }) => {
       })
     : null
 
-  // const recipeList = state.recipes.length ? state.recipes.map((recipe, index) => {
-  //   return (
-
-  //   )
-  // })
-  // console.log(ingredientList)
   const recipeList = state.recipes.length
     ? state.recipes.map((recipe, index) => {
         return (
           <RecipeList
             key={'recipe' + index}
-            // name={ingredient.name}
-            // img={ingredient.image}
             recipe={recipe}
             history={history}
             dispatch={dispatch}
@@ -89,7 +68,7 @@ const AddFood = ({ state, dispatch, history }) => {
         GENERATE RECIPE
       </Button>
       <Modal show={show} dialogClassName="addFood">
-        <Modal.Header closeButton></Modal.Header>
+        <Button onClick={handleClose}>Close</Button>
         <Modal.Body className="body">
           <div>
             <Fridge
