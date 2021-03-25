@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const SECRET_KEY = require('../globals')
 
 const SALT_ROUNDS = 12
-const SECRET_KEY = 'supersecret'
 
 const HashPassword = async (password) => {
   const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
