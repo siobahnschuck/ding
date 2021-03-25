@@ -46,13 +46,13 @@ const SignIn = (props) => {
         // onHide={props.handleClose}
         dialogClassName="modal"
       >
-        <Button id="closeBtn" onClick={() => props.toggleSignIn(false)}>
-          Close
-        </Button>
-        <Modal.Header>
-          <Modal.Title>Sign In</Modal.Title>
-        </Modal.Header>
+        <div className="header">
+          <Button id="closeBtn" onClick={() => props.toggleSignIn(false)}>
+            X
+          </Button>
+        </div>
         <Modal.Body>
+          <h2>Sign In</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="username"
@@ -62,8 +62,6 @@ const SignIn = (props) => {
               onChange={handleChange}
               required
             />
-            <br></br>
-            <br></br>
             <input
               type="password"
               name="password"
@@ -77,14 +75,23 @@ const SignIn = (props) => {
         <Modal.Footer>
           <button
             type="submit"
-            variant="primary"
+            id="signBtn"
             disabled={!loginForm.username || !loginForm.password}
             size="large"
             color="teal"
             animated="fade"
             onClick={handleSubmit}
           >
-            <NavLink to="/dashboard">Sign In</NavLink>
+            <NavLink
+              to="/dashboard"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                fontWeight: 'bold'
+              }}
+            >
+              Sign In
+            </NavLink>
           </button>
         </Modal.Footer>
       </Modal>
