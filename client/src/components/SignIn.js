@@ -6,16 +6,13 @@ import axios from 'axios'
 import { BASE_URL } from '../globals'
 
 const SignIn = (props) => {
-  console.log(props)
-  // const [show, setShow] = useState(false)
-  // const handleClose = () => setShow(false)
-  // const handleShow = () => setShow(true)
-
   const [loginForm, handleLoginForm] = useState({
     username: '',
     password: ''
   })
+
   const history = useHistory()
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
@@ -38,11 +35,7 @@ const SignIn = (props) => {
 
   return (
     <div>
-      <Modal
-        show={props.signInOpen}
-        // onHide={props.handleClose}
-        dialogClassName="modal"
-      >
+      <Modal show={props.signInOpen} dialogClassName="modal">
         <div className="header">
           <Button id="closeBtn" onClick={() => props.toggleSignIn(false)}>
             X

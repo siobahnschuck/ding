@@ -6,7 +6,6 @@ import './css/App.css'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from './globals'
-import { token } from 'morgan'
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false)
@@ -33,9 +32,6 @@ const App = () => {
   return (
     <div>
       <div>
-        {/* <button className="logOutBtn" onClick={logOut}>
-          <NavLink to="/">Logout</NavLink>
-        </button> */}
         <Switch>
           <Route
             exact

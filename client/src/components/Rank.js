@@ -48,7 +48,7 @@ const Rank = (props) => {
             {popular.map((item) => (
               <div className="popular-item">
                 <h2 className="recipe-title">{item.name}</h2>
-                {/* <img src={item.image} /> */}
+                <img src={item.image} />
                 <p>{item.cuisineType}</p>
                 <p>{item.instructions}</p>
                 <h2>Likes: {item.likes}</h2>

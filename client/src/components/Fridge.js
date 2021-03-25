@@ -1,8 +1,6 @@
 import React from 'react'
 
 const Fridge = (props) => {
-  console.log(props)
-
   const removeIngredient = (id) => {
     return props.dispatch({ type: 'remove_fridge', payload: id })
   }

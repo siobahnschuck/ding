@@ -87,58 +87,29 @@ const reducer = (state, action) => {
 const Dashboard = (props) => {
   const [recipeTitle, setRecipeTitle] = useState('')
   const [recipeId, setRecipeId] = useState('')
-  // const [ingredients, setIngredients] = useState([])
-  // const [isVegan, setVegan] = useState(false)
-  // const [isDairyFree, setDairy] = useState(false)
-  // const [hasNuts, setNuts] = useState(false)
   const [myRecipes, setMyRecipes] = useState([])
   const [allRecipe, setAllRecipe] = useState([])
   const [state, dispatch] = useReducer(reducer, iState)
 
-  console.log('dashboard state', state)
   const handleChange = (e) => {
     setRecipeTitle(e.target.value)
   }
-  // const handleVeganChange = () => {
-  //   if (isVegan === true) {
-  //     setVegan(false)
-  //   } else {
-  //     setVegan(true)
-  //   }
-  // }
-  // const handleDairyChange = () => {
-  //   if (isDairyFree === true) {
-  //     setDairy(false)
-  //   } else {
-  //     setDairy(true)
-  //   }
-  // }
-  // const handleNutsChange = () => {
-  //   if (hasNuts === true) {
-  //     setNuts(false)
-  //   } else {
-  //     setNuts(true)
-  //   }
-  // }
 
   useEffect(() => {
     getMyRecipes()
-
   }, [])
 
   useEffect(() => {
     getAllRecipes()
   }, [])
 
-   useEffect(() => {
+  useEffect(() => {
     props.checkSession()
   }, [])
 
   const submitRecipe = async (e) => {
     e.preventDefault()
     const userId = props.currentUser.id
-    console.log(props.currentUser.id)
-
     try {
       const res = await axios.post(`${BASE_URL}/recipe/`, {
         title: recipeTitle,
@@ -150,16 +121,11 @@ const Dashboard = (props) => {
       console.log(error)
     }
   }
-  // const removeIngredient = (id) => {
-  //   let filtered = state.fridge.filter((ing) => ing.id !== id)
-  //   return dispatch({ type: 'remove_fridge', payload: filtered })
-  // }
 
   const getMyRecipes = async (e) => {
     const userId = props.currentUser.id
     try {
       const res = await axios.get(`${BASE_URL}/recipe/myRecipes/${userId}`)
-      console.log(res)
       setMyRecipes(res.data)
     } catch (err) {
       throw err
@@ -200,11 +166,7 @@ const Dashboard = (props) => {
         </section>
         <section>
           <div className="block-1">
-            <AddFood
-              dispatch={dispatch}
-              state={state}
-              // removeIngredient={removeIngredient}
-            />
+            <AddFood dispatch={dispatch} state={state} />
           </div>
           <div className="block-1">
             <CreateRecipe
@@ -213,7 +175,6 @@ const Dashboard = (props) => {
               recipeTitle={recipeTitle}
               submitRecipe={submitRecipe}
               handleChange={handleChange}
-              // removeIngredient={removeIngredient}
               recipeId={recipeId}
             />
           </div>

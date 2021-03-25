@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const controller = require('../controllers/FoodItemController')
-const middleware = require('../middleware')
 
 router.get('/', controller.GetFoodItem)
 router.get('/recipe', controller.GetFoodItemByRecipe)

@@ -2,7 +2,6 @@ import React from 'react'
 
 const IngredientList = (props) => {
   const AddToFridge = () => {
-    console.log(props.name)
     props.dispatch({
       type: 'add_fridge',
       payload: props.ingredient

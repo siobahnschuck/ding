@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
 import SignIn from '../components/SignIn'
 import SignUp from '../components/SignUp'
 
 const Home = (props) => {
-  console.log(props)
   const [signInOpen, toggleSignIn] = useState(false)
   const [signUpOpen, toggleSignUp] = useState(false)
-  // const handleClose = () => setShow(false)
-  // const handleShow = () => setShow(true)
+
   const toggleOpen = (arg) => {
     toggleSignIn(false)
     toggleSignUp(false)
@@ -37,21 +34,12 @@ const Home = (props) => {
             signInOpen={signInOpen}
             toggleSignIn={toggleSignIn}
             toggleSignUp={toggleSignUp}
-            // handleClose={handleClose}
-            // handleShow={handleShow}
             authenticated={props.authenticated}
             setAuthenticated={props.setAuthenticated}
             currentUser={props.currentUser}
             setCurrentUser={props.setCurrentUser}
           />
-          <SignUp
-            signUpOpen={signUpOpen}
-            toggleSignUp={toggleSignUp}
-            // setShow={setShow}
-            // handleClose={handleClose}
-            // handleShow={handleShow}
-          />
-          {/* <Button  onClick={props.logOut}>Logout</Button> */}
+          <SignUp signUpOpen={signUpOpen} toggleSignUp={toggleSignUp} />
         </header>
         <img
           className="plate"
