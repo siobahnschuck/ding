@@ -30,7 +30,7 @@ const Setting = ({ state, dispatch, history }) => {
         {' '}
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-          <h1>Preference</h1>
+          <h1 className="setting-title">Preference</h1>
           <div className="cuisine-drop">
             <form
               onSubmit={(e) =>
@@ -40,7 +40,7 @@ const Setting = ({ state, dispatch, history }) => {
                 })
               }
             >
-              <p> Cuisine:</p>
+              <p className="setting-subtitle"> Cuisine:</p>
               <select
                 name="cuisine"
                 onChange={(e) =>
@@ -68,28 +68,49 @@ const Setting = ({ state, dispatch, history }) => {
               </select>
             </form>
           </div>
-          <div>
-            <p>Dietary Restrictions:</p>
-            <form>
-              <p>Vegan:</p>
-              <input type="checkbox" value="vegan" />
-              <p>DairyFree:</p>
-              <input type="checkbox" value="dairyFree" />
-              <p>Vegetarian</p>
-              <input type="checkbox" value="vegetarian" />
-              <button
-                onSubmit={(e) =>
-                  dispatch({
-                    type: 'select_specialty',
-                    payload: e.target.value
-                  })
-                }
-              ></button>
-            </form>
+          <div className="setting-restrictions">
+            <p className="setting-subtitle">Dietary Restrictions:</p>
+            <p className="setting-subtitle">Vegan:</p>
+            <input
+              type="checkbox"
+              value="true"
+              onClick={(e) => {
+                dispatch({
+                  type: 'select_vegan',
+                  payload: e.target.value
+                })
+              }}
+            />
+            <p className="setting-subtitle">DairyFree:</p>
+            <input
+              type="checkbox"
+              value="true"
+              onClick={(e) => {
+                dispatch({
+                  type: 'select_dairyFree',
+                  payload: e.target.value
+                })
+              }}
+            />
+            <p className="setting-subtitle">Vegetarian</p>
+            <input
+              type="checkbox"
+              value="true"
+              onClick={(e) => {
+                dispatch({
+                  type: 'select_vegetarian',
+                  payload: e.target.value
+                })
+              }}
+            />
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <button type="submit" onClick={() => handleClose()}>
+          <button
+            className="setting-save"
+            type="submit"
+            onClick={() => handleClose()}
+          >
             Save
           </button>
         </Modal.Footer>
