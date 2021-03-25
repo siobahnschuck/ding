@@ -14,7 +14,7 @@ import GetAllRecipes from '../components/GetAllRecipe'
 const iState = {
   query: '',
   ingredients: [],
-  fridge: [{ name: '', image: '' }],
+  fridge: [],
   recipes: [],
   restaurants: [],
   cuisines: '',
@@ -23,7 +23,6 @@ const iState = {
   vegetarian: false,
   recipeIngredients: [],
   pantry: [{ name: '', image: '' }],
-
   zipcode: ''
 }
 
@@ -42,6 +41,8 @@ const reducer = (state, action) => {
       return { ...state, recipes: action.payload }
     case 'add_fridge':
       return { ...state, fridge: [...state.fridge, action.payload] }
+    case 'remove_fridge':
+      return { fridge: action.payload }
     case 'add_pantry':
       return { ...state, pantry: [...state.pantry, action.payload] }
     case 'create_recipe':
@@ -86,10 +87,10 @@ const Dashboard = (props) => {
   console.log(props.currentUser.id)
   const [recipeTitle, setRecipeTitle] = useState('')
   const [recipeId, setRecipeId] = useState('')
-  const [ingredients, setIngredients] = useState([])
-  const [isVegan, setVegan] = useState(false)
-  const [isDairyFree, setDairy] = useState(false)
-  const [hasNuts, setNuts] = useState(false)
+  // const [ingredients, setIngredients] = useState([])
+  // const [isVegan, setVegan] = useState(false)
+  // const [isDairyFree, setDairy] = useState(false)
+  // const [hasNuts, setNuts] = useState(false)
   const [myRecipes, setMyRecipes] = useState([])
   const [allRecipe, setAllRecipe] = useState([])
   const [state, dispatch] = useReducer(reducer, iState)
@@ -97,27 +98,27 @@ const Dashboard = (props) => {
   const handleChange = (e) => {
     setRecipeTitle(e.target.value)
   }
-  const handleVeganChange = () => {
-    if (isVegan === true) {
-      setVegan(false)
-    } else {
-      setVegan(true)
-    }
-  }
-  const handleDairyChange = () => {
-    if (isDairyFree === true) {
-      setDairy(false)
-    } else {
-      setDairy(true)
-    }
-  }
-  const handleNutsChange = () => {
-    if (hasNuts === true) {
-      setNuts(false)
-    } else {
-      setNuts(true)
-    }
-  }
+  // const handleVeganChange = () => {
+  //   if (isVegan === true) {
+  //     setVegan(false)
+  //   } else {
+  //     setVegan(true)
+  //   }
+  // }
+  // const handleDairyChange = () => {
+  //   if (isDairyFree === true) {
+  //     setDairy(false)
+  //   } else {
+  //     setDairy(true)
+  //   }
+  // }
+  // const handleNutsChange = () => {
+  //   if (hasNuts === true) {
+  //     setNuts(false)
+  //   } else {
+  //     setNuts(true)
+  //   }
+  // }
 
   useEffect(() => {
     getMyRecipes()
@@ -143,17 +144,13 @@ const Dashboard = (props) => {
       console.log(error)
     }
   }
-  const removeIngredient = (id) => {
-    let filtered = ingredients.filter((ing) => ing.id !== id)
-    setIngredients(filtered)
-  }
-  // const addIngredient = (id) => {
-  //   if (!ingredients.includes(id)) {
-  //     setIngredients([...ingredients, id])
-  //   }
+  // const removeIngredient = (id) => {
+  //   let filtered = state.fridge.filter((ing) => ing.id !== id)
+  //   return dispatch({ type: 'remove_fridge', payload: filtered })
   // }
+
   const getMyRecipes = async (e) => {
-     const userId = props.currentUser.id
+    const userId = props.currentUser.id
     try {
       const res = await axios.get(`${BASE_URL}/recipe/myRecipes/${userId}`)
       console.log(res)
@@ -200,7 +197,7 @@ const Dashboard = (props) => {
             <AddFood
               dispatch={dispatch}
               state={state}
-              removeIngredient={removeIngredient}
+              // removeIngredient={removeIngredient}
             />
           </div>
           <div className="block-1">
@@ -210,10 +207,7 @@ const Dashboard = (props) => {
               recipeTitle={recipeTitle}
               submitRecipe={submitRecipe}
               handleChange={handleChange}
-              removeIngredient={removeIngredient}
-              handleVeganChange={handleVeganChange}
-              handleDairyChange={handleDairyChange}
-              handleNutsChange={handleNutsChange}
+              // removeIngredient={removeIngredient}
               recipeId={recipeId}
             />
           </div>
@@ -223,7 +217,11 @@ const Dashboard = (props) => {
             <Restaurants dispatch={dispatch} state={state} />
           </div>
           <div className="block-1">
-            <GetAllRecipes getAllRecipes={getAllRecipes} allRecipes={allRecipe} setAllRecipe={setAllRecipe}/>
+            <GetAllRecipes
+              getAllRecipes={getAllRecipes}
+              allRecipes={allRecipe}
+              setAllRecipe={setAllRecipe}
+            />
           </div>
         </section>
       </div>
