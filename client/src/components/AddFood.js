@@ -12,13 +12,9 @@ const AddFood = ({ state, dispatch, history }) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  console.log(state)
-
   const getIngredients = async () => {
     try {
-      const res = await axios.get(
-        `${BASE_URL}/food/find/${state.query}`
-      )
+      const res = await axios.get(`${BASE_URL}/food/find/${state.query}`)
       dispatch({ type: 'get_ingredients', payload: res.data })
     } catch (err) {
       console.log(err)

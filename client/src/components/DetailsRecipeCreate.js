@@ -17,12 +17,8 @@ const DetailsRecipeCreate = (props) => {
   }, [])
 
   const getPantryIngredients = async () => {
-    // e.preventDefault()
     try {
-      const res = await axios.get(
-        `${BASE_URL}/food/find/${props.state.query}`
-        // `${BASE_URL}?query=${state.query}&apiKey=${API_KEY}&number=5`
-      )
+      const res = await axios.get(`${BASE_URL}/food/find/${props.state.query}`)
       props.dispatch({ type: 'get_recipeIngredients', payload: res.data })
       console.log(res)
     } catch (err) {
@@ -31,9 +27,7 @@ const DetailsRecipeCreate = (props) => {
   }
   const recipeTitle = props.recipeTitle
   const recipeId = props.recipeId
-  console.log(props.recipeTitle)
   const [newRecipe, setNewRecipe] = useState({
-    // title: recipeTitle,
     cuisines: '',
     instructions: '',
     readyInMinutes: 0,
@@ -84,11 +78,9 @@ const DetailsRecipeCreate = (props) => {
   }
 
   const addIngredient = async (ingredient) => {
-    console.log(ingredient)
     const test = { recipeId: props.recipeId, foodItemId: ingredient }
     try {
       const res = await axios.post(`${BASE_URL}/ingredients/`, test)
-      console.log(res, 'THIS IS FIRING')
     } catch (error) {
       throw error
     }
@@ -100,8 +92,6 @@ const DetailsRecipeCreate = (props) => {
           <div onClick={() => addIngredient(ingredient.id)}>
             <Pantry
               key={'recipe' + index}
-              // name={ingredient.name}
-              // img={ingredient.image}
               ingredient={ingredient}
               history={props.history}
               dispatch={props.dispatch}
@@ -111,9 +101,6 @@ const DetailsRecipeCreate = (props) => {
         )
       })
     : null
-  console.log(props.recipeId)
-
-  //create createIngredient function
 
   return (
     <div>

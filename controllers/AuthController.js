@@ -3,7 +3,6 @@ const { HashPassword, ComparePassword, CreateToken } = require('../middleware')
 
 const Login = async (req, res) => {
   try {
-    console.log(req.body)
     const user = await User.findOne({
       where: { username: req.body.username },
       raw: true
@@ -21,13 +20,11 @@ const Login = async (req, res) => {
     }
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
   } catch (error) {
-    console.log(error)
     res.status(401).send({ status: 'Error', msg: 'INTRUDER' })
   }
 }
 
 const Register = async (req, res) => {
-  // console.log(req.body)
   try {
     let { firstName, lastName, username, email } = req.body
     let passwordDigest = await HashPassword(req.body.passwordDigest)
@@ -38,7 +35,6 @@ const Register = async (req, res) => {
       email,
       passwordDigest
     })
-    // res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
     res.send(user)
   } catch (error) {
     throw error

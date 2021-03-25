@@ -7,7 +7,6 @@ import '../css/Recipe.css'
 import UpdateRecipe from './UpdateRecipe'
 
 const MyRecipes = (props) => {
-  console.log(props)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -23,15 +22,6 @@ const MyRecipes = (props) => {
       console.log(error)
     }
   }
-
-  // const editItem = async (recipeId) => {
-  //   try {
-
-  //     const res = await axios.put(`${BASE_URL}/recipe/${recipeId}`)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
 
   return (
     <div>
@@ -58,10 +48,9 @@ const MyRecipes = (props) => {
                         <p>Vegan:toString({recipe.vegan})</p>
                         <p>Dairy Free:{recipe.dairyFree}</p>
                         <p>Vegetarian:{recipe.vegetarian}</p>
-                        {recipe.recipe_ingredient.map((ingredient) => 
-                        ( <p>Ingredients: {ingredient.name}</p>
-                        )
-                        )} 
+                        {recipe.recipe_ingredient.map((ingredient) => (
+                          <p>Ingredients: {ingredient.name}</p>
+                        ))}
                       </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
@@ -78,14 +67,6 @@ const MyRecipes = (props) => {
                         getMyRecipes={props.getMyRecipes}
                         myRecipes={props.myRecipes}
                       />
-                      {/* <button
-                    color="blue"
-                    icon
-                    labelPosition="right"
-                    onClick={handleShow}
-                  >
-                    Edit
-                  </button> */}
                     </Card.Content>
                   </Card>
                 </div>

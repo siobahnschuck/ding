@@ -21,13 +21,11 @@ const Restaurants = ({ state, dispatch }) => {
       const res = await axios.get(
         `${BASE_URL3}/zip_code/${state.zipcode}?key=${APY_RESTAURANT_KEY}`
       )
-      console.log(res.data.data)
       dispatch({ type: 'get_restaurants', payload: res.data.data })
     } catch (err) {
       console.log(err)
     }
   }
-  console.log(state.restaurants)
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>
