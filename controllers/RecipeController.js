@@ -95,12 +95,12 @@ const GetRecipeByCuisineType = async (req, res) => {
   try {
     const recipes = await Recipe.findAll({
       where: {
-        cuisineType: type
+        cuisines: type
       }
     })
     res.send(recipes)
   } catch (error) {
-    throw erroe
+    throw error
   }
 }
 
@@ -129,14 +129,11 @@ const CreateRecipe = async (req, res) => {
 }
 
 const UpdateRecipe = async (req, res) => {
-  console.log(req.params.recipe_id)
-  console.log(req.body, 'REQ.BODY')
   try {
     const recipe = await Recipe.update(
       { ...req.body },
       { where: { id: req.params.recipe_id }, returning: true }
     )
-    console.log(recipe, 'RECIPE')
     res.send(recipe)
   } catch (error) {
     throw error
