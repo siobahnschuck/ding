@@ -4,7 +4,6 @@ import Fridge from '../components/Fridge'
 import IngredientList from '../components/IngredientList'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
-
 const DetailsRecipeCreate = (props) => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -28,7 +27,7 @@ const DetailsRecipeCreate = (props) => {
   const recipeId = props.recipeId
   console.log(props.recipeTitle)
   const [newRecipe, setNewRecipe] = useState({
-    title: recipeTitle,
+    // title: recipeTitle,
     cuisines: '',
     instructions: '',
     readyInMinutes: 0,
@@ -37,7 +36,6 @@ const DetailsRecipeCreate = (props) => {
     dairyFree: false,
     vegetarian: false
   })
-
   const createRecipe = async (recipeId, newRecipe) => {
     try {
       const res = await axios.put(`${BASE_URL}/recipe/${recipeId}`, newRecipe)
@@ -46,11 +44,9 @@ const DetailsRecipeCreate = (props) => {
       throw error
     }
   }
-
   const handleChange = ({ target }) => {
     setNewRecipe({ ...newRecipe, [target.name]: target.value })
   }
-
   const handleVeganChange = () => {
     if (newRecipe.vegan === true) {
       setNewRecipe({ ...newRecipe, vegan: false })
@@ -72,7 +68,6 @@ const DetailsRecipeCreate = (props) => {
       setNewRecipe({ ...newRecipe, vegetarian: true })
     }
   }
-
   const handleSubmit = async (event) => {
     // event.preventDefault();
     try {
@@ -81,7 +76,6 @@ const DetailsRecipeCreate = (props) => {
       console.log(error)
     }
   }
-
   const ingredientList = props.ingredients.length
     ? props.ingredients.map((ingredient, index) => {
         return (
@@ -105,6 +99,7 @@ const DetailsRecipeCreate = (props) => {
       </Button>
       <Modal show={show} dialogClassName="addFood">
         <Modal.Body>
+          <h2>{props.recipeTitle}</h2>
           <form onSubmit={handleSubmit}>
             <p>Image:</p>
             <input
@@ -185,5 +180,4 @@ const DetailsRecipeCreate = (props) => {
     </div>
   )
 }
-
 export default DetailsRecipeCreate
