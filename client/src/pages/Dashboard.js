@@ -17,6 +17,8 @@ const iState = {
   fridge: [{ name: '', image: '' }],
   recipes: [],
   restaurants: [],
+  recipeIngredients: [],
+  pantry: [{ name: '', image: '' }],
   cuisineType: '',
   specialRequest: '',
   zipcode: ''
@@ -37,6 +39,8 @@ const reducer = (state, action) => {
       // console.log('add_fridge is firing', action.payload)
       // console.log('here is th states', state)
       return { ...state, fridge: [...state.fridge, action.payload] }
+    case 'add_pantry':
+      return { ...state, pantry: [...state.pantry, action.payload] }
     case 'create_recipe':
       return {
         ...state,
