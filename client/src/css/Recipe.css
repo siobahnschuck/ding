@@ -18,3 +18,13 @@
   /* width: 30em; */
   margin: 2em;
 }
+.modal-dialog.create-title {
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  overflow: scroll;
+  width: 50vw;
+  height: 30vh;
+  top: 30%;
+  left: 25%;
+}

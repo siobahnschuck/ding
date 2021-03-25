@@ -75,7 +75,7 @@ const DetailsRecipeCreate = (props) => {
     }
   }
   const handleSubmit = async (event) => {
-    // event.preventDefault();
+    event.preventDefault()
     try {
       createRecipe(recipeId, newRecipe)
     } catch (error) {
@@ -121,6 +121,7 @@ const DetailsRecipeCreate = (props) => {
         Next
       </Button>
       <Modal show={show} dialogClassName="addFood">
+        <Button onClick={handleClose}>Close</Button>
         <Modal.Body>
           <h2>{props.recipeTitle}</h2>
           <form onSubmit={handleSubmit}>
@@ -174,32 +175,30 @@ const DetailsRecipeCreate = (props) => {
             />
             <br></br>
             <br></br>
-
+            <div id="addFood">
+              Ingredients:
+              <br></br>
+              <input
+                value={props.state.query}
+                onChange={(e) =>
+                  props.dispatch({ type: 'search', payload: e.target.value })
+                }
+              ></input>
+              <button onClick={() => getPantryIngredients()}>search</button>
+              {pantryList}
+              <br></br>
+              <div>
+                {props.state.pantry.map((pantryItem) => (
+                  <div>
+                    <p>{pantryItem.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
             <button type="submit" onClick={handleClose}>
               Create
             </button>
           </form>
-          <div id="addFood">
-            Ingredients:
-            <br></br>
-            <input
-              value={props.state.query}
-              onChange={(e) =>
-                props.dispatch({ type: 'search', payload: e.target.value })
-              }
-            ></input>
-            <button onClick={() => getPantryIngredients()}>search</button>
-            {pantryList}
-            <br></br>
-            {/* <button onClick={() => addIngredient()}>Add Ingredient</button> */}
-            <div>
-              {props.state.pantry.map((pantryItem) => (
-                <div>
-                  <p>{pantryItem.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </Modal.Body>
       </Modal>
     </div>

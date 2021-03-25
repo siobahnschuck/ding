@@ -45,11 +45,11 @@ const CreateRecipe = (props) => {
   //   : null
   return (
     <div>
-      {/* <NavLink to="/myrecipepage">Create Recipe</NavLink> */}
       <Button id="dash-button" onClick={handleShow}>
         CREATE RECIPE
       </Button>
-      <Modal show={show} onHide={handleClose} dialogClassName="myRecipes">
+      <Modal show={show} onHide={handleClose} dialogClassName="create-title">
+        <Button onClick={handleClose}>Close</Button>
         <Modal.Body>
           <h2>Create Recipe</h2>
           <form onSubmit={props.submitRecipe}>
