@@ -2,7 +2,7 @@ import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import About from './pages/About'
 import MyRecipePage from './pages/MyRecipePage'
-import { Route, NavLink, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import './css/App.css'
 import React, { useState } from 'react'
 

@@ -163,7 +163,9 @@ const Dashboard = (props) => {
   return (
     <div className="dashboard">
       <button className="logOutBtn" onClick={props.logOut}>
-        <NavLink to="/">Logout</NavLink>
+        <NavLink to="/" style={{ textDecoration: 'none' }}>
+          Logout
+        </NavLink>
       </button>
       <div id="dashboard">
         <section>
