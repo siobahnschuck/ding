@@ -85,7 +85,7 @@ const AddFood = ({ state, dispatch, history }) => {
         GENERATE RECIPE
       </Button>
       <Modal show={show} dialogClassName="addFood">
-        {/* <Modal.Header closeButton></Modal.Header> */}
+        <Modal.Header closeButton></Modal.Header>
         <Modal.Body className="body">
           <div>
             <Fridge

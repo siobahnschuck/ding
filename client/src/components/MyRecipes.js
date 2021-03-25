@@ -39,7 +39,7 @@ const MyRecipes = (props) => {
         MY RECIPES
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="myRecipes">
-        {/* <Modal.Header closeButton></Modal.Header> */}
+        <Modal.Header closeButton></Modal.Header>
         <Modal.Body className="my-recipes">
           {props.myRecipes ? (
             <div>

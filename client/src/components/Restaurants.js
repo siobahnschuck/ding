@@ -33,7 +33,7 @@ const Restaurants = ({ state, dispatch }) => {
         ORDER ONLINE?
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="addFood">
-        {/* <Modal.Header closeButton></Modal.Header> */}
+        <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <h2>Enter your zipcode</h2>
           <input
