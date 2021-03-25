@@ -4,6 +4,7 @@ import Fridge from '../components/Fridge'
 import IngredientList from '../components/IngredientList'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
+import Pantry from'./Pantry'
 
 const DetailsRecipeCreate = (props) => {
   const [show, setShow] = useState(false)
@@ -93,11 +94,11 @@ const DetailsRecipeCreate = (props) => {
     }
   }
 
-  const ingredientList = props.ingredients.length
+  const pantryList = props.ingredients.length
     ? props.ingredients.map((ingredient, index) => {
         return (
           <div onClick={() => addIngredient(ingredient.id)}>
-            <IngredientList
+            <Pantry
               key={'recipe' + index}
               // name={ingredient.name}
               // img={ingredient.image}
@@ -194,11 +195,7 @@ const DetailsRecipeCreate = (props) => {
               }
             ></input>
             <button onClick={() => getMyIngredients()}>search</button>
-            {props.ingredients.map((ingredient) => (
-              <div>
-                <p></p>
-              </div>
-            ))}
+            {pantryList}
             <br></br>
             {/* <button onClick={() => addIngredient()}>Add Ingredient</button> */}
           </div>
