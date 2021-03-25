@@ -6,16 +6,16 @@ module.exports = {
     const users = await User.findAll({ raw: true })
     let recipes = [...Array(20)].map(() => ({
       userId: users[Math.floor(Math.random() * users.length)].id,
-      name: faker.lorem.word(),
-      cuisineType: faker.lorem.word(),
+      title: faker.lorem.word(),
+      cuisines: faker.lorem.word(),
       instructions: faker.lorem.sentence(),
       image: faker.image.image(),
-      isVegan: faker.random.boolean(),
-      isDairyFree: faker.random.boolean(),
-      hasNuts: faker.random.boolean(),
-      duration: Math.floor(Math.random() * 180),
+      vegan: faker.random.boolean(),
+      dairyFree: faker.random.boolean(),
+      vegetarian: faker.random.boolean(),
+      readyInMinutes: Math.floor(Math.random() * 180),
       calories: Math.floor(Math.random() * 800),
-      like: faker.random.number(),
+      likes: faker.random.number(),
       createdAt: new Date(),
       updatedAt: new Date()
     }))
