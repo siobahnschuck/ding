@@ -46,25 +46,28 @@ const SignIn = (props) => {
         // onHide={props.handleClose}
         dialogClassName="modal"
       >
+        <Button id="closeBtn" onClick={() => props.toggleSignIn(false)}>
+          Close
+        </Button>
         <Modal.Header>
           <Modal.Title>Sign In</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
-            <p>username:</p>
             <input
               type="username"
               name="username"
-              placeholder="USERNAME"
+              placeholder="Username"
               value={loginForm.username}
               onChange={handleChange}
               required
             />
-            <p>password:</p>
+            <br></br>
+            <br></br>
             <input
               type="password"
               name="password"
-              placeholder="PASSWORD"
+              placeholder="Password"
               value={loginForm.password}
               onChange={handleChange}
               required
@@ -72,10 +75,6 @@ const SignIn = (props) => {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => props.toggleSignIn(false)}>
-            Close
-          </Button>
-
           <button
             type="submit"
             variant="primary"

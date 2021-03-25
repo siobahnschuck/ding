@@ -26,17 +26,28 @@ header {
   justify-self: right;
 }
 .modal-dialog.modal {
+  display: grid;
+  align-items: center;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.151);
+  background-color: rgb(255, 208, 0);
   position: absolute;
   overflow: scroll;
-  width: 80vw;
-  height: 80vh;
-  top: 10%;
-  left: 10%;
+  width: 50vw;
+  height: 50vh;
+  top: 30%;
+  left: 20%;
 }
-
-.check{
+#closeBtn {
+  justify-self: right;
+}
+input {
+  width: 25em;
+  height: 3em;
+  border: wpx black solid;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.459);
+}
+.check {
   background-color: green;
   border: none;
 }
