@@ -12,4 +12,24 @@
 .setting-title {
   text-align: center;
   font-size: larger;
+  color: black;
+}
+
+.setting-restrictions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.setting-subtitle,
+.setting-cuisine {
+  text-align: center;
+}
+
+.setting-save {
+  margin-top: 5em;
+  border: none;
+  border-radius: 2em;
+  width: 5em;
 }

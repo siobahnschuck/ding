@@ -30,9 +30,10 @@ const Setting = ({ state, dispatch, history }) => {
         {' '}
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-          <h1 className="setting-title">Preference</h1>
+          <h1 className="setting-title">PREFERENCES</h1>
           <div className="cuisine-drop">
             <form
+              className="setting-cuisine"
               onSubmit={(e) =>
                 dispatch({
                   type: 'submit_setting',
@@ -72,6 +73,7 @@ const Setting = ({ state, dispatch, history }) => {
             <p className="setting-subtitle">Dietary Restrictions:</p>
             <p className="setting-subtitle">Vegan:</p>
             <input
+              className="setting-check"
               type="checkbox"
               value="true"
               onClick={(e) => {
@@ -83,6 +85,7 @@ const Setting = ({ state, dispatch, history }) => {
             />
             <p className="setting-subtitle">DairyFree:</p>
             <input
+              className="setting-check"
               type="checkbox"
               value="true"
               onClick={(e) => {
@@ -94,6 +97,7 @@ const Setting = ({ state, dispatch, history }) => {
             />
             <p className="setting-subtitle">Vegetarian</p>
             <input
+              className="setting-check"
               type="checkbox"
               value="true"
               onClick={(e) => {
@@ -103,17 +107,16 @@ const Setting = ({ state, dispatch, history }) => {
                 })
               }}
             />
+            <button
+              className="setting-save"
+              type="submit"
+              onClick={() => handleClose()}
+            >
+              Save
+            </button>
           </div>
         </Modal.Body>
-        <Modal.Footer>
-          <button
-            className="setting-save"
-            type="submit"
-            onClick={() => handleClose()}
-          >
-            Save
-          </button>
-        </Modal.Footer>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     </div>
   )
