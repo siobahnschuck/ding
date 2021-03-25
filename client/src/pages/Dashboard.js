@@ -123,10 +123,15 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     getMyRecipes()
+
   }, [])
 
   useEffect(() => {
     getAllRecipes()
+  }, [])
+
+   useEffect(() => {
+    props.checkSession()
   }, [])
 
   const submitRecipe = async (e) => {
