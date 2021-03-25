@@ -10,7 +10,7 @@ const IngredientList = (props) => {
   }
   return (
     <div className="ingredientList">
-      {/* <img alt="item" src={props.ingredient.image} /> */}
+      <img alt="item" src={props.ingredient.image} />
       <span>
         <p>{props.ingredient ? props.ingredient.name : null}</p>
         <button onClick={() => AddToFridge(props.ingredient)}>+</button>
