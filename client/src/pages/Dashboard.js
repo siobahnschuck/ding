@@ -155,10 +155,9 @@ const Dashboard = (props) => {
   //   }
   // }
   const getMyRecipes = async (e) => {
-    // e.preventDefault()
+    console.log(props.currentUserId)
     try {
-      const res = await axios.get(`${BASE_URL}/recipe/`)
-      // console.log(res.data)
+      const res = await axios.get(`${BASE_URL}/recipe/myRecipes/`)
       setMyRecipes(res.data)
     } catch (err) {
       throw err
