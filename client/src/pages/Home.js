@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom'
 import SignIn from '../components/SignIn'
 import SignUp from '../components/SignUp'
 
-const Home = () => {
+const Home = (props) => {
+  console.log(props)
   return (
     <div className="home">
       <section className="left">
@@ -13,8 +14,14 @@ const Home = () => {
       </section>
       <section className="right">
         <header>
-          <SignIn />
+          <SignIn
+            authenticated={props.authenticated}
+            setAuthenticated={props.setAuthenticated}
+            currentUser={props.currentUser}
+            setCurrentUser={props.setCurrentUser}
+          />
           <SignUp />
+          {/* <Button  onClick={props.logOut}>Logout</Button> */}
         </header>
         <img
           className="plate"

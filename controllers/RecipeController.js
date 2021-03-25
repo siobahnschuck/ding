@@ -11,12 +11,17 @@ const GetRecipe = async (req, res) => {
 }
 
 const GetUserRecipesIngredients = async (req, res) => {
-  let id = req.params
   try {
     const recipes = await Recipe.findAll({
-      include: [{ model: FoodItem, as: 'recipe_ingredient' }],
+      include: [
+        {
+          model: FoodItem,
+          as: 'recipe_ingredient',
+          through: { attributes: [] }
+        }
+      ],
       where: {
-        user_id: req.params
+        userId: req.params.user_id
       }
     })
     res.send(recipes)
@@ -90,6 +95,7 @@ const LikeRecipe = async (req, res) => {
 }
 
 const CreateRecipe = async (req, res) => {
+  console.log(req.body)
   try {
     const addRecipe = await Recipe.create({ ...req.body })
     res.send(addRecipe)

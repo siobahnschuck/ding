@@ -1,23 +1,66 @@
-import React from 'react'
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import About from './pages/About'
 import MyRecipePage from './pages/MyRecipePage'
 import { Route, NavLink, Switch } from 'react-router-dom'
 import './css/App.css'
+import React, { useState } from 'react'
 
 const App = () => {
+  console.log(localStorage)
+
+  const [authenticated, setAuthenticated] = useState(false)
+  const [currentUser, setCurrentUser] = useState({})
+
+  const logOut = () => {
+    setAuthenticated(false)
+    localStorage.clear()
+  }
+
+  console.log(authenticated)
+  console.log(currentUser.id)
+
   return (
     <div>
-      <Switch>
-        <Route exact path="/" render={(props) => <Home {...props} />} />
-        <Route path="/dashboard" render={(props) => <Dashboard {...props} />} />
-        <Route path="/about" render={(props) => <About {...props} />} />
-        <Route
-          path="/myrecipepage"
-          render={(props) => <MyRecipePage {...props} />}
-        />
-      </Switch>
+      <div>
+        {/* <button className="logOutBtn" onClick={logOut}>
+          <NavLink to="/">Logout</NavLink>
+        </button> */}
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Home
+                {...props}
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+                logOut={logOut}
+              />
+            )}
+          />
+          {authenticated ? (
+            <Route
+              path="/dashboard"
+              render={(props) => (
+                <Dashboard
+                  {...props}
+                  authenticated={authenticated}
+                  logOut={logOut}
+                  currentUser={currentUser}
+                />
+              )}
+            />
+          ) : null}
+          <Route path="/about" render={(props) => <About {...props} />} />
+          <Route
+            path="/myrecipepage"
+            render={(props) => <MyRecipePage {...props} />}
+          />
+        </Switch>
+      </div>
     </div>
   )
 }

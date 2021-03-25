@@ -1,5 +1,6 @@
 .dashboard {
   display: grid;
+  grid-template-rows: 1fr 20fr;
   justify-items: center;
   height: 100vh;
   background-image: url('https://i.ibb.co/wc0kB5M/image.png');
@@ -47,4 +48,12 @@
   border: none;
   font-size: 1.5em;
   font-weight: bold;
+}
+.logOutBtn {
+  justify-self: right;
+  margin-right: 1em;
+  width: 6em;
+  height: 3em;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.473);
 }
