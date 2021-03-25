@@ -65,7 +65,7 @@ const CreateRecipe = (props) => {
             history={props.history}
             dispatch={props.dispatch}
             state={props.state}
-            ingredients={props.state.ingredients}
+            recipeIngredients={props.state.recipeIngredients}
             submitRecipe={props.submitRecipe}
             recipeTitle={props.recipeTitle}
             handleChange={props.handleChange}

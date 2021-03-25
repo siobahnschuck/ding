@@ -23,7 +23,6 @@ const iState = {
   vegetarian: false,
   recipeIngredients: [],
   pantry: [{ name: '', image: '' }],
- 
 
   zipcode: ''
 }
@@ -37,6 +36,8 @@ const reducer = (state, action) => {
       }
     case 'get_ingredients':
       return { ...state, ingredients: action.payload }
+    case 'get_recipeIngredients':
+      return { ...state, recipeIngredients: action.payload }
     case 'get_recipes':
       return { ...state, recipes: action.payload }
     case 'add_fridge':
@@ -206,7 +207,7 @@ const Dashboard = (props) => {
             <Restaurants dispatch={dispatch} state={state} />
           </div>
           <div className="block-1">
-            <GetAllRecipes  getMyRecipes={getMyRecipes}/>
+            <GetAllRecipes getMyRecipes={getMyRecipes} />
           </div>
         </section>
       </div>
