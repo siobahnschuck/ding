@@ -5,8 +5,8 @@ export const BASE_URL2 = 'https://api.spoonacular.com/recipes/complexSearch?'
 export const BASE_URL3 = 'https://api.documenu.com/v2/restaurants'
 export const BASE_URL =
   process.env.NODE_ENV === 'production'
-    ? `${window.location.origin}/api`
-    : 'http://localhost:3001/api'
+    ? `${window.location.origin}`
+    : 'http://localhost:3001'
 
 axios.interceptors.request.use(
   (config) => {
