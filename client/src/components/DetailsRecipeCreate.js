@@ -94,24 +94,23 @@ const DetailsRecipeCreate = (props) => {
     }
   }
 
-  // const pantryList = props.recipeIngredients.length
-  //   ?
-  const pantryList = props.recipeIngredients.map((ingredient, index) => {
-    return (
-      <div onClick={() => addIngredient(ingredient.id)}>
-        <Pantry
-          key={'recipe' + index}
-          // name={ingredient.name}
-          // img={ingredient.image}
-          ingredient={ingredient}
-          history={props.history}
-          dispatch={props.dispatch}
-          state={props.state}
-        />
-      </div>
-    )
-  })
-  // : null
+  const pantryList = props.recipeIngredients.length
+    ? props.recipeIngredients.map((ingredient, index) => {
+        return (
+          <div onClick={() => addIngredient(ingredient.id)}>
+            <Pantry
+              key={'recipe' + index}
+              // name={ingredient.name}
+              // img={ingredient.image}
+              ingredient={ingredient}
+              history={props.history}
+              dispatch={props.dispatch}
+              state={props.state}
+            />
+          </div>
+        )
+      })
+    : null
   console.log(props.recipeId)
 
   //create createIngredient function
@@ -176,12 +175,6 @@ const DetailsRecipeCreate = (props) => {
             <br></br>
             <br></br>
 
-            {/* <div>
-              <Fridge
-                fridge={props.state.fridge}
-                removeIngredient={props.removeIngredient}
-              />
-            </div> */}
             <button type="submit" onClick={handleClose}>
               Create
             </button>
