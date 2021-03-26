@@ -5,7 +5,7 @@ import { Modal, Button } from 'react-bootstrap'
 import parse from 'html-react-parser'
 
 const RecipeList = (props) => {
-  console.log(props.state.recipeDetails)
+  const [like, setLike] = useState(0)
   const [recipeDetailsOpen, toggleRecipeDetails] = useState(false)
   const showDetails = async () => {
     try {
@@ -19,13 +19,25 @@ const RecipeList = (props) => {
       console.log(err)
     }
   }
+  const likeRecipe = async (like) => {
+    try {
+      const res = await axios.put(
+        `${BASE_URL}/recipe/like/${props.recipe.id}`,
+        like
+      )
+      // setLike(res.data.likes + 1)
+      // return res.data
+      console.log(res.data)
+    } catch (error) {
+      throw error
+    }
+  }
   return (
     <div className="recipeList">
       <img alt="item" src={props.recipe.image} onClick={() => showDetails()} />
       <span>
         <p>{props.recipe ? props.recipe.title : null}</p>
-        <p>missing ingredients: {props.recipe.missedIngredientCount}</p>
-        <p>likes:{props.recipe.likes}</p>
+        <button onClick={() => likeRecipe()}>LIKE</button>
       </span>
       <Modal show={recipeDetailsOpen} dialogClassName="details">
         <div className="header">
