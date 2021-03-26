@@ -8,11 +8,6 @@ const DetailsRecipeCreate = (props) => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  const [ingredientKey, setIngredientKey] = useState({})
-
-  useEffect(() => {
-    setIngredientKey({ recipeId: props.recipeid })
-  }, [])
 
   const getPantryIngredients = async () => {
     try {
