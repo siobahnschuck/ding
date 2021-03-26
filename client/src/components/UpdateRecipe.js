@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import '../css/App.css'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 
 const Edit = (props) => {
+  console.log(props.recipeIngredient)
   const recipe = props.recipe
   const recipeId = recipe.id
 
@@ -19,6 +20,10 @@ const Edit = (props) => {
     vegetarian: recipe.vegetarian
   })
 
+  // const [updateFoodItem, setUpdateFoodItem] = useState({
+  //   recipe_ingredient: ingredient.name
+  // })
+
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -27,6 +32,14 @@ const Edit = (props) => {
     try {
       const res = await axios.put(`${BASE_URL}/recipe/${recipeId}`, update)
       return res.data
+    } catch (error) {
+      throw error
+    }
+  }
+
+  const foodItem = async () => {
+    try {
+      const res = await axios.put()
     } catch (error) {
       throw error
     }
@@ -64,6 +77,15 @@ const Edit = (props) => {
       editItem(recipeId, update)
     } catch (error) {
       console.log(error)
+    }
+  }
+
+  const addIngredient = async (ingredient) => {
+    const test = { recipeId: props.recipeId, foodItemId: ingredient }
+    try {
+      const res = await axios.post(`${BASE_URL}/ingredients/`, test)
+    } catch (error) {
+      throw error
     }
   }
 
@@ -119,7 +141,6 @@ const Edit = (props) => {
               value={update.calories}
               onChange={handleChange}
             />
-
             <p>Vegan</p>
             <div className={update.vegan ? 'check' : ''}>
               <input
@@ -143,7 +164,35 @@ const Edit = (props) => {
                 value={update.vegetarian}
                 onClick={handleVegetarianChange}
               />
+              <br />
+              <p>Ingredients:</p>
+
+              {props.recipeIngredient.map(
+                (ingredient, index) => (
+                  console.log(props.recipeIngredient),
+                  (console.log(ingredient),
+                  (
+                    <div key={index}>
+                      <input
+                        name="recipe_ingredients"
+                        placeholder={ingredient.name}
+                        value={ingredient.name}
+                        onChange={handleChange}
+                      ></input>
+                    </div>
+                  ))
+                )
+              )}
+              <br />
+              <br />
+              <input
+                value={props.state.query}
+                onChange={(e) =>
+                  props.dispatch({ type: 'search', payload: e.target.value })
+                }
+              ></input>
             </div>
+            <br />
             <br />
             <button type="submit">Submit</button>
           </form>
