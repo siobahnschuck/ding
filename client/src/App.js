@@ -6,14 +6,16 @@ import './css/App.css'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from './globals'
+import { useHistory } from 'react-router-dom'
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
-
+  const history = useHistory()
   const logOut = () => {
     setAuthenticated(false)
     localStorage.clear()
+    return history.push('/')
   }
 
   const checkSession = async () => {

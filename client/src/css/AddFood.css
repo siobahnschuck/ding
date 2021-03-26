@@ -1,6 +1,10 @@
+* {
+  outline: none;
+}
+
 .modal-dialog.addFood {
   text-align: center;
-  background-color: white;
+  background-color: #faa916;
   position: absolute;
   overflow: scroll;
   width: 90vw;
@@ -15,10 +19,42 @@
 .addFood {
   grid-column: 2;
 }
+.add-section {
+  background-color: #faa916;
+}
+.add-header {
+  display: flex;
+  justify-content: center;
+}
+.generateBtn {
+  margin-right: 0;
+  margin-left: auto;
+  margin-top: 1em;
+}
+#generateBtn {
+  border: none;
+  background-color: rgb(12, 12, 12);
+  width: 15em;
+  height: 3em;
+  border-radius: 5px;
+  color: #faa916;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+}
+.closeBtn {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50px;
+  border: none;
+  margin-right: 0;
+  margin-left: auto;
+}
 .modal-dialog.details {
   display: grid;
   text-align: center;
-  background-color: rgba(255, 208, 0, 0.87);
+  background-color: rgba(248, 248, 246, 0.87);
   position: absolute;
   overflow: scroll;
   width: 70vw;
@@ -27,17 +63,73 @@
   left: 15%;
 }
 #fridge {
-  height: 100vh;
-  background-image: url('https://i.ibb.co/B391nm3/007727f494033097f7857694fba483f1-copy.jpg');
-  background-size: 30em;
-  background-repeat: no-repeat;
   display: grid;
   justify-items: left;
+  background-color: #faa916;
 }
 .foodIcon {
-  width: 50px;
+  width: 100px;
 }
 .fridge-inside {
+  background-image: url('https://i.ibb.co/wScST4X/shelf.png');
+  background-size: em;
+  background-repeat: no-repeat;
   margin-top: 5em;
-  margin-left: 3em;
+  margin-left: 5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+#fridge-item {
+  margin: 1em 1em 2em 1em;
+}
+#searchBtn {
+  width: 8em;
+  height: 3em;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.452);
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+.searchField {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+}
+
+#addBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border: white 2px solid;
+  background: transparent;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#deleteBtn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  border: none;
+  background-color: rgb(226, 5, 5);
+  font-weight: bold;
+  font-size: 10px;
+  cursor: pointer;
+}
+.recipeList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  background-color: #faa916;
+}
+#recipeCard {
+  margin: 2em;
+}
+.recipeDetails {
+  padding: 2em;
 }
