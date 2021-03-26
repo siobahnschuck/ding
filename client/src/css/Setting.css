@@ -18,12 +18,6 @@
   font-size: 2em;
   color: black;
 }
-/* 
-.setting-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-content: space-around;
-} */
 
 #closeBtn {
   justify-self: right;
