@@ -11,6 +11,7 @@ const Edit = (props, state, dispatch, recipeTitle) => {
 
   const [update, setUpdate] = useState({
     title: recipe.title,
+    image: recipe.image,
     cuisines: recipe.cuisines,
     instructions: recipe.instructions,
     readyInMinutes: recipe.readyInMinutes,
@@ -123,7 +124,7 @@ const Edit = (props, state, dispatch, recipeTitle) => {
 
   useEffect(() => {
     getIngredientTable()
-  }, [])
+  }, [update])
 
   return (
     <div>
