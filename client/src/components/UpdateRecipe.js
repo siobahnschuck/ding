@@ -21,7 +21,6 @@ const Edit = (props, state, dispatch, recipeTitle) => {
   })
 
   const [ingredients, setIngredients] = useState([])
-  console.log(ingredients)
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -36,15 +35,6 @@ const Edit = (props, state, dispatch, recipeTitle) => {
     }
   }
 
-  // const getIngredientTable = async () => {
-  //   try {
-  //     const res = await axios.get(`${BASE_URL}/ingredients/getAll/${recipeId}`)
-  //     console.log(res)
-  //   } catch (error) {
-  //     throw error
-  //   }
-  // }
-
   const getIngredientTable = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/ingredients/getAll/${recipeId}`)
@@ -54,10 +44,7 @@ const Edit = (props, state, dispatch, recipeTitle) => {
       throw error
     }
   }
-  console.log(ingredients)
   const deleteFoodItem = async (id) => {
-    // const id = e.target.value
-    console.log(id)
     setIngredients(ingredients.filter((item) => item.id !== id))
     try {
       const res = await axios.delete(`${BASE_URL}/ingredients/${id}`)
