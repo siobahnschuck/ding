@@ -24,11 +24,11 @@ const Restaurants = ({ state, dispatch }) => {
       <Button id="dash-button" onClick={handleShow}>
         ORDER ONLINE?
       </Button>
-      <Modal show={show} onHide={handleClose} dialogClassName="addFood">
+      <Modal show={show} onHide={handleClose} dialogClassName="restaurants">
         <Button className="closeBtn" onClick={handleClose}>
           X
         </Button>
-        <Modal.Body>
+        <Modal.Body className="find-restaurants">
           <h2>Find Restaurants Near You</h2>
           <input
             value={state.zipcode}

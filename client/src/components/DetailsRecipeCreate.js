@@ -103,7 +103,7 @@ const DetailsRecipeCreate = (props) => {
       <Button id="dash-button" onClick={handleShow}>
         Next
       </Button>
-      <Modal show={show} dialogClassName="addFood">
+      <Modal show={show} dialogClassName="restaurants">
         <Button className="closeBtn" onClick={handleClose}>
           X
         </Button>
