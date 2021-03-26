@@ -18,9 +18,22 @@ const Home = (props) => {
   return (
     <div className="home">
       <section className="left">
+        <img
+          id="logo"
+          src="https://i.ibb.co/1MqNCHv/dingLogo.png"
+          width="150em"
+        />
         <div className="copy">
-          <h1 className="home-title">To cook or not to cook?</h1>
+          <h1 className="home-title">
+            To cook <br></br>or not to cook?
+          </h1>
+
           <p className="copy-p">
+            <img
+              src="https://i.ibb.co/85p4CWt/delete.png"
+              width="80px"
+              height="80px"
+            />
             Welcome to Ding! A solution to the ever-looming question: "What
             should I have for dinner?" Sign up now to get started and get access
             to 100s of recipes based on what is in your own refrigerator!
@@ -46,6 +59,7 @@ const Home = (props) => {
           />
           <SignUp signUpOpen={signUpOpen} toggleSignUp={toggleSignUp} />
         </header>
+
         <img
           className="plate"
           src="https://i.ibb.co/cwt3tBj/Food-Plate-Diet-PNG.png"

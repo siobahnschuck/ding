@@ -67,34 +67,47 @@ const AddFood = ({ state, dispatch, history }) => {
         GENERATE RECIPE
       </Button>
       <Modal show={show} dialogClassName="addFood">
-        <Button id="closeBtn" onClick={handleClose}>
-          X
-        </Button>
-        <Modal.Body className="body">
-          <div id="fridge">
-            <Fridge
-              fridge={state.fridge}
-              dispatch={dispatch}
-              removeIngredient={state.removeIngredient}
-            />
+        <Modal.Body>
+          <div className="body">
+            <div id="fridge">
+              <Fridge
+                fridge={state.fridge}
+                dispatch={dispatch}
+                removeIngredient={state.removeIngredient}
+              />
+            </div>
+            <div className="add-section">
+              <div id="addFood">
+                <div className="add-header">
+                  <div className="generateBtn">
+                    <ScrollIntoView selector=".recipeList">
+                      <button id="generateBtn" onClick={() => getRecipe()}>
+                        Generate Recipes
+                      </button>
+                    </ScrollIntoView>
+                  </div>
+                  <Button className="closeBtn" onClick={handleClose}>
+                    X
+                  </Button>
+                </div>
+                <br></br>
+                <input
+                  className="searchField"
+                  value={state.query}
+                  placeholder="Add ingredient to you fridge"
+                  onChange={(e) =>
+                    dispatch({ type: 'search', payload: e.target.value })
+                  }
+                ></input>
+                <button id="searchBtn" onClick={() => getIngredients()}>
+                  search
+                </button>
+                {ingredientList}
+                <br></br>
+              </div>
+            </div>
           </div>
-          <div id="addFood">
-            AddFood
-            <br></br>
-            <input
-              value={state.query}
-              onChange={(e) =>
-                dispatch({ type: 'search', payload: e.target.value })
-              }
-            ></input>
-            <button onClick={() => getIngredients()}>search</button>
-            {ingredientList}
-            <br></br>
-            <ScrollIntoView selector=".recipeList">
-              <button onClick={() => getRecipe()}>Generate Recipes</button>
-            </ScrollIntoView>
-          </div>
-          <div>{recipeList}</div>
+          <div className="recipeList">{recipeList}</div>
         </Modal.Body>
       </Modal>
     </div>

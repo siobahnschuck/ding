@@ -20,7 +20,7 @@ const RecipeList = (props) => {
   }
 
   return (
-    <div className="recipeList">
+    <div id="recipeCard">
       <img alt="item" src={props.recipe.image} onClick={() => showDetails()} />
       <span>
         <p>{props.recipe ? props.recipe.title : null}</p>

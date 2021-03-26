@@ -109,7 +109,7 @@ const DetailsRecipeCreate = (props) => {
       </Button>
       <Modal show={show} dialogClassName="addFood">
         <Button onClick={handleClose}>Close</Button>
-        <Modal.Body>
+        <Modal.Body className="recipeDetails">
           <h2>{props.recipeTitle}</h2>
           <form onSubmit={handleSubmit}>
             <p>Image:</p>
