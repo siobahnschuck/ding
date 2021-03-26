@@ -30,7 +30,6 @@ Ding! is a fullstack application where users can customize their fridge and gene
 Features:
 
 - Interactive dashboard where you can preset any dietary restrictions or save your favorite recipes for quick access.
-- "Feeling WILD" random cuisine
 - Post your own recipes and share them with the Ding! Community
 - Ability to "like" recipes and see what foods are trending
 
@@ -50,17 +49,14 @@ Otherwise visit and sign up for [Ding!](https://glacial-meadow-53009.herokuapp.c
 
 ---
 ### Original Concepts
+
 ![Starting Concept](images/OriginalDesign.png)
 
 ## **_Application Images_**
 
-
 ![HOMEPAGE](image/../images/Screen%20Shot%202021-03-26%20at%202.30.11%20PM.png) 
 
 
-
-### Original Concepts
-![Starting Concept]
 ---
 
 ### **_Future Updates_**
@@ -68,6 +64,7 @@ Otherwise visit and sign up for [Ding!](https://glacial-meadow-53009.herokuapp.c
 - [X] ~~Find restaurants in your area~~
 - [ ] Text me a grocery list
 - [ ] Favorite Recipes
+- [ ] "Feeling WILD" random cuisine
 
 ---
 
