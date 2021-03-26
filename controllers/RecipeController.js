@@ -47,7 +47,8 @@ const GetAndCreateRecipes = async (req, res) => {
       return {
         id: apiData.id,
         title: apiData.title,
-        image: apiData.image
+        image: apiData.image,
+        likes: 0
       }
     })
     await Recipe.bulkCreate(mapped, {
@@ -71,6 +72,7 @@ const GetAndUpdateRecipe = async (req, res) => {
       instructions: apiData.instructions,
       image: apiData.image,
       vegan: apiData.vegan,
+      likes: 0,
       dairyFree: apiData.dairyFree,
       vegetarian: apiData.vegetarian,
       readyInMinutes: apiData.readyInMinutes,
@@ -90,7 +92,7 @@ const GetRecipeByLike = async (req, res) => {
   try {
     const recipes = await Recipe.findAll({
       where: {
-        likes: { [Op.gt]: 50 }
+        likes: { [Op.gt]: 10 }
       },
       order: [['likes', 'DESC']],
       limit: 10
