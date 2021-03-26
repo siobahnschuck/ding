@@ -9,7 +9,12 @@ const IngredientList = (props) => {
   }
   return (
     <div className="ingredientList">
-      <img alt="item" src={props.ingredient.image} />
+      <img
+        onClick={() => AddToFridge(props.ingredient)}
+        className="foodIcon"
+        alt="item"
+        src={props.ingredient.image}
+      />
       <span>
         <p>{props.ingredient ? props.ingredient.name : null}</p>
         <button id="addBtn" onClick={() => AddToFridge(props.ingredient)}>

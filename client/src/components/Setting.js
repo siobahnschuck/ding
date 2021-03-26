@@ -29,9 +29,6 @@ const Setting = ({ state, dispatch, history }) => {
                 })
               }
             >
-              {/* <p className="setting-subtitle">
-                <strong> CUISINE TYPE</strong>
-              </p> */}
               <select
                 className="setting-dropdown"
                 name="cuisine"
@@ -61,7 +58,6 @@ const Setting = ({ state, dispatch, history }) => {
             </form>
 
             <div className="setting-restrictions">
-              {/* <p className="setting-subtitle"><strong>RESTRICTIONS</strong> </p> */}
               <p className="setting-subtitle">Vegan</p>
               <input
                 className="setting-check"
@@ -74,7 +70,7 @@ const Setting = ({ state, dispatch, history }) => {
                   })
                 }}
               />
-              <p className="setting-subtitle">DairyFree</p>
+              <p className="setting-subtitle">Dairy Free</p>
               <input
                 className="setting-check"
                 type="checkbox"
@@ -98,8 +94,10 @@ const Setting = ({ state, dispatch, history }) => {
                   })
                 }}
               />
+            </div>
+            <div className="setting-save-containter">
               <button
-                className="setting-save"
+                id="generateBtn"
                 type="submit"
                 onClick={() => handleClose()}
               >
