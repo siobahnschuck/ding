@@ -4,7 +4,7 @@
 
 .modal-dialog.addFood {
   text-align: center;
-  background-color: #faa916;
+  background-color: #8eb339f8;
   position: absolute;
   overflow: scroll;
   width: 90vw;
@@ -20,7 +20,7 @@
   grid-column: 2;
 }
 .add-section {
-  background-color: #faa916;
+  background-color: #8eb339f8;
 }
 .add-header {
   display: flex;
@@ -33,11 +33,11 @@
 }
 #generateBtn {
   border: none;
-  background-color: rgb(12, 12, 12);
+  background-color: rgba(240, 238, 238, 0.466);
   width: 15em;
   height: 3em;
   border-radius: 5px;
-  color: #faa916;
+  color: #093824;
   font-weight: bold;
   font-size: 15px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -50,6 +50,12 @@
   border: none;
   margin-right: 0;
   margin-left: auto;
+  background-color: transparent;
+}
+
+.closeBtn:hover {
+  background-color: #093824;
+  border: none;
 }
 .modal-dialog.details {
   display: grid;
@@ -65,7 +71,7 @@
 #fridge {
   display: grid;
   justify-items: left;
-  background-color: #faa916;
+  background-color: #8eb339f8;
 }
 .foodIcon {
   width: 100px;
@@ -87,7 +93,7 @@
   width: 8em;
   height: 3em;
   border: none;
-  background-color: rgba(255, 255, 255, 0.452);
+  background-color: transparent;
   border-radius: 5px;
   font-weight: bold;
   font-size: 15px;
@@ -125,7 +131,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
-  background-color: #faa916;
+  background-color: #8eb339f8;
 }
 #recipeCard {
   margin: 2em;

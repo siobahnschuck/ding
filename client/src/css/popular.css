@@ -1,14 +1,18 @@
+* {
+  outline: none;
+}
 .popular-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   align-content: space-between;
   scroll-behavior: smooth;
-  background-color: #faa916;
+  background-color: #8eb339f8;
 }
 
 .popular-item {
-  border: 1px solid #ef8354;
+  margin: 1em;
+  border: 1px solid #093824;
   color: black;
 }
 
@@ -24,17 +28,4 @@
 
 .like:hover {
   background-color: #f0c679;
-}
-
-#closeBtn {
-  justify-self: right;
-  padding: 7px 10px 7px 10px;
-  border-radius: 50px;
-  border: none;
-  background-color: #faa916;
-}
-
-#closeBtn:hover {
-  background-color: rgb(235, 137, 26);
-  border: none;
 }

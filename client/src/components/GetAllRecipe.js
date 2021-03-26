@@ -14,10 +14,12 @@ const GetAllRecipes = (props) => {
         ALL RECIPES
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="myRecipes">
-        <Modal.Header closeButton></Modal.Header>
-        <Modal.Body className="my-recipes">
+        <Button className="closeBtn" onClick={handleClose}>
+          X
+        </Button>
+        <Modal.Body>
           {props.allRecipes ? (
-            <div>
+            <div className="all-recipes">
               {props.allRecipes.map((recipe) => (
                 <div key={recipe.id}>
                   <Card className="cards">

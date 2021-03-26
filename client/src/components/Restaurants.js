@@ -21,6 +21,7 @@ const Restaurants = ({ state, dispatch }) => {
       const res = await axios.get(
         `${BASE_URL3}/zip_code/${state.zipcode}?key=${APY_RESTAURANT_KEY}`
       )
+      console.log(res)
       dispatch({ type: 'get_restaurants', payload: res.data.data })
     } catch (err) {
       console.log(err)
@@ -32,19 +33,32 @@ const Restaurants = ({ state, dispatch }) => {
         ORDER ONLINE?
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="addFood">
-        <Modal.Header closeButton></Modal.Header>
+        <Button className="closeBtn" onClick={handleClose}>
+          X
+        </Button>
         <Modal.Body>
-          <h2>Enter your zipcode</h2>
+          <h2>Find Restaurants Near You</h2>
           <input
             value={state.zipcode}
+            placeholder="Enter your zipcode"
             onChange={(e) =>
               dispatch({ type: 'search_zipcode', payload: e.target.value })
             }
           ></input>
-          <button onClick={() => getRestaurants()}>search</button>
+          <button id="searchBtn" onClick={() => getRestaurants()}>
+            search
+          </button>
           {state.restaurants.map((restaurant) => (
             <div>
-              <p>{restaurant.restaurant_name}</p>
+              <h3>{restaurant.restaurant_name}</h3>
+              <p>{restaurant.price_range}</p>
+              <p>phone: {restaurant.restaurant_phone}</p>
+              <p>Order Online: {restaurant.restaurant_website}</p>
+              <p>
+                Address: {restaurant.address.street},{restaurant.address.city},
+                {restaurant.address.state} {restaurant.address.postal_code}
+              </p>
+              <p>{restaurant.hours}</p>
             </div>
           ))}
           {/* <Map restaurants={state.restaurants} /> */}
