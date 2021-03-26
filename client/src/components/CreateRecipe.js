@@ -18,14 +18,16 @@ const CreateRecipe = (props) => {
         </Button>
         <Modal.Body>
           <h2>Create Recipe</h2>
-          <form onSubmit={props.submitRecipe}>
+          <form className="create-first-form" onSubmit={props.submitRecipe}>
             <input
               name="title"
               placeholder="Enter Your Recipe Title"
               value={props.recipeTitle}
               onChange={props.handleChange}
             />
-            <button type="submit">Submit</button>
+            <button id="generateBtn" type="submit">
+              Submit
+            </button>
           </form>
           <DetailsRecipeCreate
             history={props.history}

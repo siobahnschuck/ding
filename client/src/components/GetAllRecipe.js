@@ -29,7 +29,7 @@ const GetAllRecipes = (props) => {
                   <Card className="cards">
                     <Image src={recipe.image} />
                     <br />
-                    <Card.Header>{recipe.title}</Card.Header>
+                    <h3>{recipe.title}</h3>
                   </Card>
                 </div>
               ))}

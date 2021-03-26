@@ -3,13 +3,19 @@
 }
 .modal-dialog.myRecipes {
   text-align: center;
-  background-color: #8eb339f8;
+  background: linear-gradient(to bottom, #ef8354 44%, #eead91 93%);
   position: absolute;
   overflow: scroll;
   width: 90vw;
   height: 90vh;
   top: 5%;
   left: 5%;
+}
+
+.create-first-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .my-recipes {
@@ -24,7 +30,7 @@
 }
 .modal-dialog.create-title {
   text-align: center;
-  background-color: rgb(255, 255, 255);
+  background: linear-gradient(to bottom, #ef8354 44%, #eead91 93%);
   position: absolute;
   overflow: scroll;
   width: 50vw;
