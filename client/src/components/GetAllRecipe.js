@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { Card, Image } from 'semantic-ui-react'
 import '../css/Recipe.css'

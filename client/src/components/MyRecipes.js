@@ -6,13 +6,14 @@ import { BASE_URL } from '../globals'
 import '../css/Recipe.css'
 import UpdateRecipe from './UpdateRecipe'
 
-const MyRecipes = (props, state, dispatch, recipeTitle) => {
+const MyRecipes = (props) => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
   useEffect(() => {
     props.checkSession()
+    props.getMyRecipes()
   }, [])
 
   const deleteItem = async (recipeId) => {
