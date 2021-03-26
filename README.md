@@ -23,7 +23,7 @@
 
 ### **_Description_**
 
-XXX LOGO HERE XXX
+![LOGO](images/dingLogo.png)
 
 Ding! is a fullstack application where users can customize their fridge and generate recipe ideas based on what ingredient that have on hand! Solving the ever looming question: "What should I have for dinner!?".
 
@@ -38,13 +38,7 @@ Features:
 
 ### **_Technologies_**
 
-PostgreSQL
-
-Express.js
-
-React
-
-Node.js
+![Postgresql, Express, React, Node ](images/PERN%20BANNER.png)
 
 ---
 
@@ -52,21 +46,26 @@ Node.js
 
 To view our Trello board click [here](https://trello.com/b/bCG64o2A/p3)
 
-Otherwise visit and sign up for [Ding!]()
+Otherwise visit and sign up for [Ding!](https://glacial-meadow-53009.herokuapp.com/)
 
 ---
+### Original Concepts
+![Starting Concept](images/OriginalDesign.png)
 
 ## **_Application Images_**
 
-### Final Design
+
+![HOMEPAGE](image/../images/Screen%20Shot%202021-03-26%20at%202.30.11%20PM.png) 
+
+
 
 ### Original Concepts
-
+![Starting Concept]
 ---
 
 ### **_Future Updates_**
 
-- [ ] Find restaurants in your area
+- [X] ~~Find restaurants in your area~~
 - [ ] Text me a grocery list
 - [ ] Favorite Recipes
 
@@ -77,3 +76,11 @@ Otherwise visit and sign up for [Ding!]()
 Inspiration:
 
 Technical:
+Recipe Image: [DuckDuckGo](https://duckduckgo.com/)
+
+Recipe Image: [Mindstick Kidszone](https://www.mindstick.com/KidsZone/)
+
+Recipe API: [spoonacular API](https://unsplash.com/photos/nKO_1QyFh9o) 
+
+Restaurant API: [Documenu](https://documenu.com/docs#get_restaurant)
+

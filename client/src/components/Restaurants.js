@@ -40,8 +40,8 @@ const Restaurants = ({ state, dispatch }) => {
           <button id="searchBtn" onClick={() => getRestaurants()}>
             search
           </button>
-          {state.restaurants.map((restaurant) => (
-            <div>
+          {state.restaurants.map((restaurant, index) => (
+            <div key={index}>
               <h3>{restaurant.restaurant_name}</h3>
               <p>{restaurant.price_range}</p>
               <p>phone: {restaurant.restaurant_phone}</p>
