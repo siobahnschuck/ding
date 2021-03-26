@@ -31,9 +31,10 @@ const GetIngredientsByRecipeId = async (req, res) => {
   try {
     let id = parseInt(req.params.recipe_id)
     let ingredient = await Ingredient.findAll({
-      attributes: ['id', 'recipeId', 'foodItemId'],
-      where: { recipeId: id }
-    })
+      attributes: ['id', 'recipeId', 'foodItemId', 'name'],
+      where: { recipeId: id }, 
+    }, 
+    )
     res.send(ingredient)
   } catch (error) {
     throw error

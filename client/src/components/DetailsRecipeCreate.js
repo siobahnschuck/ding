@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
-import Fridge from '../components/Fridge'
 import IngredientList from '../components/IngredientList'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
@@ -77,8 +76,8 @@ const DetailsRecipeCreate = (props) => {
     }
   }
 
-  const addIngredient = async (ingredient) => {
-    const test = { recipeId: props.recipeId, foodItemId: ingredient }
+  const addIngredient = async (ingredientId, name) => {
+    const test = { recipeId: props.recipeId, foodItemId: ingredientId, name: name }
     try {
       const res = await axios.post(`${BASE_URL}/ingredients/`, test)
     } catch (error) {
@@ -89,7 +88,7 @@ const DetailsRecipeCreate = (props) => {
   const pantryList = props.recipeIngredients.length
     ? props.recipeIngredients.map((ingredient, index) => {
         return (
-          <div onClick={() => addIngredient(ingredient.id)}>
+          <div onClick={() => addIngredient(ingredient.id, ingredient.name)}>
             <Pantry
               key={'recipe' + index}
               ingredient={ingredient}

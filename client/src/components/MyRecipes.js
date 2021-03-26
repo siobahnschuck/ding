@@ -75,6 +75,7 @@ const MyRecipes = (props, state, dispatch, recipeTitle) => {
                         getMyRecipes={props.getMyRecipes}
                         myRecipes={props.myRecipes}
                         recipeIngredient={recipe.recipe_ingredient}
+                        recipeIngredients={props.state.recipeIngredients}
                       />
                     </Card.Content>
                   </Card>

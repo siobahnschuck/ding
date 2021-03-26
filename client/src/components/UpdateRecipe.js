@@ -3,11 +3,11 @@ import { Modal, Button } from 'react-bootstrap'
 import '../css/App.css'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
+import Pantry from './Pantry'
 
 const Edit = (props, state, dispatch, recipeTitle) => {
   const recipe = props.recipe
   const recipeId = recipe.id
-  console.log(recipeId)
 
   const [update, setUpdate] = useState({
     title: recipe.title,
@@ -38,7 +38,6 @@ const Edit = (props, state, dispatch, recipeTitle) => {
   const getIngredientTable = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/ingredients/getAll/${recipeId}`)
-      console.log('here', res)
       setIngredients(res.data)
     } catch (error) {
       throw error
@@ -48,7 +47,6 @@ const Edit = (props, state, dispatch, recipeTitle) => {
     setIngredients(ingredients.filter((item) => item.id !== id))
     try {
       const res = await axios.delete(`${BASE_URL}/ingredients/${id}`)
-      console.log(res)
     } catch (error) {
       throw error
     }
@@ -81,7 +79,7 @@ const Edit = (props, state, dispatch, recipeTitle) => {
   }
 
   const handleSubmit = async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     try {
       editItem(recipeId, update)
     } catch (error) {
@@ -89,14 +87,39 @@ const Edit = (props, state, dispatch, recipeTitle) => {
     }
   }
 
-  const addIngredient = async (ingredient) => {
-    const test = { recipeId: props.recipeId, foodItemId: ingredient }
+  const addIngredient = async (ingredientId, name) => {
+    const test = { recipeId: recipeId, foodItemId: ingredientId, name: name }
     try {
       const res = await axios.post(`${BASE_URL}/ingredients/`, test)
     } catch (error) {
       throw error
     }
   }
+
+    const getPantryIngredients = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/food/find/${props.state.query}`)
+      props.dispatch({ type: 'get_recipeIngredients', payload: res.data })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+   const pantryList = props.recipeIngredients.length
+    ? props.recipeIngredients.map((ingredient, index) => {
+        return (
+          <div onClick={() => addIngredient(ingredient.id, ingredient.name)}>
+            <Pantry
+              key={'recipe' + index}
+              ingredient={ingredient}
+              history={props.history}
+              dispatch={props.dispatch}
+              state={props.state}
+            />
+          </div>
+        )
+      })
+    : null
 
   useEffect(() => {
     getIngredientTable()
@@ -179,7 +202,6 @@ const Edit = (props, state, dispatch, recipeTitle) => {
               />
               <br />
             </div>
-          </form>
           <p>Ingredients:</p>
           {ingredients.map((ingredient, index) => (
             <div key={index}>
@@ -188,7 +210,7 @@ const Edit = (props, state, dispatch, recipeTitle) => {
                 <input
                   name="recipe_ingredients"
                   placeholder={ingredient.name}
-                  value={ingredient.id}
+                  value={ingredient.name}
                 ></input>
               </button>
             </div>
@@ -201,10 +223,21 @@ const Edit = (props, state, dispatch, recipeTitle) => {
               props.dispatch({ type: 'search', payload: e.target.value })
             }
           ></input>
+              <button onClick={() => getPantryIngredients()}>Add Ingredient</button>
+              {pantryList}
+              <br></br>
+              <div>
+                {props.state.pantry.map((pantryItem) => (
+                  <div>
+                    <p>{pantryItem.name}</p>
+                  </div>
+                ))}
+              </div>
 
           <br />
           <br />
-          <button type="submit">Submit</button>
+          <button type="submit" onClick={handleClose}>Submit</button>
+          </form>
         </Modal.Body>
       </Modal>
     </div>
