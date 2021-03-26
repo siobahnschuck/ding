@@ -20,9 +20,8 @@ const Edit = (props, state, dispatch, recipeTitle) => {
     vegetarian: recipe.vegetarian
   })
 
-  // const [updateFoodItem, setUpdateFoodItem] = useState({
-  //   recipe_ingredient: ingredient.name
-  // })
+  const [ingredients, setIngredients] = useState([])
+  console.log(ingredients)
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -37,7 +36,29 @@ const Edit = (props, state, dispatch, recipeTitle) => {
     }
   }
 
+  // const getIngredientTable = async () => {
+  //   try {
+  //     const res = await axios.get(`${BASE_URL}/ingredients/getAll/${recipeId}`)
+  //     console.log(res)
+  //   } catch (error) {
+  //     throw error
+  //   }
+  // }
+
+  const getIngredientTable = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/ingredients/getAll/${recipeId}`)
+      console.log('here', res)
+      setIngredients(res.data)
+    } catch (error) {
+      throw error
+    }
+  }
+  console.log(ingredients)
   const deleteFoodItem = async (id) => {
+    // const id = e.target.value
+    console.log(id)
+    setIngredients(ingredients.filter((item) => item.id !== id))
     try {
       const res = await axios.delete(`${BASE_URL}/ingredients/${id}`)
       console.log(res)
@@ -89,6 +110,10 @@ const Edit = (props, state, dispatch, recipeTitle) => {
       throw error
     }
   }
+
+  useEffect(() => {
+    getIngredientTable()
+  }, [])
 
   return (
     <div>
@@ -166,38 +191,33 @@ const Edit = (props, state, dispatch, recipeTitle) => {
                 onClick={handleVegetarianChange}
               />
               <br />
-              <p>Ingredients:</p>
-
-              {props.recipeIngredient.map(
-                (ingredient, index) => (
-                  console.log(ingredient.id),
-                  (
-                    <div key={index}>
-                      <button onClick={() => deleteFoodItem(ingredient.id)}>
-                        X
-                        <input
-                          name="recipe_ingredients"
-                          placeholder={ingredient.name}
-                          value={ingredient.name}
-                        ></input>
-                      </button>
-                    </div>
-                  )
-                )
-              )}
-              <br />
-              <br />
-              <input
-                value={props.state.query}
-                onChange={(e) =>
-                  props.dispatch({ type: 'search', payload: e.target.value })
-                }
-              ></input>
             </div>
-            <br />
-            <br />
-            <button type="submit">Submit</button>
           </form>
+          <p>Ingredients:</p>
+          {ingredients.map((ingredient, index) => (
+            <div key={index}>
+              <button onClick={() => deleteFoodItem(ingredient.id)}>
+                X
+                <input
+                  name="recipe_ingredients"
+                  placeholder={ingredient.name}
+                  value={ingredient.id}
+                ></input>
+              </button>
+            </div>
+          ))}
+          <br />
+          <br />
+          <input
+            value={props.state.query}
+            onChange={(e) =>
+              props.dispatch({ type: 'search', payload: e.target.value })
+            }
+          ></input>
+
+          <br />
+          <br />
+          <button type="submit">Submit</button>
         </Modal.Body>
       </Modal>
     </div>

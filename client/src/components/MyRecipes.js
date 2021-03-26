@@ -68,9 +68,9 @@ const MyRecipes = (props, state, dispatch, recipeTitle) => {
                         Delete
                       </button>
                       <UpdateRecipe
-                        dispatch={dispatch}
-                        state={state}
-                        recipeTitle={recipeTitle}
+                        dispatch={props.dispatch}
+                        state={props.state}
+                        recipeTitle={props.recipeTitle}
                         recipe={recipe}
                         getMyRecipes={props.getMyRecipes}
                         myRecipes={props.myRecipes}
