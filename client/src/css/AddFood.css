@@ -26,3 +26,18 @@
   top: 15%;
   left: 15%;
 }
+#fridge {
+  height: 100vh;
+  background-image: url('https://i.ibb.co/B391nm3/007727f494033097f7857694fba483f1-copy.jpg');
+  background-size: 30em;
+  background-repeat: no-repeat;
+  display: grid;
+  justify-items: left;
+}
+.foodIcon {
+  width: 50px;
+}
+.fridge-inside {
+  margin-top: 5em;
+  margin-left: 3em;
+}

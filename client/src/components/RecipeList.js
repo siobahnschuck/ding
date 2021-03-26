@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 import { Modal, Button } from 'react-bootstrap'
+import parse from 'html-react-parser'
 
 const RecipeList = (props) => {
   console.log(props.state.recipeDetails)
@@ -42,7 +43,8 @@ const RecipeList = (props) => {
               <p>vegan:{props.state.recipeDetails.vegan}</p>
               <p>vegetarian:{props.state.recipeDetails.vegetarian}</p>
               <p>Ready in: {props.state.recipeDetails.readyInMinutes} mins</p>
-              instructions:{props.state.recipeDetails.instructions}
+              instructions:
+              <div>{parse(props.state.recipeDetails.instructions)}</div>
             </div>
           ) : (
             <h1>loading</h1>

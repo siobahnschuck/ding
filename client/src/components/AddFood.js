@@ -65,7 +65,7 @@ const AddFood = ({ state, dispatch, history }) => {
       <Modal show={show} dialogClassName="addFood">
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body className="body">
-          <div>
+          <div id="fridge">
             <Fridge
               fridge={state.fridge}
               dispatch={dispatch}
