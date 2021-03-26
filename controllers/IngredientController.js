@@ -9,6 +9,25 @@ const CreateIngredient = async (req, res) => {
   }
 }
 
+const DeleteIngredient = async (req, res) => {
+  try {
+    let ingId = req.params.ingredient_id
+    await Ingredient.destroy({
+      where: {
+        id: ingId
+      }
+    })
+    res.send({
+      msg: 'Ingredient Deleted',
+      payload: ingId,
+      status: 'Ok'
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
-  CreateIngredient
+  CreateIngredient,
+  DeleteIngredient
 }
