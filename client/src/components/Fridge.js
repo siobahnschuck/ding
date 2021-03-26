@@ -9,7 +9,12 @@ const Fridge = (props) => {
     <div className="fridge-inside">
       {props.fridge.map((fridgeItem) => (
         <div id="fridge-item">
-          <img className="foodIcon" alt="food icon" src={fridgeItem.image} />
+          <img
+            onClick={() => removeIngredient(fridgeItem.id)}
+            className="foodIcon"
+            alt="food icon"
+            src={fridgeItem.image}
+          />
           <button
             id="deleteBtn"
             onClick={() => removeIngredient(fridgeItem.id)}

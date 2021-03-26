@@ -4,13 +4,13 @@
 
 .modal-dialog.setting {
   text-align: right;
-  background-color: #8eb339f8;
+  background: linear-gradient(to bottom, #ef8354 44%, #eead91 93%);
   position: absolute;
   overflow: scroll;
-  width: 90vw;
-  height: 90vh;
+  width: 50vw;
+  height: 50vh;
   top: 5%;
-  left: 5%;
+  left: 28%;
 }
 
 .setting-title {
@@ -27,13 +27,13 @@
 }
 
 #closeBtn:hover {
-  background-color: #093824;
+  background-color: white;
   border: none;
 }
 
 .setting-restrictions {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   margin-top: 0;
   align-items: center;
   justify-content: center;
@@ -53,16 +53,15 @@
 .setting-cuisine {
   grid-column: 1/2;
 }
+.setting-check {
+  width: 2em;
+  margin-right: 2em;
+}
 
-.setting-save {
-  margin-top: 5em;
-  margin-bottom: 2em;
-  border: none;
-  /* border-radius: 2em; */
-  font-size: 1.2em;
-  width: 6em;
-  background-color: #7fb6859f;
-  border-radius: 50px;
+.setting-save-containter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .setting-dropdown {
@@ -71,8 +70,7 @@
   padding: 10px 15px 10px 25px;
 }
 
-.setting-save:hover,
 .setting-dropdown:hover,
 .setting-check:hover {
-  background-color: #7fb685;
+  background-color: #faa916;
 }
