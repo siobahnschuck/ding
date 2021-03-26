@@ -8,6 +8,10 @@ const GetAllRecipes = (props) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
+  useEffect(() => {
+    props.getAllRecipes()
+  }, [])
+
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>

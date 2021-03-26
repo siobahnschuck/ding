@@ -104,9 +104,9 @@ const Dashboard = (props) => {
     getMyRecipes()
   }, [])
 
-  useEffect(() => {
-    getAllRecipes()
-  }, [])
+  // useEffect(() => {
+  //   getAllRecipes()
+  // }, [])
 
   useEffect(() => {
     props.checkSession()
