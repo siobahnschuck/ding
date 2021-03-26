@@ -38,18 +38,19 @@ const MyRecipes = (props) => {
                   <Card className="cards">
                     <Image src={recipe.image} />
                     <Card.Content>
-                      <Card.Header>{recipe.name}</Card.Header>
+                      <h2>{recipe.name}</h2>
                       <Card.Description>
-                        {recipe.duration}
-                        {recipe.calories}
-                        {recipe.ingredients}
+                        <p>{recipe.duration} minutes </p>
+                        <p>{recipe.calories}</p>
+                        <p>{recipe.ingredients}</p>
                         <br></br>
                         {recipe.instructions}
-                        <p>Vegan:toString({recipe.vegan})</p>
+                        <p>Vegan:{recipe.vegan}</p>
                         <p>Dairy Free:{recipe.dairyFree}</p>
                         <p>Vegetarian:{recipe.vegetarian}</p>
+                        <p>Ingredients:</p>
                         {recipe.recipe_ingredient.map((ingredient) => (
-                          <p>Ingredients: {ingredient.name}</p>
+                          <p> {ingredient.name}</p>
                         ))}
                       </Card.Description>
                     </Card.Content>
@@ -66,6 +67,7 @@ const MyRecipes = (props) => {
                         recipe={recipe}
                         getMyRecipes={props.getMyRecipes}
                         myRecipes={props.myRecipes}
+                        recipeIngredient={recipe.recipe_ingredient}
                       />
                     </Card.Content>
                   </Card>
