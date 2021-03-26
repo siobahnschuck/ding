@@ -132,6 +132,7 @@ const Dashboard = (props) => {
     const userId = props.currentUser.id
     try {
       const res = await axios.get(`${BASE_URL}/recipe/myRecipes/${userId}`)
+
       setMyRecipes(res.data)
     } catch (err) {
       throw err
@@ -169,6 +170,7 @@ const Dashboard = (props) => {
               myRecipes={myRecipes}
               setMyRecipes={setMyRecipes}
               getMyRecipes={getMyRecipes}
+
             />
           </div>
         </section>

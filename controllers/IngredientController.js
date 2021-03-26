@@ -11,7 +11,7 @@ const CreateIngredient = async (req, res) => {
 
 const DeleteIngredient = async (req, res) => {
   try {
-    let ingId = req.params.foodItem_id
+    let ingId = req.params.ingredient_id
     await Ingredient.destroy({
       where: {
         id: ingId
@@ -27,7 +27,22 @@ const DeleteIngredient = async (req, res) => {
   }
 }
 
+const GetIngredientsByRecipeId = async (req, res) => {
+  try {
+    let id = parseInt(req.params.recipe_id)
+    let ingredient = await Ingredient.findAll({
+      attributes: ['id', 'recipeId', 'foodItemId', 'name'],
+      where: { recipeId: id }, 
+    }, 
+    )
+    res.send(ingredient)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   CreateIngredient,
-  DeleteIngredient
+  DeleteIngredient,
+  GetIngredientsByRecipeId
 }
