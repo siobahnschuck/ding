@@ -36,13 +36,15 @@ const RecipeList = (props) => {
             <div>
               <img alt="pick" src={props.state.recipeDetails.image} />
               <h2>{props.state.recipeDetails.title}</h2>
-              <p>Cuisine: {props.state.recipeDetails.cuisines}</p>
-              <p>Dairy Free:{props.state.recipeDetails.dairyFree}</p>
-              <p>vegan:{props.state.recipeDetails.vegan}</p>
-              <p>vegetarian:{props.state.recipeDetails.vegetarian}</p>
-              <p>Ready in: {props.state.recipeDetails.readyInMinutes} mins</p>
+              <p>
+                {props.state.recipeDetails.cuisines} | Ready in{' '}
+                {props.state.recipeDetails.readyInMinutes} minutes |
+                {props.state.recipeDetails.calories} Calories
+              </p>
               <p>Instructions:</p>
-              <p>{parse(props.state.recipeDetails.instructions)}</p>
+              <p className="recipe-details-instruc">
+                {parse(props.state.recipeDetails.instructions)}
+              </p>
             </div>
           ) : (
             <h1>loading</h1>
