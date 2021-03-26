@@ -19,6 +19,7 @@ const Home = (props) => {
     <div className="home">
       <section className="left">
         <img
+          alt="logo"
           id="logo"
           src="https://i.ibb.co/1MqNCHv/dingLogo.png"
           width="150em"
@@ -30,6 +31,7 @@ const Home = (props) => {
 
           <p className="copy-p">
             <img
+              alt="logo"
               src="https://i.ibb.co/85p4CWt/delete.png"
               width="80px"
               height="80px"
@@ -57,10 +59,15 @@ const Home = (props) => {
             currentUser={props.currentUser}
             setCurrentUser={props.setCurrentUser}
           />
-          <SignUp signUpOpen={signUpOpen} toggleSignUp={toggleSignUp} />
+          <SignUp
+            signUpOpen={signUpOpen}
+            toggleSignUp={toggleSignUp}
+            toggleSignIn={toggleSignIn}
+          />
         </header>
 
         <img
+          alt="plate"
           className="plate"
           src="https://i.ibb.co/cwt3tBj/Food-Plate-Diet-PNG.png"
           width="600px"
