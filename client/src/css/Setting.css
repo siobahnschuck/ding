@@ -1,6 +1,10 @@
+*:focus {
+  outline: none;
+}
+
 .modal-dialog.setting {
   text-align: left;
-  background-color: rgb(255, 255, 255);
+  background-color: #faa916;
   position: absolute;
   overflow: scroll;
   width: 90vw;
@@ -11,25 +15,65 @@
 
 .setting-title {
   text-align: center;
-  font-size: larger;
+  font-size: 2em;
   color: black;
+}
+
+#closeBtn {
+  justify-self: right;
+  padding: 7px 10px 7px 10px;
+  border-radius: 50px;
+  border: none;
+  background-color: #faa916;
+}
+
+#closeBtn:hover {
+  background-color: rgb(235, 137, 26);
+  border: none;
 }
 
 .setting-restrictions {
   display: flex;
   flex-direction: column;
+  margin-top: 0;
   align-items: center;
   justify-content: center;
+  grid-column: 3/4;
 }
-
+.option {
+  background-color: black;
+  color: white;
+}
+.setting-subtitle {
+  font-size: 1.5em;
+}
 .setting-subtitle,
 .setting-cuisine {
   text-align: center;
 }
+.setting-cuisine {
+  grid-column: 1/2;
+}
 
 .setting-save {
   margin-top: 5em;
+  margin-bottom: 2em;
   border: none;
-  border-radius: 2em;
-  width: 5em;
+  /* border-radius: 2em; */
+  font-size: 1.2em;
+  width: 6em;
+  background-color: #7fb6859f;
+  border-radius: 50px;
+}
+
+.setting-dropdown {
+  border: 3px solid #000000;
+  letter-spacing: 1px;
+  padding: 10px 15px 10px 25px;
+}
+
+.setting-save:hover,
+.setting-dropdown:hover,
+.setting-check:hover {
+  background-color: #7fb685;
 }

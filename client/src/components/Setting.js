@@ -14,7 +14,9 @@ const Setting = ({ state, dispatch, history }) => {
         SETTING
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="setting">
-        <Modal.Header closeButton></Modal.Header>
+        <Button id="closeBtn" onClick={handleClose}>
+          X
+        </Button>
         <Modal.Body>
           <h1 className="setting-title">PREFERENCES</h1>
           <div className="cuisine-drop">
@@ -27,8 +29,11 @@ const Setting = ({ state, dispatch, history }) => {
                 })
               }
             >
-              <p className="setting-subtitle"> Cuisine:</p>
+              {/* <p className="setting-subtitle">
+                <strong> CUISINE TYPE</strong>
+              </p> */}
               <select
+                className="setting-dropdown"
                 name="cuisine"
                 onChange={(e) =>
                   dispatch({
@@ -54,52 +59,53 @@ const Setting = ({ state, dispatch, history }) => {
                 <option value="Cuban">Cuban</option>
               </select>
             </form>
-          </div>
-          <div className="setting-restrictions">
-            <p className="setting-subtitle">Dietary Restrictions:</p>
-            <p className="setting-subtitle">Vegan:</p>
-            <input
-              className="setting-check"
-              type="checkbox"
-              value="true"
-              onClick={(e) => {
-                dispatch({
-                  type: 'select_vegan',
-                  payload: e.target.value
-                })
-              }}
-            />
-            <p className="setting-subtitle">DairyFree:</p>
-            <input
-              className="setting-check"
-              type="checkbox"
-              value="true"
-              onClick={(e) => {
-                dispatch({
-                  type: 'select_dairyFree',
-                  payload: e.target.value
-                })
-              }}
-            />
-            <p className="setting-subtitle">Vegetarian</p>
-            <input
-              className="setting-check"
-              type="checkbox"
-              value="true"
-              onClick={(e) => {
-                dispatch({
-                  type: 'select_vegetarian',
-                  payload: e.target.value
-                })
-              }}
-            />
-            <button
-              className="setting-save"
-              type="submit"
-              onClick={() => handleClose()}
-            >
-              Save
-            </button>
+
+            <div className="setting-restrictions">
+              {/* <p className="setting-subtitle"><strong>RESTRICTIONS</strong> </p> */}
+              <p className="setting-subtitle">Vegan</p>
+              <input
+                className="setting-check"
+                type="checkbox"
+                value="true"
+                onClick={(e) => {
+                  dispatch({
+                    type: 'select_vegan',
+                    payload: e.target.value
+                  })
+                }}
+              />
+              <p className="setting-subtitle">DairyFree</p>
+              <input
+                className="setting-check"
+                type="checkbox"
+                value="true"
+                onClick={(e) => {
+                  dispatch({
+                    type: 'select_dairyFree',
+                    payload: e.target.value
+                  })
+                }}
+              />
+              <p className="setting-subtitle">Vegetarian</p>
+              <input
+                className="setting-check"
+                type="checkbox"
+                value="true"
+                onClick={(e) => {
+                  dispatch({
+                    type: 'select_vegetarian',
+                    payload: e.target.value
+                  })
+                }}
+              />
+              <button
+                className="setting-save"
+                type="submit"
+                onClick={() => handleClose()}
+              >
+                Save
+              </button>
+            </div>
           </div>
         </Modal.Body>
       </Modal>

@@ -41,9 +41,12 @@ const Rank = (props) => {
         POPULAR RECIPES
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="addFood">
-        <Modal.Header closeButton></Modal.Header>
+        <div>
+          <Button id="closeBtn" onClick={handleClose}>
+            X
+          </Button>
+        </div>
         <Modal.Body>
-          <p>TOP 10 RECIPES</p>
           <div className="popular-page">
             {popular.map((item) => (
               <div className="popular-item">
@@ -52,7 +55,9 @@ const Rank = (props) => {
                 <p>{item.cuisineType}</p>
                 <p>{item.instructions}</p>
                 <h2>Likes: {item.likes}</h2>
-                <button onClick={() => likeRecipe(item.id)}>LIKE</button>
+                <button onClick={() => likeRecipe(item.id)} className="like">
+                  <img src="https://img.icons8.com/ios-glyphs/50/000000/filled-like.png" />
+                </button>
               </div>
             ))}
           </div>

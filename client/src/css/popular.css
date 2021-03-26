@@ -1,15 +1,40 @@
 .popular-page {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
+  align-content: space-between;
   scroll-behavior: smooth;
+  background-color: #faa916;
 }
 
 .popular-item {
-  border: 1px solid black;
+  border: 1px solid #ef8354;
   color: black;
 }
 
 .recipe-title {
   color: black;
+}
+
+.like {
+  border: none;
+  background-color: #faa916;
+  border-radius: 2em;
+}
+
+.like:hover {
+  background-color: #f0c679;
+}
+
+#closeBtn {
+  justify-self: right;
+  padding: 7px 10px 7px 10px;
+  border-radius: 50px;
+  border: none;
+  background-color: #faa916;
+}
+
+#closeBtn:hover {
+  background-color: rgb(235, 137, 26);
+  border: none;
 }
