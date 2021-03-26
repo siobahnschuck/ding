@@ -123,7 +123,7 @@ const Edit = (props, state, dispatch, recipeTitle) => {
 
   useEffect(() => {
     getIngredientTable()
-  }, [])
+  }, [update])
 
   return (
     <div>
