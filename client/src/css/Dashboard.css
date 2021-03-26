@@ -3,18 +3,10 @@
 }
 .dashboard {
   display: grid;
-  grid-template-rows: 1fr 20fr;
+  grid-template-rows: 1fr 8% 20fr;
   justify-items: center;
   height: 100vh;
-  /* background-image: url('https://i.ibb.co/zPqwjYT/Clipart-Key-2314553.png');
-  background-repeat: no-repeat;
-  background-position: left; */
   background: linear-gradient(to top left, #7fb685 52%, #8bb946 100%);
-  /* background-image: url('https://i.ibb.co/wc0kB5M/image.png'); */
-  /* background-repeat: no-repeat; */
-  /* background-size: 45em; */
-  /* background-color: antiquewhite; */
-  /* filter: blur(20px); */
 }
 #dashboard {
   align-self: center;

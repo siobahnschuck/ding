@@ -151,6 +151,13 @@ const Dashboard = (props) => {
       <button className="logOutBtn" onClick={props.logOut}>
         Logout
       </button>
+
+      <img
+        alt="logo"
+        src="https://i.ibb.co/85p4CWt/delete.png"
+        width="80px"
+        height="80px"
+      />
       <div id="dashboard">
         <section>
           <div className="block">

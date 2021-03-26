@@ -142,35 +142,42 @@ const DetailsRecipeCreate = (props) => {
                   value={newRecipe.calories}
                   onChange={handleChange}
                 />
-                <p>Vegan:</p>
-                <input
-                  type="checkbox"
-                  value={newRecipe.vegan}
-                  onClick={handleVeganChange}
-                />
-                <p>DairyFree:</p>
-                <input
-                  type="checkbox"
-                  value={newRecipe.dairyFree}
-                  onClick={handleDairyChange}
-                />
-                <p>Vegetarian:</p>
-                <input
-                  type="checkbox"
-                  value={newRecipe.vegetarian}
-                  onClick={handleVegetarianChange}
-                />
+                <div className="setting-restrictions">
+                  <p>Vegan</p>
+                  <input
+                    className="setting-check"
+                    type="checkbox"
+                    value={newRecipe.vegan}
+                    onClick={handleVeganChange}
+                  />
+                  <p>Dairy Free</p>
+                  <input
+                    className="setting-check"
+                    type="checkbox"
+                    value={newRecipe.dairyFree}
+                    onClick={handleDairyChange}
+                  />
+                  <p>Vegetarian</p>
+                  <input
+                    className="setting-check"
+                    type="checkbox"
+                    value={newRecipe.vegetarian}
+                    onClick={handleVegetarianChange}
+                  />
+                </div>
               </div>
               <div id="addFood">
-                Ingredients:
-                <br></br>
+                <p>Ingredients:</p>
+
                 <input
                   value={props.state.query}
                   onChange={(e) =>
                     props.dispatch({ type: 'search', payload: e.target.value })
                   }
                 ></input>
-                <button onClick={() => getPantryIngredients()}>search</button>
+                <button id="searchBtn" onClick={() => getPantryIngredients()}>
+                  search
+                </button>
                 {pantryList}
                 <br></br>
                 <div>
@@ -182,7 +189,7 @@ const DetailsRecipeCreate = (props) => {
                 </div>
               </div>
             </div>
-            <button type="submit" onClick={handleClose}>
+            <button id="generateBtn" type="submit" onClick={handleClose}>
               Create
             </button>
           </form>

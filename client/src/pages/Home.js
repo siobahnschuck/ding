@@ -36,6 +36,8 @@ const Home = (props) => {
               width="80px"
               height="80px"
             />
+            <br />
+            <br />
             Welcome to Ding! A solution to the ever-looming question: "What
             should I have for dinner?" Sign up now to get started and get access
             to 100s of recipes based on what is in your own refrigerator!

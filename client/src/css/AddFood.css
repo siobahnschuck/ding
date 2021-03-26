@@ -12,6 +12,11 @@
   top: 5%;
   left: 5%;
 }
+
+.ing-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 .body {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -75,7 +80,8 @@
   background-color: #ef8254;
 }
 .foodIcon {
-  width: 100px;
+  height: 100px;
+  cursor: pointer;
 }
 .foodIcon:hover {
   transform: scale(1.2);
@@ -121,6 +127,13 @@
   cursor: pointer;
 }
 
+/* .ingredientList {
+  height: 25vh;
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+} */
+
 #deleteBtn {
   width: 20px;
   height: 20px;
@@ -142,4 +155,12 @@
 }
 .recipeDetails {
   padding: 2em;
+}
+
+.recipe-result {
+  cursor: pointer;
+}
+
+.recipe-result:hover {
+  transform: scale(1.1);
 }
