@@ -24,11 +24,12 @@
 }
 .add-header {
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  align-items: center;
 }
 .generateBtn {
-  margin-right: 0;
-  margin-left: auto;
+  margin-right: auto;
+  margin-left: 0;
   margin-top: 1em;
 }
 #generateBtn {
@@ -48,8 +49,8 @@
   height: 2.5em;
   border-radius: 50px;
   border: none;
-  margin-right: 0;
-  margin-left: auto;
+  margin-right: auto;
+  margin-left: 0;
   background-color: transparent;
 }
 
@@ -116,7 +117,7 @@
   border: white 2px solid;
   background: transparent;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 10px;
   cursor: pointer;
 }
 

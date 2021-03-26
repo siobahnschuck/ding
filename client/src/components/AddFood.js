@@ -79,6 +79,9 @@ const AddFood = ({ state, dispatch, history }) => {
             <div className="add-section">
               <div id="addFood">
                 <div className="add-header">
+                  <Button className="closeBtn" onClick={handleClose}>
+                    X
+                  </Button>
                   <div className="generateBtn">
                     <ScrollIntoView selector=".recipeList">
                       <button id="generateBtn" onClick={() => getRecipe()}>
@@ -86,9 +89,6 @@ const AddFood = ({ state, dispatch, history }) => {
                       </button>
                     </ScrollIntoView>
                   </div>
-                  <Button className="closeBtn" onClick={handleClose}>
-                    X
-                  </Button>
                 </div>
                 <br></br>
                 <input

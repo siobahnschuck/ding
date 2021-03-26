@@ -40,7 +40,7 @@ const Rank = (props) => {
       <Button id="dash-button" onClick={handleShow}>
         POPULAR RECIPES
       </Button>
-      <Modal show={show} onHide={handleClose} dialogClassName="addFood">
+      <Modal show={show} onHide={handleClose} dialogClassName="restaurants">
         <div>
           <Button id="closeBtn" onClick={handleClose}>
             X

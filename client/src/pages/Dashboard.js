@@ -199,6 +199,11 @@ const Dashboard = (props) => {
             />
           </div>
         </section>
+        {/* <img
+          className="lettuce"
+          src="https://i.ibb.co/92C7kfm/pngkey-com-salad-png-220599.png"
+          width="300px"
+        /> */}
       </div>
     </div>
   )
