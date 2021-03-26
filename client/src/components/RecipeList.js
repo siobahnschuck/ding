@@ -3,6 +3,7 @@ import axios from 'axios'
 import { BASE_URL } from '../globals'
 import { Modal, Button } from 'react-bootstrap'
 import parse from 'html-react-parser'
+import '../css/AddFood.css'
 
 const RecipeList = (props) => {
   const [recipeDetailsOpen, toggleRecipeDetails] = useState(false)
@@ -21,7 +22,12 @@ const RecipeList = (props) => {
 
   return (
     <div id="recipeCard">
-      <img alt="item" src={props.recipe.image} onClick={() => showDetails()} />
+      <img
+        className="recipe-result"
+        alt="item"
+        src={props.recipe.image}
+        onClick={() => showDetails()}
+      />
       <span>
         <h3>{props.recipe ? props.recipe.title : null}</h3>
       </span>

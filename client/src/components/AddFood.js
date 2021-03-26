@@ -102,7 +102,7 @@ const AddFood = ({ state, dispatch, history }) => {
                 <button id="searchBtn" onClick={() => getIngredients()}>
                   search
                 </button>
-                {ingredientList}
+                <div className="ing-container">{ingredientList}</div>
                 <br></br>
               </div>
             </div>

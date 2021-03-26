@@ -22,7 +22,7 @@ const Restaurants = ({ state, dispatch }) => {
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>
-        ORDER ONLINE?
+        FIND RESTAURANTS
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="restaurants">
         <Button className="closeBtn" onClick={handleClose}>

@@ -11,7 +11,7 @@ const Setting = ({ state, dispatch, history }) => {
   return (
     <div>
       <Button id="dash-button" onClick={handleShow}>
-        SETTING
+        SETTINGS
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="setting">
         <Button id="closeBtn" onClick={handleClose}>
