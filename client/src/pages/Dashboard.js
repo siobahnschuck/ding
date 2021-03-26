@@ -164,6 +164,10 @@ const Dashboard = (props) => {
           </div>
           <div className="block">
             <MyRecipes
+              checkSession={props.checkSession}
+              dispatch={dispatch}
+              state={state}
+              recipeTitle={recipeTitle}
               myRecipes={myRecipes}
               setMyRecipes={setMyRecipes}
               getMyRecipes={getMyRecipes}
