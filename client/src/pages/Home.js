@@ -18,9 +18,14 @@ const Home = (props) => {
   return (
     <div className="home">
       <section className="left">
-        <h1>
-          Are you hungry? <br></br>To cook or not to cook?
-        </h1>
+        <div className="copy">
+          <h1 className="home-title">To cook or not to cook?</h1>
+          <p className="copy-p">
+            Welcome to Ding! A solution to the ever-looming question: "What
+            should I have for dinner?" Sign up now to get started and get access
+            to 100s of recipes based on what is in your own refrigerator!
+          </p>
+        </div>
       </section>
       <section className="right">
         <header>

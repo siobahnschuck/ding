@@ -1,22 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
 .home {
   display: grid;
   grid-template-columns: 4fr 2fr;
-  background-color: black;
+  background-color: #093824;
 }
 .left {
   position: relative;
   display: grid;
   align-items: center;
 }
-h1 {
-  color: white;
-  font-size: 3em;
+
+.copy {
+  display: flex;
+  flex-direction: column;
 }
 .right {
   display: grid;
   grid-column: 2;
   height: 100vh;
-  background-color: rgb(255, 208, 0);
+  background-color: #7fb685;
 }
 .plate {
   margin-left: -19em;
@@ -35,7 +42,7 @@ header {
 .modal-dialog.modal {
   display: grid;
   text-align: center;
-  background-color: rgba(255, 208, 0, 0.87);
+  background-color: #ef8354;
   position: absolute;
   overflow: scroll;
   width: 50vw;
@@ -59,6 +66,7 @@ header {
   border-radius: 5px;
   background-color: black;
   margin-top: 1em;
+  color: white;
 }
 form {
   display: grid;
@@ -76,4 +84,21 @@ input {
 .check {
   background-color: green;
   border: none;
+}
+
+.home-title {
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  text-shadow: 5px 0.9px 0 #ef8354;
+  margin-left: 2em;
+  font-size: 3em;
+}
+
+.copy-p {
+  color: #ef8354;
+  font-size: 2em;
+  width: 15em;
+  align-self: center;
+  background-color: #7fb685;
+  border-radius: 10px;
 }
