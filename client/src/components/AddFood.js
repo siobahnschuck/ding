@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import IngredientList from '../components/IngredientList'
 import Fridge from '../components/Fridge'
@@ -21,12 +21,14 @@ const AddFood = ({ state, dispatch, history }) => {
       console.log(err)
     }
   }
+
   const getRecipe = async () => {
     let queryString = state.fridge.map((string) => string.name).join(',')
     try {
       const res = await axios.get(
         `${BASE_URL}/recipe/search?cuisine=${state.cuisines}&includeIngredients=${queryString}`
       )
+      console.log(res.data)
       dispatch({ type: 'get_recipes', payload: res.data })
     } catch (err) {
       console.log(err)
@@ -54,6 +56,7 @@ const AddFood = ({ state, dispatch, history }) => {
             history={history}
             dispatch={dispatch}
             state={state}
+            getRecipe={getRecipe}
           />
         )
       })
