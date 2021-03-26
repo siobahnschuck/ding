@@ -12,21 +12,22 @@
   left: 5%;
 }
 
+/* .my-recipes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: 100vh;
+} */
+
 .create-first-form {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.my-recipes {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-}
-
 .cards {
-  /* width: 30em; */
   margin: 2em;
+  width: 20vw;
 }
 .modal-dialog.create-title {
   text-align: center;
@@ -38,9 +39,25 @@
   top: 30%;
   left: 25%;
 }
+
+.my-recipe-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr;
+}
+.my-recipe-title {
+  grid-column: 1/3;
+  grid-row: 1/2;
+}
+
 p {
   font-weight: bold;
 }
+.my-details {
+  grid-row: 2/3;
+  grid-column: 1/3;
+}
+
 .all-recipes {
   width: 100%;
   display: grid;
@@ -48,4 +65,14 @@ p {
 }
 .create-section {
   display: flex;
+}
+
+.delete-mine {
+  margin-bottom: 1em;
+}
+
+.recipe-details-instruc {
+  text-align: left;
+  margin-left: 20%;
+  width: 40vw;
 }

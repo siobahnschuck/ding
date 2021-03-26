@@ -128,7 +128,7 @@ const Edit = (props, state, dispatch, recipeTitle) => {
 
   return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
+      <Button id="generateBtn" variant="primary" onClick={handleShow}>
         Edit
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="myRecipes">
@@ -224,7 +224,7 @@ const Edit = (props, state, dispatch, recipeTitle) => {
                 props.dispatch({ type: 'search', payload: e.target.value })
               }
             ></input>
-            <button onClick={() => getPantryIngredients()}>
+            <button id="generateBtn" onClick={() => getPantryIngredients()}>
               Add Ingredient
             </button>
             {pantryList}
@@ -239,7 +239,7 @@ const Edit = (props, state, dispatch, recipeTitle) => {
 
             <br />
             <br />
-            <button type="submit" onClick={handleClose}>
+            <button id="generateBtn" type="submit" onClick={handleClose}>
               Submit
             </button>
           </form>

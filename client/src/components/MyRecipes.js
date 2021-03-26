@@ -45,23 +45,27 @@ const MyRecipes = (props, state, dispatch, recipeTitle) => {
                     <Image src={recipe.image} />
                     <Card.Content>
                       <Card.Description>
-                        <h2>{recipe.title}</h2>
-                        <p>{recipe.duration} minutes </p>
-                        <p>{recipe.calories}</p>
-                        <p>{recipe.ingredients}</p>
-                        <br></br>
-                        {recipe.instructions}
-                        <p>Vegan:{recipe.vegan}</p>
-                        <p>Dairy Free:{recipe.dairyFree}</p>
-                        <p>Vegetarian:{recipe.vegetarian}</p>
-                        <p>Ingredients:</p>
-                        {recipe.recipe_ingredient.map((ingredient, idx) => (
-                          <p key={idx}> {ingredient.name}</p>
-                        ))}
+                        <div className="my-recipe-container">
+                          <h2 className="my-recipe-title">{recipe.title}</h2>
+                          <p className="my-details">
+                            {recipe.readyInMinutes} minutes | {recipe.calories}{' '}
+                            calories{' '}
+                          </p>
+                          <p>Instructions:</p>
+                          {recipe.instructions}
+                          <br></br>
+
+                          <p>Ingredients:</p>
+                          {recipe.recipe_ingredient.map((ingredient, idx) => (
+                            <p key={idx}> {ingredient.name}</p>
+                          ))}
+                        </div>
                       </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
                       <button
+                        id="generateBtn"
+                        className="delete-mine"
                         color="red"
                         icon
                         labelPosition="left"
