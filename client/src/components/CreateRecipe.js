@@ -14,13 +14,15 @@ const CreateRecipe = (props) => {
         CREATE RECIPE
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="create-title">
-        <Button onClick={handleClose}>Close</Button>
+        <Button className="closeBtn" onClick={handleClose}>
+          X
+        </Button>
         <Modal.Body>
           <h2>Create Recipe</h2>
           <form onSubmit={props.submitRecipe}>
-            <p>Title:</p>
             <input
               name="title"
+              placeholder="Enter Your Recipe Title"
               value={props.recipeTitle}
               onChange={props.handleChange}
             />

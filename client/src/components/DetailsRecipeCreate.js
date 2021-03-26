@@ -108,78 +108,82 @@ const DetailsRecipeCreate = (props) => {
         Next
       </Button>
       <Modal show={show} dialogClassName="addFood">
-        <Button onClick={handleClose}>Close</Button>
+        <Button className="closeBtn" onClick={handleClose}>
+          X
+        </Button>
         <Modal.Body className="recipeDetails">
           <h2>{props.recipeTitle}</h2>
           <form onSubmit={handleSubmit}>
-            <p>Image:</p>
-            <input
-              name="image"
-              value={newRecipe.image}
-              onChange={handleChange}
-            />
-            <p>Cuisine:</p>
-            <input
-              name="cuisines"
-              value={newRecipe.cuisines}
-              onChange={handleChange}
-            />
-            <p>Instructions:</p>
-            <input
-              name="instructions"
-              value={newRecipe.instructions}
-              onChange={handleChange}
-            />
-            <p>Duration:</p>
-            <input
-              name="readyInMinutes"
-              value={newRecipe.readyInMinutes}
-              onChange={handleChange}
-            />
-            <p>Calories:</p>
-            <input
-              name="calories"
-              value={newRecipe.calories}
-              onChange={handleChange}
-            />
-            <p>Vegan:</p>
-            <input
-              type="checkbox"
-              value={newRecipe.vegan}
-              onClick={handleVeganChange}
-            />
-            <p>DairyFree:</p>
-            <input
-              type="checkbox"
-              value={newRecipe.dairyFree}
-              onClick={handleDairyChange}
-            />
-            <p>No Nuts:</p>
-            <input
-              type="checkbox"
-              value={newRecipe.vegetarian}
-              onClick={handleVegetarianChange}
-            />
-            <br></br>
-            <br></br>
-            <div id="addFood">
-              Ingredients:
-              <br></br>
-              <input
-                value={props.state.query}
-                onChange={(e) =>
-                  props.dispatch({ type: 'search', payload: e.target.value })
-                }
-              ></input>
-              <button onClick={() => getPantryIngredients()}>search</button>
-              {pantryList}
-              <br></br>
+            <div className="create-section">
               <div>
-                {props.state.pantry.map((pantryItem) => (
-                  <div>
-                    <p>{pantryItem.name}</p>
-                  </div>
-                ))}
+                <p>Image:</p>
+                <input
+                  name="image"
+                  value={newRecipe.image}
+                  onChange={handleChange}
+                />
+                <p>Cuisine:</p>
+                <input
+                  name="cuisines"
+                  value={newRecipe.cuisines}
+                  onChange={handleChange}
+                />
+                <p>Instructions:</p>
+                <input
+                  name="instructions"
+                  value={newRecipe.instructions}
+                  onChange={handleChange}
+                />
+                <p>Duration:</p>
+                <input
+                  name="readyInMinutes"
+                  value={newRecipe.readyInMinutes}
+                  onChange={handleChange}
+                />
+                <p>Calories:</p>
+                <input
+                  name="calories"
+                  value={newRecipe.calories}
+                  onChange={handleChange}
+                />
+                <p>Vegan:</p>
+                <input
+                  type="checkbox"
+                  value={newRecipe.vegan}
+                  onClick={handleVeganChange}
+                />
+                <p>DairyFree:</p>
+                <input
+                  type="checkbox"
+                  value={newRecipe.dairyFree}
+                  onClick={handleDairyChange}
+                />
+                <p>Vegetarian:</p>
+                <input
+                  type="checkbox"
+                  value={newRecipe.vegetarian}
+                  onClick={handleVegetarianChange}
+                />
+              </div>
+              <div id="addFood">
+                Ingredients:
+                <br></br>
+                <input
+                  value={props.state.query}
+                  onChange={(e) =>
+                    props.dispatch({ type: 'search', payload: e.target.value })
+                  }
+                ></input>
+                <button onClick={() => getPantryIngredients()}>search</button>
+                {pantryList}
+                <br></br>
+                <div>
+                  {props.state.pantry.map((pantryItem) => (
+                    <div>
+                      <p>{pantryItem.name}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             <button type="submit" onClick={handleClose}>

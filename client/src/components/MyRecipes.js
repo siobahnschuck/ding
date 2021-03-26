@@ -33,7 +33,9 @@ const MyRecipes = (props, state, dispatch, recipeTitle) => {
         MY RECIPES
       </Button>
       <Modal show={show} onHide={handleClose} dialogClassName="myRecipes">
-        <Modal.Header closeButton></Modal.Header>
+        <Button className="closeBtn" onClick={handleClose}>
+          X
+        </Button>
         <Modal.Body className="my-recipes">
           {props.myRecipes ? (
             <div>

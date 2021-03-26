@@ -23,7 +23,7 @@ const RecipeList = (props) => {
     <div id="recipeCard">
       <img alt="item" src={props.recipe.image} onClick={() => showDetails()} />
       <span>
-        <p>{props.recipe ? props.recipe.title : null}</p>
+        <h3>{props.recipe ? props.recipe.title : null}</h3>
       </span>
       <Modal show={recipeDetailsOpen} dialogClassName="details">
         <div className="header">
@@ -36,13 +36,13 @@ const RecipeList = (props) => {
             <div>
               <img src={props.state.recipeDetails.image} />
               <h2>{props.state.recipeDetails.title}</h2>
-              <p>cusine: {props.state.recipeDetails.cuisines}</p>
-              <p>dairyFree:{props.state.recipeDetails.dairyFree}</p>
+              <p>Cuisine: {props.state.recipeDetails.cuisines}</p>
+              <p>Dairy Free:{props.state.recipeDetails.dairyFree}</p>
               <p>vegan:{props.state.recipeDetails.vegan}</p>
               <p>vegetarian:{props.state.recipeDetails.vegetarian}</p>
               <p>Ready in: {props.state.recipeDetails.readyInMinutes} mins</p>
-              instructions:
-              <div>{parse(props.state.recipeDetails.instructions)}</div>
+              <p>Instructions:</p>
+              <p>{parse(props.state.recipeDetails.instructions)}</p>
             </div>
           ) : (
             <h1>loading</h1>

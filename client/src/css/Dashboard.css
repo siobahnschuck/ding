@@ -1,3 +1,6 @@
+* {
+  outline: none;
+}
 .dashboard {
   display: grid;
   grid-template-rows: 1fr 20fr;

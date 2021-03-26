@@ -3,8 +3,8 @@
 }
 
 .modal-dialog.setting {
-  text-align: left;
-  background-color: #faa916;
+  text-align: right;
+  background-color: #8eb339f8;
   position: absolute;
   overflow: scroll;
   width: 90vw;
@@ -20,15 +20,14 @@
 }
 
 #closeBtn {
-  justify-self: right;
   padding: 7px 10px 7px 10px;
   border-radius: 50px;
   border: none;
-  background-color: #faa916;
+  background-color: transparent;
 }
 
 #closeBtn:hover {
-  background-color: rgb(235, 137, 26);
+  background-color: #093824;
   border: none;
 }
 
