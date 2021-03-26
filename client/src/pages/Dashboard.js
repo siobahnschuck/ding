@@ -16,6 +16,7 @@ const iState = {
   ingredients: [],
   fridge: [],
   recipes: [],
+  recipeDetails: null,
   restaurants: [],
   cuisines: '',
   vegan: false,
@@ -50,6 +51,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         newRecipe: action.payload
+      }
+    case 'show_recipe_details':
+      return {
+        ...state,
+        recipeDetails: action.payload
       }
     case 'my_recipes':
       return { ...state, myRecipes: action.payload }

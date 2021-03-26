@@ -4,6 +4,7 @@ import IngredientList from '../components/IngredientList'
 import Fridge from '../components/Fridge'
 import RecipeList from '../components/RecipeList'
 import { BASE_URL } from '../globals'
+import ScrollIntoView from 'react-scroll-into-view'
 import axios from 'axios'
 import '../css/AddFood.css'
 
@@ -63,9 +64,11 @@ const AddFood = ({ state, dispatch, history }) => {
         GENERATE RECIPE
       </Button>
       <Modal show={show} dialogClassName="addFood">
-        <Modal.Header closeButton></Modal.Header>
+        <Button id="closeBtn" onClick={handleClose}>
+          X
+        </Button>
         <Modal.Body className="body">
-          <div>
+          <div id="fridge">
             <Fridge
               fridge={state.fridge}
               dispatch={dispatch}
@@ -84,7 +87,9 @@ const AddFood = ({ state, dispatch, history }) => {
             <button onClick={() => getIngredients()}>search</button>
             {ingredientList}
             <br></br>
-            <button onClick={() => getRecipe()}>Generate Recipes</button>
+            <ScrollIntoView selector=".recipeList">
+              <button onClick={() => getRecipe()}>Generate Recipes</button>
+            </ScrollIntoView>
           </div>
           <div>{recipeList}</div>
         </Modal.Body>
