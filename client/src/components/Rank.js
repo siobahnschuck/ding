@@ -48,15 +48,18 @@ const Rank = (props) => {
         </div>
         <Modal.Body>
           <div className="popular-page">
-            {popular.map((item) => (
-              <div className="popular-item">
+            {popular.map((item, idx) => (
+              <div className="popular-item" key={idx}>
                 <h2 className="recipe-title">{item.name}</h2>
-                <img src={item.image} />
+                <img alt="recipe" src={item.image} />
                 <p>{item.cuisineType}</p>
                 <p>{item.instructions}</p>
                 <h2>Likes: {item.likes}</h2>
                 <button onClick={() => likeRecipe(item.id)} className="like">
-                  <img src="https://img.icons8.com/ios-glyphs/50/000000/filled-like.png" />
+                  <img
+                    alt="heart"
+                    src="https://img.icons8.com/ios-glyphs/50/000000/filled-like.png"
+                  />
                 </button>
               </div>
             ))}

@@ -46,7 +46,7 @@ const Edit = (props, state, dispatch, recipeTitle) => {
   const deleteFoodItem = async (id) => {
     setIngredients(ingredients.filter((item) => item.id !== id))
     try {
-      const res = await axios.delete(`${BASE_URL}/ingredients/${id}`)
+      await axios.delete(`${BASE_URL}/ingredients/${id}`)
     } catch (error) {
       throw error
     }
@@ -79,7 +79,7 @@ const Edit = (props, state, dispatch, recipeTitle) => {
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
     try {
       editItem(recipeId, update)
     } catch (error) {
@@ -90,13 +90,13 @@ const Edit = (props, state, dispatch, recipeTitle) => {
   const addIngredient = async (ingredientId, name) => {
     const test = { recipeId: recipeId, foodItemId: ingredientId, name: name }
     try {
-      const res = await axios.post(`${BASE_URL}/ingredients/`, test)
+      await axios.post(`${BASE_URL}/ingredients/`, test)
     } catch (error) {
       throw error
     }
   }
 
-    const getPantryIngredients = async () => {
+  const getPantryIngredients = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/food/find/${props.state.query}`)
       props.dispatch({ type: 'get_recipeIngredients', payload: res.data })
@@ -105,7 +105,7 @@ const Edit = (props, state, dispatch, recipeTitle) => {
     }
   }
 
-   const pantryList = props.recipeIngredients.length
+  const pantryList = props.recipeIngredients.length
     ? props.recipeIngredients.map((ingredient, index) => {
         return (
           <div onClick={() => addIngredient(ingredient.id, ingredient.name)}>
@@ -202,41 +202,45 @@ const Edit = (props, state, dispatch, recipeTitle) => {
               />
               <br />
             </div>
-          <p>Ingredients:</p>
-          {ingredients.map((ingredient, index) => (
-            <div key={index}>
-              <button onClick={() => deleteFoodItem(ingredient.id)}>
-                X
-                <input
-                  name="recipe_ingredients"
-                  placeholder={ingredient.name}
-                  value={ingredient.name}
-                ></input>
-              </button>
-            </div>
-          ))}
-          <br />
-          <br />
-          <input
-            value={props.state.query}
-            onChange={(e) =>
-              props.dispatch({ type: 'search', payload: e.target.value })
-            }
-          ></input>
-              <button onClick={() => getPantryIngredients()}>Add Ingredient</button>
-              {pantryList}
-              <br></br>
-              <div>
-                {props.state.pantry.map((pantryItem) => (
-                  <div>
-                    <p>{pantryItem.name}</p>
-                  </div>
-                ))}
+            <p>Ingredients:</p>
+            {ingredients.map((ingredient, index) => (
+              <div key={index}>
+                <button onClick={() => deleteFoodItem(ingredient.id)}>
+                  X
+                  <input
+                    name="recipe_ingredients"
+                    placeholder={ingredient.name}
+                    value={ingredient.name}
+                  ></input>
+                </button>
               </div>
+            ))}
+            <br />
+            <br />
+            <input
+              value={props.state.query}
+              onChange={(e) =>
+                props.dispatch({ type: 'search', payload: e.target.value })
+              }
+            ></input>
+            <button onClick={() => getPantryIngredients()}>
+              Add Ingredient
+            </button>
+            {pantryList}
+            <br></br>
+            <div>
+              {props.state.pantry.map((pantryItem, idx) => (
+                <div key={idx}>
+                  <p>{pantryItem.name}</p>
+                </div>
+              ))}
+            </div>
 
-          <br />
-          <br />
-          <button type="submit" onClick={handleClose}>Submit</button>
+            <br />
+            <br />
+            <button type="submit" onClick={handleClose}>
+              Submit
+            </button>
           </form>
         </Modal.Body>
       </Modal>

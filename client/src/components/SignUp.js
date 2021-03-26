@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
 import '../css/App.css'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
@@ -16,9 +15,8 @@ const SignUp = (props) => {
   })
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
     try {
-      const res = await axios.post(`${BASE_URL}/auth/register`, registerForm)
+      await axios.post(`${BASE_URL}/auth/register`, registerForm)
       handleRegisterForm({
         firstName: '',
         lastName: '',
@@ -27,6 +25,7 @@ const SignUp = (props) => {
         passwordDigest: ''
       })
       props.toggleSignUp(false)
+      props.toggleSignIn(true)
     } catch (error) {
       console.log(error)
     }
@@ -36,7 +35,15 @@ const SignUp = (props) => {
     const { name, value } = e.target
     handleRegisterForm({ ...registerForm, [name]: value })
   }
-  const handlePasswordChange = (e) => {}
+
+  const handleConfirm = (e) => {
+    e.preventDefault()
+    if (registerForm.passwordDigest === registerForm.confirmPassword) {
+      return handleSubmit()
+    } else {
+      alert('Your password does not match, please try again!')
+    }
+  }
 
   return (
     <div>
@@ -48,7 +55,7 @@ const SignUp = (props) => {
         </div>
         <Modal.Body>
           <h2>Sign Up</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleConfirm}>
             <input
               type="text"
               name="firstName"
@@ -82,10 +89,18 @@ const SignUp = (props) => {
               required
             />
             <input
-              type="text"
+              type="password"
               name="passwordDigest"
               placeholder="Password"
               value={registerForm.passwordDigest}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={registerForm.confirmPassword}
               onChange={handleChange}
               required
             />
