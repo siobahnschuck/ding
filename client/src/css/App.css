@@ -4,6 +4,9 @@
 * {
   font-family: 'Montserrat', sans-serif;
 }
+*:focus {
+  outline: none;
+}
 .home {
   display: grid;
   grid-template-columns: 4fr 2fr;
