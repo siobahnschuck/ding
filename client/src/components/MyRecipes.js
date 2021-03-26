@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { Card, Image } from 'semantic-ui-react'
 import axios from 'axios'
@@ -6,10 +6,14 @@ import { BASE_URL } from '../globals'
 import '../css/Recipe.css'
 import UpdateRecipe from './UpdateRecipe'
 
-const MyRecipes = (props) => {
+const MyRecipes = (props, state, dispatch, recipeTitle) => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+
+  useEffect(() => {
+    props.checkSession()
+  }, [])
 
   const deleteItem = async (recipeId) => {
     try {
@@ -64,6 +68,9 @@ const MyRecipes = (props) => {
                         Delete
                       </button>
                       <UpdateRecipe
+                        dispatch={dispatch}
+                        state={state}
+                        recipeTitle={recipeTitle}
                         recipe={recipe}
                         getMyRecipes={props.getMyRecipes}
                         myRecipes={props.myRecipes}

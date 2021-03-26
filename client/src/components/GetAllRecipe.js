@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { Card, Image } from 'semantic-ui-react'
-import axios from 'axios'
-import { BASE_URL } from '../globals'
 import '../css/Recipe.css'
-import UpdateRecipe from './UpdateRecipe'
 
 const GetAllRecipes = (props) => {
   const [show, setShow] = useState(false)

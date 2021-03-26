@@ -4,10 +4,10 @@ import '../css/App.css'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 
-const Edit = (props) => {
-  console.log(props.recipeIngredient)
+const Edit = (props, state, dispatch, recipeTitle) => {
   const recipe = props.recipe
   const recipeId = recipe.id
+  console.log(recipeId)
 
   const [update, setUpdate] = useState({
     title: recipe.title,
@@ -37,9 +37,10 @@ const Edit = (props) => {
     }
   }
 
-  const foodItem = async () => {
+  const deleteFoodItem = async (id) => {
     try {
-      const res = await axios.put()
+      const res = await axios.delete(`${BASE_URL}/ingredients/${id}`)
+      console.log(res)
     } catch (error) {
       throw error
     }
@@ -169,18 +170,19 @@ const Edit = (props) => {
 
               {props.recipeIngredient.map(
                 (ingredient, index) => (
-                  console.log(props.recipeIngredient),
-                  (console.log(ingredient),
+                  console.log(ingredient.id),
                   (
                     <div key={index}>
-                      <input
-                        name="recipe_ingredients"
-                        placeholder={ingredient.name}
-                        value={ingredient.name}
-                        onChange={handleChange}
-                      ></input>
+                      <button onClick={() => deleteFoodItem(ingredient.id)}>
+                        X
+                        <input
+                          name="recipe_ingredients"
+                          placeholder={ingredient.name}
+                          value={ingredient.name}
+                        ></input>
+                      </button>
                     </div>
-                  ))
+                  )
                 )
               )}
               <br />

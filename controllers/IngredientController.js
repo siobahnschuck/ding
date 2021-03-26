@@ -11,7 +11,7 @@ const CreateIngredient = async (req, res) => {
 
 const DeleteIngredient = async (req, res) => {
   try {
-    let ingId = req.params.ingredient_id
+    let ingId = req.params.foodItem_id
     await Ingredient.destroy({
       where: {
         id: ingId
