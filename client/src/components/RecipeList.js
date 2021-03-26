@@ -34,7 +34,7 @@ const RecipeList = (props) => {
         <Modal.Body>
           {props.state.recipeDetails ? (
             <div>
-              <img src={props.state.recipeDetails.image} />
+              <img alt="pick" src={props.state.recipeDetails.image} />
               <h2>{props.state.recipeDetails.title}</h2>
               <p>Cuisine: {props.state.recipeDetails.cuisines}</p>
               <p>Dairy Free:{props.state.recipeDetails.dairyFree}</p>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import IngredientList from '../components/IngredientList'
 import Fridge from '../components/Fridge'

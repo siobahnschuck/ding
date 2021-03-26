@@ -44,8 +44,8 @@ const MyRecipes = (props, state, dispatch, recipeTitle) => {
                   <Card className="cards">
                     <Image src={recipe.image} />
                     <Card.Content>
-                      <h2>{recipe.name}</h2>
                       <Card.Description>
+                        <h2>{recipe.title}</h2>
                         <p>{recipe.duration} minutes </p>
                         <p>{recipe.calories}</p>
                         <p>{recipe.ingredients}</p>
@@ -55,8 +55,8 @@ const MyRecipes = (props, state, dispatch, recipeTitle) => {
                         <p>Dairy Free:{recipe.dairyFree}</p>
                         <p>Vegetarian:{recipe.vegetarian}</p>
                         <p>Ingredients:</p>
-                        {recipe.recipe_ingredient.map((ingredient) => (
-                          <p> {ingredient.name}</p>
+                        {recipe.recipe_ingredient.map((ingredient, idx) => (
+                          <p key={idx}> {ingredient.name}</p>
                         ))}
                       </Card.Description>
                     </Card.Content>

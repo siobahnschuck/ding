@@ -24,19 +24,8 @@ const GetAllRecipes = (props) => {
                 <div key={recipe.id}>
                   <Card className="cards">
                     <Image src={recipe.image} />
-                    <Card.Content>
-                      <Card.Header>{recipe.name}</Card.Header>
-                      <Card.Description>
-                        {recipe.duration}
-                        {recipe.calories}
-                        {recipe.ingredients}
-                        <br></br>
-                        {recipe.instructions}
-                        <p>Vegan:{recipe.isVegan}</p>
-                        <p>DairyFree:{recipe.isDairyFree}</p>
-                        <p>Has Nuts: {recipe.hasNuts}</p>
-                      </Card.Description>
-                    </Card.Content>
+                    <br />
+                    <Card.Header>{recipe.title}</Card.Header>
                   </Card>
                 </div>
               ))}

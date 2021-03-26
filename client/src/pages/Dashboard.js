@@ -8,7 +8,6 @@ import Rank from '../components/Rank'
 import Restaurants from '../components/Restaurants'
 import { BASE_URL } from '../globals'
 import axios from 'axios'
-import { NavLink } from 'react-router-dom'
 import GetAllRecipes from '../components/GetAllRecipe'
 
 const iState = {
@@ -170,7 +169,6 @@ const Dashboard = (props) => {
               myRecipes={myRecipes}
               setMyRecipes={setMyRecipes}
               getMyRecipes={getMyRecipes}
-
             />
           </div>
         </section>
