@@ -11,7 +11,8 @@ const SignUp = (props) => {
     lastName: '',
     username: '',
     email: '',
-    passwordDigest: ''
+    passwordDigest: '',
+    confirmPassword: ''
   })
 
   const handleSubmit = async (e) => {
@@ -35,6 +36,7 @@ const SignUp = (props) => {
     const { name, value } = e.target
     handleRegisterForm({ ...registerForm, [name]: value })
   }
+  const handlePasswordChange = (e) => {}
 
   return (
     <div>
